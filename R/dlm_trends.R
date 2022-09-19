@@ -16,7 +16,7 @@
 #'                   "cov1" = rnorm(N),
 #'                   "cov2" = rnorm(N),
 #'                   "year" = 1:N,
-#'                   "season" = sample(c("A","B"), size=N, replace=T))
+#'                   "season" = sample(c("A","B"), size=N, replace=TRUE))
 #' b_1 = cumsum(rnorm(N))
 #' b_2 = cumsum(rnorm(N))
 #' data$y = data$cov1*b_1 + data$cov2*b_2
