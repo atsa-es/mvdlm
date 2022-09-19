@@ -7,6 +7,8 @@
 [![R-CMD-check](https://github.com/atsa-es/mvdlm/workflows/R-CMD-check/badge.svg)](https://github.com/atsa-es/mvdlm/actions)
 <!-- badges: end -->
 
+[![DOI](https://zenodo.org/badge/538718637.svg)](https://zenodo.org/badge/latestdoi/538718637)
+
 mvdlm implements multivariate dynamic linear models (DLMs) in a Bayesian
 framework (Stan). Check out the documentation site:
 <https://atsa-es.github.io/mvdlm/>
