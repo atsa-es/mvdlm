@@ -1,0 +1,129 @@
+---
+title: "Overview of mvdlm package"
+author: "Eric J. Ward"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Overview of mvdlm package}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Overview
+
+For examples, we're going to use one of the same datasets that are widely documented in the MARSS manual. This data consists of three columns, 
+* year, representing the year of the observation
+* logit.s, representing logit-transformed survival of Columbia River salmon
+* CUI.apr, representing coastal upwelling index values in April  
+
+```{r}
+library(mvdlm)
+library(MARSS)
+library(ggplot2)
+library(broom.mixed)
+library(loo)
+data(SalmonSurvCUI)
+head(SalmonSurvCUI)
+```
+
+```{r}
+g1 <- ggplot(SalmonSurvCUI, aes(year, logit.s)) + 
+  geom_point() + 
+  geom_line()
+g1
+```
+
+```{r}
+g2 <- ggplot(SalmonSurvCUI, aes(year, CUI.apr)) + 
+  geom_point() + 
+  geom_line()
+g2
+```
+
+### Model 1: time varying intercept and slope
+
+For a first model, we'll fit the same model used in the `MARSS` manual, with a time varying intercept and time varying coefficient on CUI. We can specify these time varying effects using the `time_varying` argument. Note an intercept is not included, like with `lm`, `glm`, and similar packages this the intercept is implicitly included. Note that alternatively you could specify this formula as `time_varying = logit.s ~ 1 + CUI.apr`, where we add the extra `1` to signify the intercept.  
+
+Like the `MARSS` example, we also standardize the covariates,  
+
+```{r}
+SalmonSurvCUI$CUI.apr = scale(SalmonSurvCUI$CUI.apr)
+
+fit <- fit_dlm(time_varying = logit.s ~ CUI.apr,
+        data = SalmonSurvCUI,
+        chains=1,
+        iter=1000)
+```
+
+With only 1000 iterations and 1 chain, we might not expect the model to converge (see additional guidance via Stan developers here: https://mc-stan.org/misc/warnings.html). A couple things to consider:  
+
+* Did you get any warnings about divergent transitions after warmup? If so, try increasing the iterations / burn-in period, and number of chains. It's also worth increasing the value of `adapt_delta`. (this will slow the sampling down a little). If you're still getting these warnings, the model may be mis-specified or data not informative.  
+
+```{r eval=FALSE}
+fit <- fit_dlm(time_varying = logit.s ~ CUI.apr,
+        data = SalmonSurvCUI,
+        chains=1,
+        iter=1000,
+        control = list(adapt_delta=0.99))
+```
+
+* Did you get a warning about the maximum tree depth? If so, you can increase the maximum tree (`max_treedepth`) depth with the following
+
+```{r eval=FALSE}
+fit <- fit_dlm(time_varying = logit.s ~ CUI.apr,
+        data = SalmonSurvCUI,
+        chains=1,
+        iter=1000,
+        control = list(max_treedepth=15))
+```
+
+We can extract tidied versions of any of the parameters with
+
+```{r}
+broom.mixed::tidy(fit$fit)
+```
+
+We also have a helper function for extracting and visualizing trends for time varying parameters. 
+
+```{r}
+dlm_trends(fit)
+```
+
+This function returns a plot and the values used to make the plot (`b_varying`)
+
+### Model 2: time varying intercept and constant slope
+
+As a second example, we could fit a model with a constant effect of CUI, but a time varying slope. The `fit_dlm` function has two formula parameters, `formula` for static effects, and `time_varying` for time varying ones. This model is specified as
+
+```{r eval=FALSE}
+fit <- fit_dlm(time_varying = logit.s ~ 1,
+               formula = logit.s ~ CUI.apr,
+        data = SalmonSurvCUI,
+        chains=1,
+        iter=1000)
+```
+
+### Model 3: constant intercept and time varying slope
+
+We could do the same with a model that had a time varying effect of CUI, but a time constant slope. 
+```{r eval=FALSE}
+fit <- fit_dlm(time_varying = logit.s ~ CUI.apr,
+               formula = logit.s ~ 1,
+        data = SalmonSurvCUI,
+        chains=1,
+        iter=1000)
+```
+
+### Comparing models
+
+All three of the above formulations of the DLM can be compared with the `loo` package, and statistics such as LOOIC can be easily calculated. For example, 
+
+```{r eval=FALSE}
+library(loo)
+loo::loo(fit$fit)
+```
+
