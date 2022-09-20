@@ -35,7 +35,7 @@ fit <- fit_dlm(formula = formula,
                time = "year",
                est_df = FALSE,
                family = c("normal"),
-               data, chains = 1, iter = 20)
+               data=data, chains = 1, iter = 20)
 dlm_trends(fit)
 }
 

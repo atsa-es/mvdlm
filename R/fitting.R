@@ -43,7 +43,7 @@
 #'                time = "year",
 #'                est_df = FALSE,
 #'                family = c("normal"),
-#'                data, chains = 1, iter = 20)
+#'                data=data, chains = 1, iter = 20)
 #'
 #' # fit a model with a time varying and fixed component (here, fixed intercept)
 #' fit <- fit_dlm(formula = y ~ 1,
@@ -59,7 +59,7 @@
 #'                time = "year",
 #'                est_df = TRUE,
 #'                family = c("normal"),
-#'                data, chains = 1, iter = 20)
+#'                data=data, chains = 1, iter = 20)
 #'
 #' #' #' # fit a model with deviations modeled with a multivariate Student-t
 #' fit <- fit_dlm(formula = y ~ 1,
@@ -67,7 +67,7 @@
 #'                time = "year",
 #'                est_df = TRUE,
 #'                family = c("normal"),
-#'                data, chains = 1, iter = 20)
+#'                data=data, chains = 1, iter = 20)
 #' }
 #'
 fit_dlm <- function(formula = NULL,
