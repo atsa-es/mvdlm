@@ -21,8 +21,6 @@ Depends:
 Imports: 
     broom.mixed,
     methods,
-    gtools,
-    compositions,
     ggplot2,
     MARSS,
     Rcpp (>= 0.12.0),

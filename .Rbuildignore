@@ -1,3 +1,13 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.github$
+^README-*
+^README\.Rmd
+^appveyor\.yml$
+^Session.vim$
+^doc$
+^Meta$
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
