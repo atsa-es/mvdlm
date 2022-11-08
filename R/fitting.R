@@ -202,7 +202,7 @@ fit_dlm <- function(formula = NULL,
     correlated_rw = as.numeric(correlated_rw)
   )
 
-  pars <- c("eta", "sigma", "log_lik", "lp__", "X_fixed", "X_varying")
+  pars <- c("eta", "sigma", "log_lik", "lp__")
   if(est_varying_coef == TRUE) pars <- c(pars, "b_varying")
   if(est_fixed_coef == TRUE) pars <- c(pars, "b_fixed")
   if(family %in% c("normal","negbin2","gamma","lognormal")) pars <- c(pars, "phi")

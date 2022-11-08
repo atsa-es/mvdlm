@@ -33,7 +33,7 @@ static int current_statement_begin__;
 stan::io::program_reader prog_reader__() {
     stan::io::program_reader reader;
     reader.add_event(0, 0, "start", "model_dlm");
-    reader.add_event(173, 171, "end", "model_dlm");
+    reader.add_event(178, 176, "end", "model_dlm");
     return reader;
 }
 #include <stan_meta_header.hpp>
@@ -632,25 +632,6 @@ public:
                 current_statement_begin__ = 53;
                 stan::math::assign(Sigma, quad_form_diag(R, sigma));
             }
-            current_statement_begin__ = 57;
-            for (int i = 1; i <= nT; ++i) {
-                current_statement_begin__ = 58;
-                for (int j = 1; j <= n_fixed_covars; ++j) {
-                    current_statement_begin__ = 59;
-                    stan::model::assign(X_fixed, 
-                                stan::model::cons_list(stan::model::index_uni(i), stan::model::cons_list(stan::model::index_uni(j), stan::model::nil_index_list())), 
-                                0, 
-                                "assigning variable X_fixed");
-                }
-                current_statement_begin__ = 61;
-                for (int j = 1; j <= n_varying_covars; ++j) {
-                    current_statement_begin__ = 62;
-                    stan::model::assign(X_varying, 
-                                stan::model::cons_list(stan::model::index_uni(i), stan::model::cons_list(stan::model::index_uni(j), stan::model::nil_index_list())), 
-                                0, 
-                                "assigning variable X_varying");
-                }
-            }
             current_statement_begin__ = 65;
             if (as_bool(logical_gt(n_fixed_covars, 0))) {
                 current_statement_begin__ = 66;
@@ -858,27 +839,42 @@ public:
             current_statement_begin__ = 135;
             if (as_bool(logical_eq(family, 2))) {
                 current_statement_begin__ = 136;
-                lp_accum__.add(bernoulli_logit_log<propto__>(y_int, eta));
+                for (int i = 1; i <= N; ++i) {
+                    current_statement_begin__ = 136;
+                    lp_accum__.add(bernoulli_logit_log<propto__>(get_base1(y_int, i, "y_int", 1), get_base1(eta, get_base1(y_indx, i, "y_indx", 1), "eta", 1)));
+                }
             }
-            current_statement_begin__ = 138;
+            current_statement_begin__ = 139;
             if (as_bool(logical_eq(family, 3))) {
-                current_statement_begin__ = 139;
-                lp_accum__.add(poisson_log_log<propto__>(y_int, eta));
+                current_statement_begin__ = 140;
+                for (int i = 1; i <= N; ++i) {
+                    current_statement_begin__ = 140;
+                    lp_accum__.add(poisson_log_log<propto__>(get_base1(y_int, i, "y_int", 1), get_base1(eta, get_base1(y_indx, i, "y_indx", 1), "eta", 1)));
+                }
             }
-            current_statement_begin__ = 141;
+            current_statement_begin__ = 143;
             if (as_bool(logical_eq(family, 4))) {
-                current_statement_begin__ = 142;
-                lp_accum__.add(neg_binomial_2_log_log<propto__>(y_int, eta, get_base1(phi, 1, "phi", 1)));
-            }
-            current_statement_begin__ = 144;
-            if (as_bool(logical_eq(family, 5))) {
-                current_statement_begin__ = 145;
-                lp_accum__.add(gamma_log<propto__>(y, get_base1(phi, 1, "phi", 1), elt_divide(get_base1(phi, 1, "phi", 1), stan::math::exp(eta))));
+                current_statement_begin__ = 144;
+                for (int i = 1; i <= N; ++i) {
+                    current_statement_begin__ = 144;
+                    lp_accum__.add(neg_binomial_2_log_log<propto__>(get_base1(y_int, i, "y_int", 1), get_base1(eta, get_base1(y_indx, i, "y_indx", 1), "eta", 1), get_base1(phi, 1, "phi", 1)));
+                }
             }
             current_statement_begin__ = 147;
-            if (as_bool(logical_eq(family, 6))) {
+            if (as_bool(logical_eq(family, 5))) {
                 current_statement_begin__ = 148;
-                lp_accum__.add(lognormal_log<propto__>(y, eta, get_base1(phi, 1, "phi", 1)));
+                for (int i = 1; i <= N; ++i) {
+                    current_statement_begin__ = 148;
+                    lp_accum__.add(gamma_log<propto__>(get_base1(y, i, "y", 1), get_base1(phi, 1, "phi", 1), (get_base1(phi, 1, "phi", 1) / stan::math::exp(get_base1(eta, get_base1(y_indx, i, "y_indx", 1), "eta", 1)))));
+                }
+            }
+            current_statement_begin__ = 151;
+            if (as_bool(logical_eq(family, 6))) {
+                current_statement_begin__ = 152;
+                for (int i = 1; i <= N; ++i) {
+                    current_statement_begin__ = 152;
+                    lp_accum__.add(lognormal_log<propto__>(get_base1(y, i, "y", 1), get_base1(eta, get_base1(y_indx, i, "y_indx", 1), "eta", 1), get_base1(phi, 1, "phi", 1)));
+                }
             }
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(e, current_statement_begin__, prog_reader__());
@@ -1097,25 +1093,6 @@ public:
                 current_statement_begin__ = 53;
                 stan::math::assign(Sigma, quad_form_diag(R, sigma));
             }
-            current_statement_begin__ = 57;
-            for (int i = 1; i <= nT; ++i) {
-                current_statement_begin__ = 58;
-                for (int j = 1; j <= n_fixed_covars; ++j) {
-                    current_statement_begin__ = 59;
-                    stan::model::assign(X_fixed, 
-                                stan::model::cons_list(stan::model::index_uni(i), stan::model::cons_list(stan::model::index_uni(j), stan::model::nil_index_list())), 
-                                0, 
-                                "assigning variable X_fixed");
-                }
-                current_statement_begin__ = 61;
-                for (int j = 1; j <= n_varying_covars; ++j) {
-                    current_statement_begin__ = 62;
-                    stan::model::assign(X_varying, 
-                                stan::model::cons_list(stan::model::index_uni(i), stan::model::cons_list(stan::model::index_uni(j), stan::model::nil_index_list())), 
-                                0, 
-                                "assigning variable X_varying");
-                }
-            }
             current_statement_begin__ = 65;
             if (as_bool(logical_gt(n_fixed_covars, 0))) {
                 current_statement_begin__ = 66;
@@ -1239,80 +1216,80 @@ public:
             }
             if (!include_gqs__) return;
             // declare and define generated quantities
-            current_statement_begin__ = 152;
+            current_statement_begin__ = 157;
             validate_non_negative_index("log_lik", "N", N);
             Eigen::Matrix<double, Eigen::Dynamic, 1> log_lik(N);
             stan::math::initialize(log_lik, DUMMY_VAR__);
             stan::math::fill(log_lik, DUMMY_VAR__);
             // generated quantities statements
-            current_statement_begin__ = 153;
+            current_statement_begin__ = 158;
             if (as_bool(logical_eq(family, 1))) {
-                current_statement_begin__ = 154;
+                current_statement_begin__ = 159;
                 for (int n = 1; n <= N; ++n) {
-                    current_statement_begin__ = 154;
+                    current_statement_begin__ = 159;
                     stan::model::assign(log_lik, 
                                 stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
-                                normal_log(get_base1(y, n, "y", 1), get_base1(eta, n, "eta", 1), get_base1(phi, 1, "phi", 1)), 
+                                normal_log(get_base1(y, n, "y", 1), get_base1(eta, get_base1(y_indx, n, "y_indx", 1), "eta", 1), get_base1(phi, 1, "phi", 1)), 
                                 "assigning variable log_lik");
                 }
             }
-            current_statement_begin__ = 156;
+            current_statement_begin__ = 161;
             if (as_bool(logical_eq(family, 2))) {
-                current_statement_begin__ = 157;
+                current_statement_begin__ = 162;
                 for (int n = 1; n <= N; ++n) {
-                    current_statement_begin__ = 157;
+                    current_statement_begin__ = 162;
                     stan::model::assign(log_lik, 
                                 stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
-                                bernoulli_log(get_base1(y_int, n, "y_int", 1), inv_logit(get_base1(eta, n, "eta", 1))), 
+                                bernoulli_log(get_base1(y_int, n, "y_int", 1), inv_logit(get_base1(eta, get_base1(y_indx, n, "y_indx", 1), "eta", 1))), 
                                 "assigning variable log_lik");
                 }
             }
-            current_statement_begin__ = 159;
+            current_statement_begin__ = 164;
             if (as_bool(logical_eq(family, 3))) {
-                current_statement_begin__ = 160;
+                current_statement_begin__ = 165;
                 for (int n = 1; n <= N; ++n) {
-                    current_statement_begin__ = 160;
+                    current_statement_begin__ = 165;
                     stan::model::assign(log_lik, 
                                 stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
-                                poisson_log(get_base1(y_int, n, "y_int", 1), stan::math::exp(get_base1(eta, n, "eta", 1))), 
+                                poisson_log(get_base1(y_int, n, "y_int", 1), stan::math::exp(get_base1(eta, get_base1(y_indx, n, "y_indx", 1), "eta", 1))), 
                                 "assigning variable log_lik");
                 }
             }
-            current_statement_begin__ = 162;
+            current_statement_begin__ = 167;
             if (as_bool(logical_eq(family, 4))) {
-                current_statement_begin__ = 163;
+                current_statement_begin__ = 168;
                 for (int n = 1; n <= N; ++n) {
-                    current_statement_begin__ = 163;
+                    current_statement_begin__ = 168;
                     stan::model::assign(log_lik, 
                                 stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
-                                normal_log(get_base1(y, n, "y", 1), get_base1(eta, n, "eta", 1), get_base1(phi, 1, "phi", 1)), 
+                                normal_log(get_base1(y, n, "y", 1), get_base1(eta, get_base1(y_indx, n, "y_indx", 1), "eta", 1), get_base1(phi, 1, "phi", 1)), 
                                 "assigning variable log_lik");
                 }
             }
-            current_statement_begin__ = 165;
+            current_statement_begin__ = 170;
             if (as_bool(logical_eq(family, 5))) {
-                current_statement_begin__ = 166;
+                current_statement_begin__ = 171;
                 for (int n = 1; n <= N; ++n) {
-                    current_statement_begin__ = 166;
+                    current_statement_begin__ = 171;
                     stan::model::assign(log_lik, 
                                 stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
-                                gamma_log(get_base1(y, n, "y", 1), get_base1(phi, 1, "phi", 1), (get_base1(phi, 1, "phi", 1) / stan::math::exp(get_base1(eta, n, "eta", 1)))), 
+                                gamma_log(get_base1(y, n, "y", 1), get_base1(phi, 1, "phi", 1), (get_base1(phi, 1, "phi", 1) / stan::math::exp(get_base1(eta, get_base1(y_indx, n, "y_indx", 1), "eta", 1)))), 
                                 "assigning variable log_lik");
                 }
             }
-            current_statement_begin__ = 168;
+            current_statement_begin__ = 173;
             if (as_bool(logical_eq(family, 6))) {
-                current_statement_begin__ = 169;
+                current_statement_begin__ = 174;
                 for (int n = 1; n <= N; ++n) {
-                    current_statement_begin__ = 169;
+                    current_statement_begin__ = 174;
                     stan::model::assign(log_lik, 
                                 stan::model::cons_list(stan::model::index_uni(n), stan::model::nil_index_list()), 
-                                lognormal_log(get_base1(y, n, "y", 1), get_base1(eta, n, "eta", 1), get_base1(phi, 1, "phi", 1)), 
+                                lognormal_log(get_base1(y, n, "y", 1), get_base1(eta, get_base1(y_indx, n, "y_indx", 1), "eta", 1), get_base1(phi, 1, "phi", 1)), 
                                 "assigning variable log_lik");
                 }
             }
             // validate, write generated quantities
-            current_statement_begin__ = 152;
+            current_statement_begin__ = 157;
             size_t log_lik_j_1_max__ = N;
             for (size_t j_1__ = 0; j_1__ < log_lik_j_1_max__; ++j_1__) {
                 vars__.push_back(log_lik(j_1__));

@@ -152,8 +152,8 @@ covariates,</p>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">## SAMPLING FOR MODEL 'dlm' NOW (CHAIN 1).</span></span>
 <span><span class="co">## Chain 1: </span></span>
-<span><span class="co">## Chain 1: Gradient evaluation took 0.000199 seconds</span></span>
-<span><span class="co">## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 1.99 seconds.</span></span>
+<span><span class="co">## Chain 1: Gradient evaluation took 0.000191 seconds</span></span>
+<span><span class="co">## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 1.91 seconds.</span></span>
 <span><span class="co">## Chain 1: Adjust your expectations accordingly!</span></span>
 <span><span class="co">## Chain 1: </span></span>
 <span><span class="co">## Chain 1: </span></span>
@@ -170,17 +170,16 @@ covariates,</p>
 <span><span class="co">## Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)</span></span>
 <span><span class="co">## Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)</span></span>
 <span><span class="co">## Chain 1: </span></span>
-<span><span class="co">## Chain 1:  Elapsed Time: 12.1089 seconds (Warm-up)</span></span>
-<span><span class="co">## Chain 1:                10.5784 seconds (Sampling)</span></span>
-<span><span class="co">## Chain 1:                22.6873 seconds (Total)</span></span>
+<span><span class="co">## Chain 1:  Elapsed Time: 9.26469 seconds (Warm-up)</span></span>
+<span><span class="co">## Chain 1:                7.33709 seconds (Sampling)</span></span>
+<span><span class="co">## Chain 1:                16.6018 seconds (Total)</span></span>
 <span><span class="co">## Chain 1:</span></span></code></pre>
-<pre><code><span><span class="co">## Warning: There were 13 divergent transitions after warmup. See</span></span>
+<pre><code><span><span class="co">## Warning: There were 24 divergent transitions after warmup. See</span></span>
 <span><span class="co">## https://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span></span>
 <span><span class="co">## to find out why this is a problem and how to eliminate them.</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See</span></span>
+<span><span class="co">## https://mc-stan.org/misc/warnings.html#bfmi-low</span></span></code></pre>
 <pre><code><span><span class="co">## Warning: Examine the pairs() plot to diagnose sampling problems</span></span></code></pre>
-<pre><code><span><span class="co">## Warning: The largest R-hat is NA, indicating chains have not mixed.</span></span>
-<span><span class="co">## Running the chains for more iterations may help. See</span></span>
-<span><span class="co">## https://mc-stan.org/misc/warnings.html#r-hat</span></span></code></pre>
 <pre><code><span><span class="co">## Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.</span></span>
 <span><span class="co">## Running the chains for more iterations may help. See</span></span>
 <span><span class="co">## https://mc-stan.org/misc/warnings.html#bulk-ess</span></span></code></pre>
@@ -213,13 +212,15 @@ covariates,</p>
 <span><span class="co">## Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)</span></span>
 <span><span class="co">## Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)</span></span>
 <span><span class="co">## Chain 1: </span></span>
-<span><span class="co">## Chain 1:  Elapsed Time: 13.1717 seconds (Warm-up)</span></span>
-<span><span class="co">## Chain 1:                8.81711 seconds (Sampling)</span></span>
-<span><span class="co">## Chain 1:                21.9888 seconds (Total)</span></span>
+<span><span class="co">## Chain 1:  Elapsed Time: 10.9595 seconds (Warm-up)</span></span>
+<span><span class="co">## Chain 1:                32.452 seconds (Sampling)</span></span>
+<span><span class="co">## Chain 1:                43.4115 seconds (Total)</span></span>
 <span><span class="co">## Chain 1:</span></span></code></pre>
-<pre><code><span><span class="co">## Warning: There were 7 divergent transitions after warmup. See</span></span>
+<pre><code><span><span class="co">## Warning: There were 109 divergent transitions after warmup. See</span></span>
 <span><span class="co">## https://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span></span>
 <span><span class="co">## to find out why this is a problem and how to eliminate them.</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: There were 138 transitions after warmup that exceeded the maximum treedepth. Increase max_treedepth above 10. See</span></span>
+<span><span class="co">## https://mc-stan.org/misc/warnings.html#maximum-treedepth-exceeded</span></span></code></pre>
 <pre><code><span><span class="co">## Warning: There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See</span></span>
 <span><span class="co">## https://mc-stan.org/misc/warnings.html#bfmi-low</span></span></code></pre>
 <pre><code><span><span class="co">## Warning: Examine the pairs() plot to diagnose sampling problems</span></span></code></pre>
@@ -243,7 +244,7 @@ chains. It’s also worth increasing the value of
 If you’re still getting these warnings, the model may be mis-specified
 or data not informative.</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,</span>
 <span>        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,</span>
 <span>        chains<span class="op">=</span><span class="fl">1</span>,</span>
@@ -254,32 +255,32 @@ or data not informative.</li>
 increase the maximum tree (<code>max_treedepth</code>) depth with the
 following</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,</span>
 <span>        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,</span>
 <span>        chains<span class="op">=</span><span class="fl">1</span>,</span>
 <span>        iter<span class="op">=</span><span class="fl">1000</span>,</span>
 <span>        control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>max_treedepth<span class="op">=</span><span class="fl">15</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>We can extract tidied versions of any of the parameters with</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">broom.mixed</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">fit</span><span class="op">$</span><span class="va">fit</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 265 × 3</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 181 × 3</span></span></span>
 <span><span class="co">##    term    estimate std.error</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> eta[1]     -<span style="color: #BB0000;">3.39</span>     0.344</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> eta[2]     -<span style="color: #BB0000;">3.12</span>     0.307</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> eta[3]     -<span style="color: #BB0000;">3.53</span>     0.288</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> eta[4]     -<span style="color: #BB0000;">3.19</span>     0.274</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> eta[5]     -<span style="color: #BB0000;">3.61</span>     0.313</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> eta[6]     -<span style="color: #BB0000;">3.40</span>     0.323</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> eta[7]     -<span style="color: #BB0000;">3.98</span>     0.284</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> eta[8]     -<span style="color: #BB0000;">4.20</span>     0.284</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> eta[9]     -<span style="color: #BB0000;">4.68</span>     0.296</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> eta[10]    -<span style="color: #BB0000;">5.24</span>     0.408</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 255 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> eta[1]     -<span style="color: #BB0000;">3.41</span>     0.310</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> eta[2]     -<span style="color: #BB0000;">3.12</span>     0.266</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> eta[3]     -<span style="color: #BB0000;">3.60</span>     0.322</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> eta[4]     -<span style="color: #BB0000;">3.15</span>     0.244</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> eta[5]     -<span style="color: #BB0000;">3.64</span>     0.286</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> eta[6]     -<span style="color: #BB0000;">3.36</span>     0.290</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> eta[7]     -<span style="color: #BB0000;">4.01</span>     0.246</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> eta[8]     -<span style="color: #BB0000;">4.19</span>     0.229</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> eta[9]     -<span style="color: #BB0000;">4.73</span>     0.290</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> eta[10]    -<span style="color: #BB0000;">5.41</span>     0.384</span></span>
+<span><span class="co">## <span style="color: #949494;"># … with 171 more rows</span></span></span></code></pre>
 <p>We also have a helper function for extracting and visualizing trends
 for time varying parameters.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dlm_trends.html">dlm_trends</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $plot</span></span></code></pre>
 <p><img src="a01_overview_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
@@ -288,16 +289,16 @@ for time varying parameters.</p>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 84 × 5</span></span></span>
 <span><span class="co">##    term            estimate std.error par          time</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> b_varying[1,1]     -<span style="color: #BB0000;">2.69</span>     0.439 (Intercept)     1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> b_varying[2,1]     -<span style="color: #BB0000;">3.12</span>     0.310 (Intercept)     2</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> b_varying[3,1]     -<span style="color: #BB0000;">3.14</span>     0.346 (Intercept)     3</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> b_varying[4,1]     -<span style="color: #BB0000;">3.12</span>     0.290 (Intercept)     4</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> b_varying[5,1]     -<span style="color: #BB0000;">3.33</span>     0.354 (Intercept)     5</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> b_varying[6,1]     -<span style="color: #BB0000;">3.56</span>     0.278 (Intercept)     6</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> b_varying[7,1]     -<span style="color: #BB0000;">3.88</span>     0.270 (Intercept)     7</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> b_varying[8,1]     -<span style="color: #BB0000;">4.24</span>     0.277 (Intercept)     8</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> b_varying[9,1]     -<span style="color: #BB0000;">4.71</span>     0.293 (Intercept)     9</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> b_varying[10,1]    -<span style="color: #BB0000;">5.01</span>     0.392 (Intercept)    10</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> b_varying[1,1]     -<span style="color: #BB0000;">2.61</span>     0.518 (Intercept)     1</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> b_varying[2,1]     -<span style="color: #BB0000;">3.10</span>     0.269 (Intercept)     2</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> b_varying[3,1]     -<span style="color: #BB0000;">3.06</span>     0.355 (Intercept)     3</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> b_varying[4,1]     -<span style="color: #BB0000;">3.03</span>     0.274 (Intercept)     4</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> b_varying[5,1]     -<span style="color: #BB0000;">3.22</span>     0.366 (Intercept)     5</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> b_varying[6,1]     -<span style="color: #BB0000;">3.59</span>     0.248 (Intercept)     6</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> b_varying[7,1]     -<span style="color: #BB0000;">3.79</span>     0.258 (Intercept)     7</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> b_varying[8,1]     -<span style="color: #BB0000;">4.21</span>     0.227 (Intercept)     8</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> b_varying[9,1]     -<span style="color: #BB0000;">4.74</span>     0.293 (Intercept)     9</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> b_varying[10,1]    -<span style="color: #BB0000;">4.91</span>     0.387 (Intercept)    10</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 74 more rows</span></span></span></code></pre>
 <p>This function returns a plot and the values used to make the plot
 (<code>b_varying</code>)</p>
@@ -310,7 +311,7 @@ CUI, but a time varying slope. The <code>fit_dlm</code> function has two
 formula parameters, <code>formula</code> for static effects, and
 <code>time_varying</code> for time varying ones. This model is specified
 as</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="fl">1</span>,</span>
 <span>               formula <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,</span>
 <span>        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,</span>
@@ -322,7 +323,7 @@ as</p>
 </h3>
 <p>We could do the same with a model that had a time varying effect of
 CUI, but a time constant slope.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,</span>
 <span>               formula <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="fl">1</span>,</span>
 <span>        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,</span>
@@ -335,7 +336,7 @@ CUI, but a time constant slope.</p>
 <p>All three of the above formulations of the DLM can be compared with
 the <code>loo</code> package, and statistics such as LOOIC can be easily
 calculated. For example,</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mc-stan.org/loo/" class="external-link">loo</a></span><span class="op">)</span></span>
 <span><span class="fu">loo</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/loo/reference/loo.html" class="external-link">loo</a></span><span class="op">(</span><span class="va">fit</span><span class="op">$</span><span class="va">fit</span><span class="op">)</span></span></code></pre></div>
 </div>

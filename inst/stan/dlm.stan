@@ -54,14 +54,14 @@ transformed parameters {
   }
 
   // re-assemble X matrices for fixed and time-varying effects
-  for(i in 1:nT) {
-    for(j in 1:n_fixed_covars) {
-      X_fixed[i,j] = 0;
-    }
-    for(j in 1:n_varying_covars) {
-      X_varying[i,j] = 0;
-    }
-  }
+  // for(i in 1:nT) {
+  //   for(j in 1:n_fixed_covars) {
+  //     X_fixed[i,j] = 0;
+  //   }
+  //   for(j in 1:n_varying_covars) {
+  //     X_varying[i,j] = 0;
+  //   }
+  // }
   if(n_fixed_covars > 0) {
     for(i in 1:fixed_N) {
       X_fixed[fixed_time_indx[i], fixed_var_indx[i]] = fixed_x_value[i];
@@ -133,39 +133,44 @@ model {
     //y ~ normal(0,1);//normal(eta, phi[1]); // Gaussian
   }
   if(family==2) {
-    y_int ~ bernoulli_logit(eta); // binomial
+    for (i in 1:N) y_int[i] ~ bernoulli_logit(eta[y_indx[i]]);
+    //y_int ~ bernoulli_logit(eta); // binomial
   }
   if(family==3) {
-    y_int ~ poisson_log(eta); // Poisson
+    for (i in 1:N) y_int[i] ~ poisson_log(eta[y_indx[i]]);
+    //y_int ~ poisson_log(eta); // Poisson
   }
   if(family==4) {
-    y_int ~ neg_binomial_2_log(eta, phi[1]); // NegBin2
+    for (i in 1:N) y_int[i] ~ neg_binomial_2_log(eta[y_indx[i]], phi[1]);
+    //y_int ~ neg_binomial_2_log(eta, phi[1]); // NegBin2
   }
   if(family==5) {
-    y ~ gamma(phi[1], phi[1] ./ exp(eta)); // Gamma
+    for (i in 1:N) y[i] ~ gamma(phi[1], phi[1] ./ exp(eta[y_indx[i]]));
+    //y ~ gamma(phi[1], phi[1] ./ exp(eta)); // Gamma
   }
   if(family==6) {
-    y ~ lognormal(eta, phi[1]); // Lognormal
+    for (i in 1:N) y[i] ~ lognormal(eta[y_indx[i]], phi[1]);
+    //y ~ lognormal(eta, phi[1]); // Lognormal
   }
 }
 generated quantities {
   vector[N] log_lik;
   if(family==1) {
-    for (n in 1:N) log_lik[n] = normal_lpdf(y[n] | eta[n], phi[1]); // Gaussian
+    for (n in 1:N) log_lik[n] = normal_lpdf(y[n] | eta[y_indx[n]], phi[1]); // Gaussian
   }
   if(family==2) {
-    for (n in 1:N) log_lik[n] = bernoulli_lpmf(y_int[n] | inv_logit(eta[n])); // binomial
+    for (n in 1:N) log_lik[n] = bernoulli_lpmf(y_int[n] | inv_logit(eta[y_indx[n]])); // binomial
   }
   if(family==3) {
-    for (n in 1:N) log_lik[n] = poisson_lpmf(y_int[n] | exp(eta[n])); // Poisson
+    for (n in 1:N) log_lik[n] = poisson_lpmf(y_int[n] | exp(eta[y_indx[n]])); // Poisson
   }
   if(family==4) {
-    for (n in 1:N) log_lik[n] = normal_lpdf(y[n] | eta[n], phi[1]); // NegBin2
+    for (n in 1:N) log_lik[n] = normal_lpdf(y[n] | eta[y_indx[n]], phi[1]); // NegBin2
   }
   if(family==5) {
-    for (n in 1:N) log_lik[n] = gamma_lpdf(y[n] | phi[1], phi[1] ./ exp(eta[n])); // Gamma
+    for (n in 1:N) log_lik[n] = gamma_lpdf(y[n] | phi[1], phi[1] ./ exp(eta[y_indx[n]])); // Gamma
   }
   if(family==6) {
-    for (n in 1:N) log_lik[n] = lognormal_lpdf(y[n] | eta[n], phi[1]); // Lognormal
+    for (n in 1:N) log_lik[n] = lognormal_lpdf(y[n] | eta[y_indx[n]], phi[1]); // Lognormal
   }
 }
