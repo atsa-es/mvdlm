@@ -82,6 +82,16 @@ fit_dlm <- function(formula = NULL,
                     warmup = floor(iter / 2),
                     ...) {
 
+
+  # first fill in any missing years
+  all_years <- seq(min(data[[time]]), max(data[[time]]))
+  missing_yrs <- all_years[which(all_years %in% data[[time]] == FALSE)]
+  if(length(missing_yrs) > 0) {
+    df_new = data[1:length(missing_yrs),]
+    for(i in 1:ncol(df_new)) df_new[,i] = NA
+    df_new[[time]] = missing_yrs
+    data = rbind(data, df_new)
+  }
   # add intercept column to data
   data$`(Intercept)` <- 1
 
@@ -166,9 +176,10 @@ fit_dlm <- function(formula = NULL,
   }
 
   stan_data <- list(
-    y = y,
-    y_int = as.integer(y),
-    N = length(y),
+    y = y[which(!is.na(y))],
+    y_int = as.integer(y[which(!is.na(y))]),
+    N = length(which(!is.na(y))),
+    y_indx = which(!is.na(y)),
     nT = max(c(fixed_time, varying_time), na.rm = T),
     est_fixed = as.numeric(est_fixed_coef),
     est_varying = as.numeric(est_varying_coef),
@@ -191,7 +202,7 @@ fit_dlm <- function(formula = NULL,
     correlated_rw = as.numeric(correlated_rw)
   )
 
-  pars <- c("eta", "sigma", "log_lik", "lp__")
+  pars <- c("eta", "sigma", "log_lik", "lp__", "X_fixed", "X_varying")
   if(est_varying_coef == TRUE) pars <- c(pars, "b_varying")
   if(est_fixed_coef == TRUE) pars <- c(pars, "b_fixed")
   if(family %in% c("normal","negbin2","gamma","lognormal")) pars <- c(pars, "phi")

@@ -43,7 +43,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -76,9 +76,10 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Overview of mvdlm package</h1>
-                        <h4 data-toc-skip class="author">Eric J. Ward</h4>
+                        <h4 data-toc-skip class="author">Eric J.
+Ward</h4>
             
-            <h4 data-toc-skip class="date">2022-09-19</h4>
+            <h4 data-toc-skip class="date">2022-11-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/atsa-es/mvdlm/blob/HEAD/vignettes/a01_overview.Rmd" class="external-link"><code>vignettes/a01_overview.Rmd</code></a></small>
       <div class="hidden name"><code>a01_overview.Rmd</code></div>
@@ -90,181 +91,253 @@
 <div class="section level3">
 <h3 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h3>
-<p>For examples, we’re going to use one of the same datasets that are widely documented in the MARSS manual. This data consists of three columns, * year, representing the year of the observation * logit.s, representing logit-transformed survival of Columbia River salmon * CUI.apr, representing coastal upwelling index values in April</p>
+<p>For examples, we’re going to use one of the same datasets that are
+widely documented in the MARSS manual. This data consists of three
+columns, * year, representing the year of the observation * logit.s,
+representing logit-transformed survival of Columbia River salmon *
+CUI.apr, representing coastal upwelling index values in April</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/atsa-es/mvdlm" class="external-link">mvdlm</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://atsa-es.github.io/MARSS/" class="external-link">MARSS</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bbolker/broom.mixed" class="external-link">broom.mixed</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mc-stan.org/loo/" class="external-link">loo</a></span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## This is loo version 2.4.1</span></code></pre>
-<pre><code><span class="co">## - Online documentation and vignettes at mc-stan.org/loo</span></code></pre>
-<pre><code><span class="co">## - As of v2.0.0 loo defaults to 1 core but we recommend using as many as possible. Use the 'cores' argument or set options(mc.cores = NUM_CORES) for an entire session.</span></code></pre>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/atsa-es/mvdlm" class="external-link">mvdlm</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://atsa-es.github.io/MARSS/" class="external-link">MARSS</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bbolker/broom.mixed" class="external-link">broom.mixed</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mc-stan.org/loo/" class="external-link">loo</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## This is loo version 2.5.1</span></span></code></pre>
+<pre><code><span><span class="co">## - Online documentation and vignettes at mc-stan.org/loo</span></span></code></pre>
+<pre><code><span><span class="co">## - As of v2.0.0 loo defaults to 1 core but we recommend using as many as possible. Use the 'cores' argument or set options(mc.cores = NUM_CORES) for an entire session.</span></span></code></pre>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">SalmonSurvCUI</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">SalmonSurvCUI</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">##   year logit.s CUI.apr</span>
-<span class="co">## 1 1964   -3.46      57</span>
-<span class="co">## 2 1965   -3.32       5</span>
-<span class="co">## 3 1966   -3.58      43</span>
-<span class="co">## 4 1967   -3.03      11</span>
-<span class="co">## 5 1968   -3.61      47</span>
-<span class="co">## 6 1969   -3.35     -21</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">SalmonSurvCUI</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">SalmonSurvCUI</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   year logit.s CUI.apr</span></span>
+<span><span class="co">## 1 1964   -3.46      57</span></span>
+<span><span class="co">## 2 1965   -3.32       5</span></span>
+<span><span class="co">## 3 1966   -3.58      43</span></span>
+<span><span class="co">## 4 1967   -3.03      11</span></span>
+<span><span class="co">## 5 1968   -3.61      47</span></span>
+<span><span class="co">## 6 1969   -3.35     -21</span></span></code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">SalmonSurvCUI</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">logit.s</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">g1</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">SalmonSurvCUI</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">logit.s</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">g1</span></span></code></pre></div>
 <p><img src="a01_overview_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">SalmonSurvCUI</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">CUI.apr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">g2</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">SalmonSurvCUI</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">CUI.apr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">g2</span></span></code></pre></div>
 <p><img src="a01_overview_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
 <div class="section level3">
 <h3 id="model-1-time-varying-intercept-and-slope">Model 1: time varying intercept and slope<a class="anchor" aria-label="anchor" href="#model-1-time-varying-intercept-and-slope"></a>
 </h3>
-<p>For a first model, we’ll fit the same model used in the <code>MARSS</code> manual, with a time varying intercept and time varying coefficient on CUI. We can specify these time varying effects using the <code>time_varying</code> argument. Note an intercept is not included, like with <code>lm</code>, <code>glm</code>, and similar packages this the intercept is implicitly included. Note that alternatively you could specify this formula as <code>time_varying = logit.s ~ 1 + CUI.apr</code>, where we add the extra <code>1</code> to signify the intercept.</p>
-<p>Like the <code>MARSS</code> example, we also standardize the covariates,</p>
+<p>For a first model, we’ll fit the same model used in the
+<code>MARSS</code> manual, with a time varying intercept and time
+varying coefficient on CUI. We can specify these time varying effects
+using the <code>time_varying</code> argument. Note an intercept is not
+included, like with <code>lm</code>, <code>glm</code>, and similar
+packages this the intercept is implicitly included. Note that
+alternatively you could specify this formula as
+<code>time_varying = logit.s ~ 1 + CUI.apr</code>, where we add the
+extra <code>1</code> to signify the intercept.</p>
+<p>Like the <code>MARSS</code> example, we also standardize the
+covariates,</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">SalmonSurvCUI</span><span class="op">$</span><span class="va">CUI.apr</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">SalmonSurvCUI</span><span class="op">$</span><span class="va">CUI.apr</span><span class="op">)</span>
-
-<span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,
-        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,
-        chains<span class="op">=</span><span class="fl">1</span>,
-        iter<span class="op">=</span><span class="fl">1000</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## </span>
-<span class="co">## SAMPLING FOR MODEL 'dlm' NOW (CHAIN 1).</span>
-<span class="co">## Chain 1: </span>
-<span class="co">## Chain 1: Gradient evaluation took 0.000194 seconds</span>
-<span class="co">## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 1.94 seconds.</span>
-<span class="co">## Chain 1: Adjust your expectations accordingly!</span>
-<span class="co">## Chain 1: </span>
-<span class="co">## Chain 1: </span>
-<span class="co">## Chain 1: Iteration:   1 / 1000 [  0%]  (Warmup)</span>
-<span class="co">## Chain 1: Iteration: 100 / 1000 [ 10%]  (Warmup)</span>
-<span class="co">## Chain 1: Iteration: 200 / 1000 [ 20%]  (Warmup)</span>
-<span class="co">## Chain 1: Iteration: 300 / 1000 [ 30%]  (Warmup)</span>
-<span class="co">## Chain 1: Iteration: 400 / 1000 [ 40%]  (Warmup)</span>
-<span class="co">## Chain 1: Iteration: 500 / 1000 [ 50%]  (Warmup)</span>
-<span class="co">## Chain 1: Iteration: 501 / 1000 [ 50%]  (Sampling)</span>
-<span class="co">## Chain 1: Iteration: 600 / 1000 [ 60%]  (Sampling)</span>
-<span class="co">## Chain 1: Iteration: 700 / 1000 [ 70%]  (Sampling)</span>
-<span class="co">## Chain 1: Iteration: 800 / 1000 [ 80%]  (Sampling)</span>
-<span class="co">## Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)</span>
-<span class="co">## Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)</span>
-<span class="co">## Chain 1: </span>
-<span class="co">## Chain 1:  Elapsed Time: 12.0497 seconds (Warm-up)</span>
-<span class="co">## Chain 1:                9.61029 seconds (Sampling)</span>
-<span class="co">## Chain 1:                21.66 seconds (Total)</span>
-<span class="co">## Chain 1:</span></code></pre>
-<pre><code><span class="co">## Warning: There were 11 divergent transitions after warmup. See</span>
-<span class="co">## https://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span>
-<span class="co">## to find out why this is a problem and how to eliminate them.</span></code></pre>
-<pre><code><span class="co">## Warning: There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See</span>
-<span class="co">## https://mc-stan.org/misc/warnings.html#bfmi-low</span></code></pre>
-<pre><code><span class="co">## Warning: Examine the pairs() plot to diagnose sampling problems</span></code></pre>
-<pre><code><span class="co">## Warning: The largest R-hat is NA, indicating chains have not mixed.</span>
-<span class="co">## Running the chains for more iterations may help. See</span>
-<span class="co">## https://mc-stan.org/misc/warnings.html#r-hat</span></code></pre>
-<pre><code><span class="co">## Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.</span>
-<span class="co">## Running the chains for more iterations may help. See</span>
-<span class="co">## https://mc-stan.org/misc/warnings.html#bulk-ess</span></code></pre>
-<pre><code><span class="co">## Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span>
-<span class="co">## Running the chains for more iterations may help. See</span>
-<span class="co">## https://mc-stan.org/misc/warnings.html#tail-ess</span></code></pre>
-<p>With only 1000 iterations and 1 chain, we might not expect the model to converge (see additional guidance via Stan developers here: <a href="https://mc-stan.org/misc/warnings.html" class="external-link uri">https://mc-stan.org/misc/warnings.html</a>). A couple things to consider:</p>
+<code class="sourceCode R"><span><span class="va">SalmonSurvCUI</span><span class="op">$</span><span class="va">CUI.apr</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html" class="external-link">scale</a></span><span class="op">(</span><span class="va">SalmonSurvCUI</span><span class="op">$</span><span class="va">CUI.apr</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,</span>
+<span>        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,</span>
+<span>        chains<span class="op">=</span><span class="fl">1</span>,</span>
+<span>        iter<span class="op">=</span><span class="fl">1000</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## SAMPLING FOR MODEL 'dlm' NOW (CHAIN 1).</span></span>
+<span><span class="co">## Chain 1: </span></span>
+<span><span class="co">## Chain 1: Gradient evaluation took 0.000199 seconds</span></span>
+<span><span class="co">## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 1.99 seconds.</span></span>
+<span><span class="co">## Chain 1: Adjust your expectations accordingly!</span></span>
+<span><span class="co">## Chain 1: </span></span>
+<span><span class="co">## Chain 1: </span></span>
+<span><span class="co">## Chain 1: Iteration:   1 / 1000 [  0%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 100 / 1000 [ 10%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 200 / 1000 [ 20%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 300 / 1000 [ 30%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 400 / 1000 [ 40%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 500 / 1000 [ 50%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 501 / 1000 [ 50%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: Iteration: 600 / 1000 [ 60%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: Iteration: 700 / 1000 [ 70%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: Iteration: 800 / 1000 [ 80%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: </span></span>
+<span><span class="co">## Chain 1:  Elapsed Time: 12.1089 seconds (Warm-up)</span></span>
+<span><span class="co">## Chain 1:                10.5784 seconds (Sampling)</span></span>
+<span><span class="co">## Chain 1:                22.6873 seconds (Total)</span></span>
+<span><span class="co">## Chain 1:</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: There were 13 divergent transitions after warmup. See</span></span>
+<span><span class="co">## https://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span></span>
+<span><span class="co">## to find out why this is a problem and how to eliminate them.</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: Examine the pairs() plot to diagnose sampling problems</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: The largest R-hat is NA, indicating chains have not mixed.</span></span>
+<span><span class="co">## Running the chains for more iterations may help. See</span></span>
+<span><span class="co">## https://mc-stan.org/misc/warnings.html#r-hat</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.</span></span>
+<span><span class="co">## Running the chains for more iterations may help. See</span></span>
+<span><span class="co">## https://mc-stan.org/misc/warnings.html#bulk-ess</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span></span>
+<span><span class="co">## Running the chains for more iterations may help. See</span></span>
+<span><span class="co">## https://mc-stan.org/misc/warnings.html#tail-ess</span></span></code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,</span>
+<span>        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span><span class="op">[</span><span class="op">-</span><span class="fl">36</span>,<span class="op">]</span>,</span>
+<span>        chains<span class="op">=</span><span class="fl">1</span>,</span>
+<span>        iter<span class="op">=</span><span class="fl">1000</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## SAMPLING FOR MODEL 'dlm' NOW (CHAIN 1).</span></span>
+<span><span class="co">## Chain 1: </span></span>
+<span><span class="co">## Chain 1: Gradient evaluation took 0.000135 seconds</span></span>
+<span><span class="co">## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 1.35 seconds.</span></span>
+<span><span class="co">## Chain 1: Adjust your expectations accordingly!</span></span>
+<span><span class="co">## Chain 1: </span></span>
+<span><span class="co">## Chain 1: </span></span>
+<span><span class="co">## Chain 1: Iteration:   1 / 1000 [  0%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 100 / 1000 [ 10%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 200 / 1000 [ 20%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 300 / 1000 [ 30%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 400 / 1000 [ 40%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 500 / 1000 [ 50%]  (Warmup)</span></span>
+<span><span class="co">## Chain 1: Iteration: 501 / 1000 [ 50%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: Iteration: 600 / 1000 [ 60%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: Iteration: 700 / 1000 [ 70%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: Iteration: 800 / 1000 [ 80%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: Iteration: 900 / 1000 [ 90%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: Iteration: 1000 / 1000 [100%]  (Sampling)</span></span>
+<span><span class="co">## Chain 1: </span></span>
+<span><span class="co">## Chain 1:  Elapsed Time: 13.1717 seconds (Warm-up)</span></span>
+<span><span class="co">## Chain 1:                8.81711 seconds (Sampling)</span></span>
+<span><span class="co">## Chain 1:                21.9888 seconds (Total)</span></span>
+<span><span class="co">## Chain 1:</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: There were 7 divergent transitions after warmup. See</span></span>
+<span><span class="co">## https://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span></span>
+<span><span class="co">## to find out why this is a problem and how to eliminate them.</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See</span></span>
+<span><span class="co">## https://mc-stan.org/misc/warnings.html#bfmi-low</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: Examine the pairs() plot to diagnose sampling problems</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: The largest R-hat is NA, indicating chains have not mixed.</span></span>
+<span><span class="co">## Running the chains for more iterations may help. See</span></span>
+<span><span class="co">## https://mc-stan.org/misc/warnings.html#r-hat</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.</span></span>
+<span><span class="co">## Running the chains for more iterations may help. See</span></span>
+<span><span class="co">## https://mc-stan.org/misc/warnings.html#bulk-ess</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span></span>
+<span><span class="co">## Running the chains for more iterations may help. See</span></span>
+<span><span class="co">## https://mc-stan.org/misc/warnings.html#tail-ess</span></span></code></pre>
+<p>With only 1000 iterations and 1 chain, we might not expect the model
+to converge (see additional guidance via Stan developers here: <a href="https://mc-stan.org/misc/warnings.html" class="external-link uri">https://mc-stan.org/misc/warnings.html</a>). A couple things
+to consider:</p>
 <ul>
-<li>Did you get any warnings about divergent transitions after warmup? If so, try increasing the iterations / burn-in period, and number of chains. It’s also worth increasing the value of <code>adapt_delta</code>. (this will slow the sampling down a little). If you’re still getting these warnings, the model may be mis-specified or data not informative.</li>
+<li>Did you get any warnings about divergent transitions after warmup?
+If so, try increasing the iterations / burn-in period, and number of
+chains. It’s also worth increasing the value of
+<code>adapt_delta</code>. (this will slow the sampling down a little).
+If you’re still getting these warnings, the model may be mis-specified
+or data not informative.</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,
-        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,
-        chains<span class="op">=</span><span class="fl">1</span>,
-        iter<span class="op">=</span><span class="fl">1000</span>,
-        control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>adapt_delta<span class="op">=</span><span class="fl">0.99</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,</span>
+<span>        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,</span>
+<span>        chains<span class="op">=</span><span class="fl">1</span>,</span>
+<span>        iter<span class="op">=</span><span class="fl">1000</span>,</span>
+<span>        control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>adapt_delta<span class="op">=</span><span class="fl">0.99</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <ul>
-<li>Did you get a warning about the maximum tree depth? If so, you can increase the maximum tree (<code>max_treedepth</code>) depth with the following</li>
+<li>Did you get a warning about the maximum tree depth? If so, you can
+increase the maximum tree (<code>max_treedepth</code>) depth with the
+following</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,
-        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,
-        chains<span class="op">=</span><span class="fl">1</span>,
-        iter<span class="op">=</span><span class="fl">1000</span>,
-        control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>max_treedepth<span class="op">=</span><span class="fl">15</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,</span>
+<span>        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,</span>
+<span>        chains<span class="op">=</span><span class="fl">1</span>,</span>
+<span>        iter<span class="op">=</span><span class="fl">1000</span>,</span>
+<span>        control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>max_treedepth<span class="op">=</span><span class="fl">15</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>We can extract tidied versions of any of the parameters with</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">broom.mixed</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">fit</span><span class="op">$</span><span class="va">fit</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 182 × 3</span></span>
-<span class="co">##    term    estimate std.error</span>
-<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">## <span style="color: #BCBCBC;"> 1</span> eta[1]     -<span style="color: #BB0000;">3.39</span>     0.335</span>
-<span class="co">## <span style="color: #BCBCBC;"> 2</span> eta[2]     -<span style="color: #BB0000;">3.12</span>     0.300</span>
-<span class="co">## <span style="color: #BCBCBC;"> 3</span> eta[3]     -<span style="color: #BB0000;">3.53</span>     0.297</span>
-<span class="co">## <span style="color: #BCBCBC;"> 4</span> eta[4]     -<span style="color: #BB0000;">3.18</span>     0.267</span>
-<span class="co">## <span style="color: #BCBCBC;"> 5</span> eta[5]     -<span style="color: #BB0000;">3.63</span>     0.298</span>
-<span class="co">## <span style="color: #BCBCBC;"> 6</span> eta[6]     -<span style="color: #BB0000;">3.42</span>     0.316</span>
-<span class="co">## <span style="color: #BCBCBC;"> 7</span> eta[7]     -<span style="color: #BB0000;">4.01</span>     0.282</span>
-<span class="co">## <span style="color: #BCBCBC;"> 8</span> eta[8]     -<span style="color: #BB0000;">4.25</span>     0.268</span>
-<span class="co">## <span style="color: #BCBCBC;"> 9</span> eta[9]     -<span style="color: #BB0000;">4.70</span>     0.283</span>
-<span class="co">## <span style="color: #BCBCBC;">10</span> eta[10]    -<span style="color: #BB0000;">5.22</span>     0.389</span>
-<span class="co">## <span style="color: #949494;"># … with 172 more rows</span></span>
-<span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre>
-<p>We also have a helper function for extracting and visualizing trends for time varying parameters.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/dlm_trends.html">dlm_trends</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## $plot</span></code></pre>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">broom.mixed</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">fit</span><span class="op">$</span><span class="va">fit</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 265 × 3</span></span></span>
+<span><span class="co">##    term    estimate std.error</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> eta[1]     -<span style="color: #BB0000;">3.39</span>     0.344</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> eta[2]     -<span style="color: #BB0000;">3.12</span>     0.307</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> eta[3]     -<span style="color: #BB0000;">3.53</span>     0.288</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> eta[4]     -<span style="color: #BB0000;">3.19</span>     0.274</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> eta[5]     -<span style="color: #BB0000;">3.61</span>     0.313</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> eta[6]     -<span style="color: #BB0000;">3.40</span>     0.323</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> eta[7]     -<span style="color: #BB0000;">3.98</span>     0.284</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> eta[8]     -<span style="color: #BB0000;">4.20</span>     0.284</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> eta[9]     -<span style="color: #BB0000;">4.68</span>     0.296</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> eta[10]    -<span style="color: #BB0000;">5.24</span>     0.408</span></span>
+<span><span class="co">## <span style="color: #949494;"># … with 255 more rows</span></span></span></code></pre>
+<p>We also have a helper function for extracting and visualizing trends
+for time varying parameters.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dlm_trends.html">dlm_trends</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## $plot</span></span></code></pre>
 <p><img src="a01_overview_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
-<pre><code><span class="co">## </span>
-<span class="co">## $b_varying</span>
-<span class="co">## <span style="color: #949494;"># A tibble: 84 × 5</span></span>
-<span class="co">##    term            estimate std.error par          time</span>
-<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">## <span style="color: #BCBCBC;"> 1</span> b_varying[1,1]     -<span style="color: #BB0000;">2.71</span>     0.448 (Intercept)     1</span>
-<span class="co">## <span style="color: #BCBCBC;"> 2</span> b_varying[2,1]     -<span style="color: #BB0000;">3.11</span>     0.302 (Intercept)     2</span>
-<span class="co">## <span style="color: #BCBCBC;"> 3</span> b_varying[3,1]     -<span style="color: #BB0000;">3.15</span>     0.333 (Intercept)     3</span>
-<span class="co">## <span style="color: #BCBCBC;"> 4</span> b_varying[4,1]     -<span style="color: #BB0000;">3.13</span>     0.286 (Intercept)     4</span>
-<span class="co">## <span style="color: #BCBCBC;"> 5</span> b_varying[5,1]     -<span style="color: #BB0000;">3.36</span>     0.289 (Intercept)     5</span>
-<span class="co">## <span style="color: #BCBCBC;"> 6</span> b_varying[6,1]     -<span style="color: #BB0000;">3.59</span>     0.276 (Intercept)     6</span>
-<span class="co">## <span style="color: #BCBCBC;"> 7</span> b_varying[7,1]     -<span style="color: #BB0000;">3.90</span>     0.277 (Intercept)     7</span>
-<span class="co">## <span style="color: #BCBCBC;"> 8</span> b_varying[8,1]     -<span style="color: #BB0000;">4.28</span>     0.260 (Intercept)     8</span>
-<span class="co">## <span style="color: #BCBCBC;"> 9</span> b_varying[9,1]     -<span style="color: #BB0000;">4.73</span>     0.267 (Intercept)     9</span>
-<span class="co">## <span style="color: #BCBCBC;">10</span> b_varying[10,1]    -<span style="color: #BB0000;">4.97</span>     0.358 (Intercept)    10</span>
-<span class="co">## <span style="color: #949494;"># … with 74 more rows</span></span>
-<span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></code></pre>
-<p>This function returns a plot and the values used to make the plot (<code>b_varying</code>)</p>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## $b_varying</span></span>
+<span><span class="co">## <span style="color: #949494;"># A tibble: 84 × 5</span></span></span>
+<span><span class="co">##    term            estimate std.error par          time</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> b_varying[1,1]     -<span style="color: #BB0000;">2.69</span>     0.439 (Intercept)     1</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> b_varying[2,1]     -<span style="color: #BB0000;">3.12</span>     0.310 (Intercept)     2</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> b_varying[3,1]     -<span style="color: #BB0000;">3.14</span>     0.346 (Intercept)     3</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> b_varying[4,1]     -<span style="color: #BB0000;">3.12</span>     0.290 (Intercept)     4</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> b_varying[5,1]     -<span style="color: #BB0000;">3.33</span>     0.354 (Intercept)     5</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> b_varying[6,1]     -<span style="color: #BB0000;">3.56</span>     0.278 (Intercept)     6</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> b_varying[7,1]     -<span style="color: #BB0000;">3.88</span>     0.270 (Intercept)     7</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> b_varying[8,1]     -<span style="color: #BB0000;">4.24</span>     0.277 (Intercept)     8</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> b_varying[9,1]     -<span style="color: #BB0000;">4.71</span>     0.293 (Intercept)     9</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> b_varying[10,1]    -<span style="color: #BB0000;">5.01</span>     0.392 (Intercept)    10</span></span>
+<span><span class="co">## <span style="color: #949494;"># … with 74 more rows</span></span></span></code></pre>
+<p>This function returns a plot and the values used to make the plot
+(<code>b_varying</code>)</p>
 </div>
 <div class="section level3">
 <h3 id="model-2-time-varying-intercept-and-constant-slope">Model 2: time varying intercept and constant slope<a class="anchor" aria-label="anchor" href="#model-2-time-varying-intercept-and-constant-slope"></a>
 </h3>
-<p>As a second example, we could fit a model with a constant effect of CUI, but a time varying slope. The <code>fit_dlm</code> function has two formula parameters, <code>formula</code> for static effects, and <code>time_varying</code> for time varying ones. This model is specified as</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="fl">1</span>,
-               formula <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,
-        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,
-        chains<span class="op">=</span><span class="fl">1</span>,
-        iter<span class="op">=</span><span class="fl">1000</span><span class="op">)</span></code></pre></div>
+<p>As a second example, we could fit a model with a constant effect of
+CUI, but a time varying slope. The <code>fit_dlm</code> function has two
+formula parameters, <code>formula</code> for static effects, and
+<code>time_varying</code> for time varying ones. This model is specified
+as</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="fl">1</span>,</span>
+<span>               formula <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,</span>
+<span>        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,</span>
+<span>        chains<span class="op">=</span><span class="fl">1</span>,</span>
+<span>        iter<span class="op">=</span><span class="fl">1000</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="model-3-constant-intercept-and-time-varying-slope">Model 3: constant intercept and time varying slope<a class="anchor" aria-label="anchor" href="#model-3-constant-intercept-and-time-varying-slope"></a>
 </h3>
-<p>We could do the same with a model that had a time varying effect of CUI, but a time constant slope.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,
-               formula <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="fl">1</span>,
-        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,
-        chains<span class="op">=</span><span class="fl">1</span>,
-        iter<span class="op">=</span><span class="fl">1000</span><span class="op">)</span></code></pre></div>
+<p>We could do the same with a model that had a time varying effect of
+CUI, but a time constant slope.</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_dlm.html">fit_dlm</a></span><span class="op">(</span>time_varying <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="va">CUI.apr</span>,</span>
+<span>               formula <span class="op">=</span> <span class="va">logit.s</span> <span class="op">~</span> <span class="fl">1</span>,</span>
+<span>        data <span class="op">=</span> <span class="va">SalmonSurvCUI</span>,</span>
+<span>        chains<span class="op">=</span><span class="fl">1</span>,</span>
+<span>        iter<span class="op">=</span><span class="fl">1000</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="comparing-models">Comparing models<a class="anchor" aria-label="anchor" href="#comparing-models"></a>
 </h3>
-<p>All three of the above formulations of the DLM can be compared with the <code>loo</code> package, and statistics such as LOOIC can be easily calculated. For example,</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mc-stan.org/loo/" class="external-link">loo</a></span><span class="op">)</span>
-<span class="fu">loo</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/loo/reference/loo.html" class="external-link">loo</a></span><span class="op">(</span><span class="va">fit</span><span class="op">$</span><span class="va">fit</span><span class="op">)</span></code></pre></div>
+<p>All three of the above formulations of the DLM can be compared with
+the <code>loo</code> package, and statistics such as LOOIC can be easily
+calculated. For example,</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mc-stan.org/loo/" class="external-link">loo</a></span><span class="op">)</span></span>
+<span><span class="fu">loo</span><span class="fu">::</span><span class="fu"><a href="https://mc-stan.org/loo/reference/loo.html" class="external-link">loo</a></span><span class="op">(</span><span class="va">fit</span><span class="op">$</span><span class="va">fit</span><span class="op">)</span></span></code></pre></div>
 </div>
   </div>
 
@@ -283,7 +356,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

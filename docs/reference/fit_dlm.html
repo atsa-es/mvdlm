@@ -27,7 +27,7 @@ effects of factor or continuous variables on proportions."><!-- mathjax --><scri
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -62,80 +62,103 @@ effects of factor or continuous variables on proportions.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">fit_dlm</span><span class="op">(</span>
-  formula <span class="op">=</span> <span class="cn">NULL</span>,
-  time_varying <span class="op">=</span> <span class="cn">NULL</span>,
-  time <span class="op">=</span> <span class="st">"year"</span>,
-  est_df <span class="op">=</span> <span class="cn">FALSE</span>,
-  family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"normal"</span>, <span class="st">"binomial"</span>, <span class="st">"poisson"</span>, <span class="st">"nbinom2"</span>, <span class="st">"gamma"</span>, <span class="st">"lognormal"</span><span class="op">)</span>,
-  correlated_rw <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">data</span>,
-  chains <span class="op">=</span> <span class="fl">3</span>,
-  iter <span class="op">=</span> <span class="fl">2000</span>,
-  warmup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="va">iter</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">fit_dlm</span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  time_varying <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  time <span class="op">=</span> <span class="st">"year"</span>,</span>
+<span>  est_df <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"normal"</span>, <span class="st">"binomial"</span>, <span class="st">"poisson"</span>, <span class="st">"nbinom2"</span>, <span class="st">"gamma"</span>, <span class="st">"lognormal"</span><span class="op">)</span>,</span>
+<span>  correlated_rw <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">data</span>,</span>
+<span>  chains <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  iter <span class="op">=</span> <span class="fl">2000</span>,</span>
+<span>  warmup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="va">iter</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>formula</dt>
 <dd><p>The model formula for the fixed effects; at least this formula or <code>time_varying</code> needs to have the response included</p></dd>
+
+
 <dt>time_varying</dt>
 <dd><p>The model formula for the time-varying effects; at least this formula or <code>formula</code> needs to have the response included</p></dd>
+
+
 <dt>time</dt>
 <dd><p>String describing the name of the variable corresponding to time, defaults to "year"</p></dd>
+
+
 <dt>est_df</dt>
 <dd><p>Whether or not to estimate deviaitions of B as Student - t with estimated degrees of freedom, defaults to <code>FALSE</code></p></dd>
+
+
 <dt>family, </dt>
 <dd><p>The name of the family used for the response; can be one of "normal","binomial","possion","nbinom2","gamma","lognormal"</p></dd>
+
+
 <dt>correlated_rw, </dt>
 <dd><p>Whether to estimate time-varying parameters as correlated random walk, defaults to TRUE</p></dd>
+
+
 <dt>data</dt>
 <dd><p>The data frame including response and covariates for all model components</p></dd>
+
+
 <dt>chains</dt>
 <dd><p>Number of mcmc chains, defaults to 3</p></dd>
+
+
 <dt>iter</dt>
 <dd><p>Number of mcmc iterations, defaults to 2000</p></dd>
+
+
 <dt>warmup</dt>
 <dd><p>Number iterations for mcmc warmup, defaults to 1/2 of the iterations</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Any other arguments to pass to <code><a href="https://mc-stan.org/rstan/reference/stanmodel-method-sampling.html" class="external-link">rstan::sampling()</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A list containing the fitted model and arguments and data used
+    
+
+<p>A list containing the fitted model and arguments and data used
 to fit the model. These include <code>model</code> (the fitted model object of class <code>stanfit</code>),</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">N</span> <span class="op">=</span> <span class="fl">20</span></span>
-<span class="r-in"><span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="st">"y"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span>,</span>
-<span class="r-in">                  <span class="st">"cov1"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span>,</span>
-<span class="r-in">                  <span class="st">"cov2"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span>,</span>
-<span class="r-in">                  <span class="st">"year"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N</span>,</span>
-<span class="r-in">                  <span class="st">"season"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>,<span class="st">"B"</span><span class="op">)</span>, size<span class="op">=</span><span class="va">N</span>, replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">b_1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">b_2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">data</span><span class="op">$</span><span class="va">y</span> <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">cov1</span><span class="op">*</span><span class="va">b_1</span> <span class="op">+</span> <span class="va">data</span><span class="op">$</span><span class="va">cov2</span><span class="op">*</span><span class="va">b_2</span></span>
-<span class="r-in"><span class="va">time_varying</span> <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">cov1</span> <span class="op">+</span> <span class="va">cov2</span></span>
-<span class="r-in"><span class="va">formula</span> <span class="op">=</span> <span class="cn">NULL</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># fit a model with a time varying component</span></span>
-<span class="r-in"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit_dlm</span><span class="op">(</span>formula <span class="op">=</span> <span class="va">formula</span>,</span>
-<span class="r-in">               time_varying <span class="op">=</span> <span class="va">time_varying</span>,</span>
-<span class="r-in">               time <span class="op">=</span> <span class="st">"year"</span>,</span>
-<span class="r-in">               est_df <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">               family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"normal"</span><span class="op">)</span>,</span>
-<span class="r-in">               data<span class="op">=</span><span class="va">data</span>, chains <span class="op">=</span> <span class="fl">1</span>, iter <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">N</span> <span class="op">=</span> <span class="fl">20</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="st">"y"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                  <span class="st">"cov1"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                  <span class="st">"cov2"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                  <span class="st">"year"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">N</span>,</span></span>
+<span class="r-in"><span>                  <span class="st">"season"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>,<span class="st">"B"</span><span class="op">)</span>, size<span class="op">=</span><span class="va">N</span>, replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">b_1</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">b_2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html" class="external-link">cumsum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data</span><span class="op">$</span><span class="va">y</span> <span class="op">=</span> <span class="va">data</span><span class="op">$</span><span class="va">cov1</span><span class="op">*</span><span class="va">b_1</span> <span class="op">+</span> <span class="va">data</span><span class="op">$</span><span class="va">cov2</span><span class="op">*</span><span class="va">b_2</span></span></span>
+<span class="r-in"><span><span class="va">time_varying</span> <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="va">cov1</span> <span class="op">+</span> <span class="va">cov2</span></span></span>
+<span class="r-in"><span><span class="va">formula</span> <span class="op">=</span> <span class="cn">NULL</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># fit a model with a time varying component</span></span></span>
+<span class="r-in"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit_dlm</span><span class="op">(</span>formula <span class="op">=</span> <span class="va">formula</span>,</span></span>
+<span class="r-in"><span>               time_varying <span class="op">=</span> <span class="va">time_varying</span>,</span></span>
+<span class="r-in"><span>               time <span class="op">=</span> <span class="st">"year"</span>,</span></span>
+<span class="r-in"><span>               est_df <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>               family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"normal"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>               data<span class="op">=</span><span class="va">data</span>, chains <span class="op">=</span> <span class="fl">1</span>, iter <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SAMPLING FOR MODEL 'dlm' NOW (CHAIN 1).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Gradient evaluation took 9.4e-05 seconds</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.94 seconds.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Gradient evaluation took 9.2e-05 seconds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.92 seconds.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Adjust your expectations accordingly!</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
@@ -155,9 +178,9 @@ to fit the model. These include <code>model</code> (the fitted model object of c
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Iteration: 18 / 20 [ 90%]  (Sampling)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Iteration: 20 / 20 [100%]  (Sampling)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:  Elapsed Time: 0.047867 seconds (Warm-up)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.043615 seconds (Sampling)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.091482 seconds (Total)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:  Elapsed Time: 0.04394 seconds (Warm-up)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.041724 seconds (Sampling)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.085664 seconds (Total)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The largest R-hat is NA, indicating chains have not mixed.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Running the chains for more iterations may help. See</span>
@@ -168,14 +191,14 @@ to fit the model. These include <code>model</code> (the fitted model object of c
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Running the chains for more iterations may help. See</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> https://mc-stan.org/misc/warnings.html#tail-ess</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># fit a model with a time varying and fixed component (here, fixed intercept)</span></span>
-<span class="r-in"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit_dlm</span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fl">1</span>,</span>
-<span class="r-in">               time_varying <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">cov1</span> <span class="op">+</span> <span class="va">cov2</span>,</span>
-<span class="r-in">               time <span class="op">=</span> <span class="st">"year"</span>,</span>
-<span class="r-in">               est_df <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">               family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"normal"</span><span class="op">)</span>,</span>
-<span class="r-in">               data<span class="op">=</span><span class="va">data</span>, chains <span class="op">=</span> <span class="fl">1</span>, iter <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># fit a model with a time varying and fixed component (here, fixed intercept)</span></span></span>
+<span class="r-in"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit_dlm</span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>               time_varying <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">cov1</span> <span class="op">+</span> <span class="va">cov2</span>,</span></span>
+<span class="r-in"><span>               time <span class="op">=</span> <span class="st">"year"</span>,</span></span>
+<span class="r-in"><span>               est_df <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>               family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"normal"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>               data<span class="op">=</span><span class="va">data</span>, chains <span class="op">=</span> <span class="fl">1</span>, iter <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SAMPLING FOR MODEL 'dlm' NOW (CHAIN 1).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
@@ -200,9 +223,9 @@ to fit the model. These include <code>model</code> (the fitted model object of c
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Iteration: 18 / 20 [ 90%]  (Sampling)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Iteration: 20 / 20 [100%]  (Sampling)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:  Elapsed Time: 0.037766 seconds (Warm-up)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.056861 seconds (Sampling)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.094627 seconds (Total)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:  Elapsed Time: 0.024465 seconds (Warm-up)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.038689 seconds (Sampling)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.063154 seconds (Total)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The largest R-hat is NA, indicating chains have not mixed.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Running the chains for more iterations may help. See</span>
@@ -213,19 +236,19 @@ to fit the model. These include <code>model</code> (the fitted model object of c
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Running the chains for more iterations may help. See</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> https://mc-stan.org/misc/warnings.html#tail-ess</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#' # fit a model with deviations modeled with a multivariate Student-t</span></span>
-<span class="r-in"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit_dlm</span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fl">1</span>,</span>
-<span class="r-in">               time_varying <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">cov1</span> <span class="op">+</span> <span class="va">cov2</span>,</span>
-<span class="r-in">               time <span class="op">=</span> <span class="st">"year"</span>,</span>
-<span class="r-in">               est_df <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">               family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"normal"</span><span class="op">)</span>,</span>
-<span class="r-in">               data<span class="op">=</span><span class="va">data</span>, chains <span class="op">=</span> <span class="fl">1</span>, iter <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#' # fit a model with deviations modeled with a multivariate Student-t</span></span></span>
+<span class="r-in"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit_dlm</span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>               time_varying <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">cov1</span> <span class="op">+</span> <span class="va">cov2</span>,</span></span>
+<span class="r-in"><span>               time <span class="op">=</span> <span class="st">"year"</span>,</span></span>
+<span class="r-in"><span>               est_df <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>               family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"normal"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>               data<span class="op">=</span><span class="va">data</span>, chains <span class="op">=</span> <span class="fl">1</span>, iter <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SAMPLING FOR MODEL 'dlm' NOW (CHAIN 1).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Gradient evaluation took 0.000123 seconds</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 1.23 seconds.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Gradient evaluation took 9.3e-05 seconds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.93 seconds.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Adjust your expectations accordingly!</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
@@ -245,9 +268,9 @@ to fit the model. These include <code>model</code> (the fitted model object of c
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Iteration: 18 / 20 [ 90%]  (Sampling)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Iteration: 20 / 20 [100%]  (Sampling)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:  Elapsed Time: 0.021886 seconds (Warm-up)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.039898 seconds (Sampling)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.061784 seconds (Total)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:  Elapsed Time: 0.018756 seconds (Warm-up)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.037556 seconds (Sampling)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.056312 seconds (Total)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>There were 2 divergent transitions after warmup. See</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> https://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</span>
@@ -262,19 +285,19 @@ to fit the model. These include <code>model</code> (the fitted model object of c
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Running the chains for more iterations may help. See</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> https://mc-stan.org/misc/warnings.html#tail-ess</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#' #' # fit a model with deviations modeled with a multivariate Student-t</span></span>
-<span class="r-in"><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit_dlm</span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fl">1</span>,</span>
-<span class="r-in">               time_varying <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">cov1</span> <span class="op">+</span> <span class="va">cov2</span>,</span>
-<span class="r-in">               time <span class="op">=</span> <span class="st">"year"</span>,</span>
-<span class="r-in">               est_df <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">               family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"normal"</span><span class="op">)</span>,</span>
-<span class="r-in">               data<span class="op">=</span><span class="va">data</span>, chains <span class="op">=</span> <span class="fl">1</span>, iter <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#' #' # fit a model with deviations modeled with a multivariate Student-t</span></span></span>
+<span class="r-in"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">fit_dlm</span><span class="op">(</span>formula <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>               time_varying <span class="op">=</span> <span class="va">y</span> <span class="op">~</span> <span class="op">-</span><span class="fl">1</span> <span class="op">+</span> <span class="va">cov1</span> <span class="op">+</span> <span class="va">cov2</span>,</span></span>
+<span class="r-in"><span>               time <span class="op">=</span> <span class="st">"year"</span>,</span></span>
+<span class="r-in"><span>               est_df <span class="op">=</span> <span class="cn">TRUE</span>,</span></span>
+<span class="r-in"><span>               family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"normal"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>               data<span class="op">=</span><span class="va">data</span>, chains <span class="op">=</span> <span class="fl">1</span>, iter <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SAMPLING FOR MODEL 'dlm' NOW (CHAIN 1).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Gradient evaluation took 9.9e-05 seconds</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.99 seconds.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Gradient evaluation took 9.2e-05 seconds</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.92 seconds.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Adjust your expectations accordingly!</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
@@ -294,9 +317,9 @@ to fit the model. These include <code>model</code> (the fitted model object of c
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Iteration: 18 / 20 [ 90%]  (Sampling)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: Iteration: 20 / 20 [100%]  (Sampling)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:  Elapsed Time: 0.153045 seconds (Warm-up)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.099292 seconds (Sampling)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.252337 seconds (Total)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:  Elapsed Time: 0.145648 seconds (Warm-up)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.095217 seconds (Sampling)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1:                0.240865 seconds (Total)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Chain 1: </span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The largest R-hat is NA, indicating chains have not mixed.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Running the chains for more iterations may help. See</span>
@@ -307,8 +330,8 @@ to fit the model. These include <code>model</code> (the fitted model object of c
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> Running the chains for more iterations may help. See</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> https://mc-stan.org/misc/warnings.html#tail-ess</span>
-<span class="r-in"><span class="co"># }</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -323,7 +346,7 @@ to fit the model. These include <code>model</code> (the fitted model object of c
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

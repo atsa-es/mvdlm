@@ -1,8 +1,9 @@
 data {
   int N; // number of samples
-  int nT; // number of time steps
+  int y_indx[N]; // observations
   real y[N]; // observations
   int y_int[N]; // observations
+  int nT; // number of time steps
   int fixed_N;
   int n_fixed_covars; // number fixed covariates
   int fixed_time_indx[fixed_N]; // time index of fixed effects
@@ -53,6 +54,14 @@ transformed parameters {
   }
 
   // re-assemble X matrices for fixed and time-varying effects
+  for(i in 1:nT) {
+    for(j in 1:n_fixed_covars) {
+      X_fixed[i,j] = 0;
+    }
+    for(j in 1:n_varying_covars) {
+      X_varying[i,j] = 0;
+    }
+  }
   if(n_fixed_covars > 0) {
     for(i in 1:fixed_N) {
       X_fixed[fixed_time_indx[i], fixed_var_indx[i]] = fixed_x_value[i];
@@ -120,7 +129,8 @@ model {
   }
 
   if(family==1) {
-    y ~ normal(eta, phi[1]); // Gaussian
+    for (i in 1:N) y[i] ~ normal(eta[y_indx[i]], phi[1]);
+    //y ~ normal(0,1);//normal(eta, phi[1]); // Gaussian
   }
   if(family==2) {
     y_int ~ bernoulli_logit(eta); // binomial

@@ -57,6 +57,11 @@ fit <- fit_dlm(time_varying = logit.s ~ CUI.apr,
         data = SalmonSurvCUI,
         chains=1,
         iter=1000)
+
+fit <- fit_dlm(time_varying = logit.s ~ CUI.apr,
+        data = SalmonSurvCUI[-36,],
+        chains=1,
+        iter=1000)
 ```
 
 With only 1000 iterations and 1 chain, we might not expect the model to converge (see additional guidance via Stan developers here: https://mc-stan.org/misc/warnings.html). A couple things to consider:  

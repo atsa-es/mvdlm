@@ -207,3 +207,56 @@ test_that("missing covariates works", {
                  data = data, chains = 1, iter = 20)
   expect(class(fit$fit) == "stanfit")
 })
+
+test_that("model fit missing data row works", {
+  set.seed(123)
+  N = 20
+  data = data.frame("y" = runif(N),
+                    "cov1" = rnorm(N),
+                    "cov2" = rnorm(N),
+                    "year" = 1:N,
+                    "season" = sample(c("A","B"), size=N, replace=TRUE))
+  data = data[-18,]
+  N = nrow(data)
+  b_1 = cumsum(rnorm(N))
+  b_2 = cumsum(rnorm(N))
+  data$y = data$cov1*b_1 + data$cov2*b_2
+  time_varying = y ~ cov1 + cov2
+  formula = NULL
+
+  fit <- fit_dlm(formula = formula,
+                 time_varying = time_varying,
+                 time = "year",
+                 est_df = FALSE,
+                 family = c("normal"),
+                 data = data, chains = 1, iter = 20)
+
+  expect(class(fit$fit) == "stanfit")
+})
+
+
+test_that("model fit missing observation works", {
+  set.seed(123)
+  N = 20
+  data = data.frame("y" = runif(N),
+                    "cov1" = rnorm(N),
+                    "cov2" = rnorm(N),
+                    "year" = 1:N,
+                    "season" = sample(c("A","B"), size=N, replace=TRUE))
+  data$y[18] = NA
+
+  b_1 = cumsum(rnorm(N))
+  b_2 = cumsum(rnorm(N))
+  data$y = data$cov1*b_1 + data$cov2*b_2
+  time_varying = y ~ cov1 + cov2
+  formula = NULL
+
+  fit <- fit_dlm(formula = formula,
+                 time_varying = time_varying,
+                 time = "year",
+                 est_df = FALSE,
+                 family = c("normal"),
+                 data = data, chains = 1, iter = 20)
+
+  expect(class(fit$fit) == "stanfit")
+})
