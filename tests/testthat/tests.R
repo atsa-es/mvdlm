@@ -260,3 +260,30 @@ test_that("model fit missing observation works", {
 
   expect(class(fit$fit) == "stanfit")
 })
+
+
+
+test_that("dlm_trends works", {
+  set.seed(123)
+  N = 20
+  data = data.frame("y" = runif(N),
+                    "cov1" = rnorm(N),
+                    "cov2" = rnorm(N),
+                    "year" = 1:N,
+                    "season" = sample(c("A","B"), size=N, replace=TRUE))
+  b_1 = cumsum(rnorm(N))
+  b_2 = cumsum(rnorm(N))
+  data$y = data$cov1*b_1 + data$cov2*b_2
+  time_varying = y ~ cov1 + cov2
+  formula = NULL
+  fit <- fit_dlm(formula = formula,
+                 time_varying = time_varying,
+                 time = "year",
+                 est_df = FALSE,
+                 family = c("normal"),
+                 data=data, chains = 1, iter = 20)
+  d <- dlm_trends(fit)
+  #expect(class(d) == "list")
+  expect_equal(as.numeric(round(d$b_varying$estimate[1:5], 2)), c(0.61, 0.6, 0.63, 0.42, -0.08))
+})
+
