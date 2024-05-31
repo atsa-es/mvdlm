@@ -1,0 +1,13 @@
+# inst/CITATION
+citHeader("To cite package 'mvdlm' in publications use:")
+
+citEntry(
+  entry = "Manual",
+  title = "mvdlm: A Package for Fitting Multivariate Dynamic Linear Models",
+  author = person("Ward", "Eric"),
+  year = "2024",
+  note = "R package version 0.5.0",
+  url = "https://github.com/atsa-es/mvdlm"
+)
+
+citFooter("Please cite as:")

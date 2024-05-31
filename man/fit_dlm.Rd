@@ -2,7 +2,7 @@
 % Please edit documentation in R/fitting.R
 \name{fit_dlm}
 \alias{fit_dlm}
-\title{Fit a Bayesian Dirichlet regression model, allowing for zero-and-one inflation, covariates, and overdispersion}
+\title{Fit a Bayesian multivariate dynamic linear model with Stan}
 \usage{
 fit_dlm(
   formula = NULL,
@@ -25,7 +25,7 @@ fit_dlm(
 
 \item{time}{String describing the name of the variable corresponding to time, defaults to "year"}
 
-\item{est_df}{Whether or not to estimate deviaitions of B as Student - t with estimated degrees of freedom, defaults to \code{FALSE}}
+\item{est_df}{Whether or not to estimate deviations of B as Student - t with estimated degrees of freedom, defaults to \code{FALSE}}
 
 \item{family, }{The name of the family used for the response; can be one of "normal","binomial","possion","nbinom2","gamma","lognormal"}
 
@@ -46,8 +46,8 @@ A list containing the fitted model and arguments and data used
 to fit the model. These include \code{model} (the fitted model object of class \code{stanfit}),
 }
 \description{
-Fit a Bayesian Dirichlet regression model that optionally includes covariates to estimate
-effects of factor or continuous variables on proportions.
+Fit a Bayesian multivariate dynamic linear model with Stan that optionally includes covariates to estimate
+effects, extremes (Student-t distribution), etc.
 }
 \examples{
 \donttest{
