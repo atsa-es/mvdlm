@@ -1,12 +1,12 @@
-#' Fit a Bayesian Dirichlet regression model, allowing for zero-and-one inflation, covariates, and overdispersion
+#' Fit a Bayesian multivariate dynamic linear model with Stan
 #'
-#' Fit a Bayesian Dirichlet regression model that optionally includes covariates to estimate
-#' effects of factor or continuous variables on proportions.
+#' Fit a Bayesian multivariate dynamic linear model with Stan that optionally includes covariates to estimate
+#' effects, extremes (Student-t distribution), etc.
 #'
 #' @param formula The model formula for the fixed effects; at least this formula or `time_varying` needs to have the response included
 #' @param time_varying The model formula for the time-varying effects; at least this formula or `formula` needs to have the response included
 #' @param time String describing the name of the variable corresponding to time, defaults to "year"
-#' @param est_df Whether or not to estimate deviaitions of B as Student - t with estimated degrees of freedom, defaults to `FALSE`
+#' @param est_df Whether or not to estimate deviations of B as Student - t with estimated degrees of freedom, defaults to `FALSE`
 #' @param family, The name of the family used for the response; can be one of "normal","binomial","possion","nbinom2","gamma","lognormal"
 #' @param correlated_rw, Whether to estimate time-varying parameters as correlated random walk, defaults to TRUE
 #' @param data The data frame including response and covariates for all model components
