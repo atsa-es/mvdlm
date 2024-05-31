@@ -41,8 +41,8 @@ dlm_trends <- function(fitted_model) {
   }
 
   b_varying = tidy_pars[indx,] # subset
-  b_varying$par <- rep(fit$time_varying_pars, each = fit$stan_data$nT) # add names
-  b_varying$time <- rep(1:fit$stan_data$nT, length(fit$time_varying_pars))
+  b_varying$par <- rep(fitted_model$time_varying_pars, each = fitted_model$stan_data$nT) # add names
+  b_varying$time <- rep(1:fitted_model$stan_data$nT, length(fitted_model$time_varying_pars))
 
   cols <- "#440154FF" # viridis::viridis(1)
   g <- ggplot(b_varying, aes(time, estimate)) +
