@@ -7,8 +7,8 @@
 [![R-CMD-check](https://github.com/atsa-es/mvdlm/workflows/R-CMD-check/badge.svg)](https://github.com/atsa-es/mvdlm/actions)
 <!-- badges: end -->
 
-<!-- badges: start --> [![Codecov test
-coverage](https://codecov.io/gh/atsa-es/mvdlm/branch/main/graph/badge.svg)](https://app.codecov.io/gh/atsa-es/mvdlm?branch=main)
+<!-- badges: start -->
+[![codecov](https://codecov.io/gh/atsa-es/mvdlm/graph/badge.svg?token=ABCN5Z1N5Y)](https://codecov.io/gh/atsa-es/mvdlm)
 <!-- badges: end -->
 
 [![DOI](https://zenodo.org/badge/538718637.svg)](https://zenodo.org/badge/latestdoi/538718637)
