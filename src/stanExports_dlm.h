@@ -27,7 +27,7 @@ namespace model_dlm_namespace {
 using stan::model::model_base_crtp;
 using namespace stan::math;
 stan::math::profile_map profiles__;
-static constexpr std::array<const char*, 186> locations_array__ =
+static constexpr std::array<const char*, 185> locations_array__ =
   {" (found before start of program)",
   " (in 'dlm', line 30, column 2 to column 33)",
   " (in 'dlm', line 31, column 2 to column 35)",
@@ -102,14 +102,13 @@ static constexpr std::array<const char*, 186> locations_array__ =
   " (in 'dlm', line 168, column 4 to column 78)",
   " (in 'dlm', line 167, column 16 to line 169, column 3)",
   " (in 'dlm', line 167, column 2 to line 169, column 3)",
-  " (in 'dlm', line 96, column 2 to column 23)",
+  " (in 'dlm', line 96, column 2 to column 27)",
   " (in 'dlm', line 97, column 2 to column 33)",
   " (in 'dlm', line 98, column 2 to column 25)",
   " (in 'dlm', line 99, column 2 to column 24)",
   " (in 'dlm', line 100, column 2 to column 24)",
   " (in 'dlm', line 101, column 2 to column 30)",
   " (in 'dlm', line 102, column 2 to column 32)",
-  " (in 'dlm', line 103, column 2 to column 24)",
   " (in 'dlm', line 121, column 8 to column 51)",
   " (in 'dlm', line 120, column 25 to line 122, column 7)",
   " (in 'dlm', line 120, column 6 to line 122, column 7)",
@@ -268,280 +267,280 @@ public:
     try {
       int pos__ = std::numeric_limits<int>::min();
       pos__ = 1;
-      current_statement__ = 127;
+      current_statement__ = 126;
       context__.validate_dims("data initialization", "N", "int",
         std::vector<size_t>{});
       N = std::numeric_limits<int>::min();
-      current_statement__ = 127;
+      current_statement__ = 126;
       N = context__.vals_i("N")[(1 - 1)];
-      current_statement__ = 128;
+      current_statement__ = 127;
       stan::math::validate_non_negative_index("y_indx", "N", N);
-      current_statement__ = 129;
+      current_statement__ = 128;
       context__.validate_dims("data initialization", "y_indx", "int",
         std::vector<size_t>{static_cast<size_t>(N)});
       y_indx = std::vector<int>(N, std::numeric_limits<int>::min());
-      current_statement__ = 129;
+      current_statement__ = 128;
       y_indx = context__.vals_i("y_indx");
-      current_statement__ = 130;
+      current_statement__ = 129;
       stan::math::validate_non_negative_index("y", "N", N);
-      current_statement__ = 131;
+      current_statement__ = 130;
       context__.validate_dims("data initialization", "y", "double",
         std::vector<size_t>{static_cast<size_t>(N)});
       y = std::vector<double>(N, std::numeric_limits<double>::quiet_NaN());
-      current_statement__ = 131;
+      current_statement__ = 130;
       y = context__.vals_r("y");
-      current_statement__ = 132;
+      current_statement__ = 131;
       stan::math::validate_non_negative_index("y_int", "N", N);
-      current_statement__ = 133;
+      current_statement__ = 132;
       context__.validate_dims("data initialization", "y_int", "int",
         std::vector<size_t>{static_cast<size_t>(N)});
       y_int = std::vector<int>(N, std::numeric_limits<int>::min());
-      current_statement__ = 133;
+      current_statement__ = 132;
       y_int = context__.vals_i("y_int");
-      current_statement__ = 134;
+      current_statement__ = 133;
       context__.validate_dims("data initialization", "nT", "int",
         std::vector<size_t>{});
       nT = std::numeric_limits<int>::min();
-      current_statement__ = 134;
+      current_statement__ = 133;
       nT = context__.vals_i("nT")[(1 - 1)];
-      current_statement__ = 135;
+      current_statement__ = 134;
       context__.validate_dims("data initialization", "fixed_N", "int",
         std::vector<size_t>{});
       fixed_N = std::numeric_limits<int>::min();
-      current_statement__ = 135;
+      current_statement__ = 134;
       fixed_N = context__.vals_i("fixed_N")[(1 - 1)];
-      current_statement__ = 136;
+      current_statement__ = 135;
       context__.validate_dims("data initialization", "n_fixed_covars", "int",
         std::vector<size_t>{});
       n_fixed_covars = std::numeric_limits<int>::min();
-      current_statement__ = 136;
+      current_statement__ = 135;
       n_fixed_covars = context__.vals_i("n_fixed_covars")[(1 - 1)];
-      current_statement__ = 137;
+      current_statement__ = 136;
       stan::math::validate_non_negative_index("fixed_time_indx", "fixed_N",
         fixed_N);
-      current_statement__ = 138;
+      current_statement__ = 137;
       context__.validate_dims("data initialization", "fixed_time_indx",
         "int", std::vector<size_t>{static_cast<size_t>(fixed_N)});
       fixed_time_indx = std::vector<int>(fixed_N,
                           std::numeric_limits<int>::min());
-      current_statement__ = 138;
+      current_statement__ = 137;
       fixed_time_indx = context__.vals_i("fixed_time_indx");
-      current_statement__ = 139;
+      current_statement__ = 138;
       stan::math::validate_non_negative_index("fixed_var_indx", "fixed_N",
         fixed_N);
-      current_statement__ = 140;
+      current_statement__ = 139;
       context__.validate_dims("data initialization", "fixed_var_indx", "int",
         std::vector<size_t>{static_cast<size_t>(fixed_N)});
       fixed_var_indx = std::vector<int>(fixed_N,
                          std::numeric_limits<int>::min());
-      current_statement__ = 140;
+      current_statement__ = 139;
       fixed_var_indx = context__.vals_i("fixed_var_indx");
-      current_statement__ = 141;
+      current_statement__ = 140;
       stan::math::validate_non_negative_index("fixed_x_value", "fixed_N",
         fixed_N);
-      current_statement__ = 142;
+      current_statement__ = 141;
       context__.validate_dims("data initialization", "fixed_x_value",
         "double", std::vector<size_t>{static_cast<size_t>(fixed_N)});
       fixed_x_value = std::vector<double>(fixed_N,
                         std::numeric_limits<double>::quiet_NaN());
-      current_statement__ = 142;
+      current_statement__ = 141;
       fixed_x_value = context__.vals_r("fixed_x_value");
-      current_statement__ = 143;
+      current_statement__ = 142;
       context__.validate_dims("data initialization", "varying_N", "int",
         std::vector<size_t>{});
       varying_N = std::numeric_limits<int>::min();
-      current_statement__ = 143;
+      current_statement__ = 142;
       varying_N = context__.vals_i("varying_N")[(1 - 1)];
-      current_statement__ = 144;
+      current_statement__ = 143;
       context__.validate_dims("data initialization", "n_varying_covars",
         "int", std::vector<size_t>{});
       n_varying_covars = std::numeric_limits<int>::min();
-      current_statement__ = 144;
+      current_statement__ = 143;
       n_varying_covars = context__.vals_i("n_varying_covars")[(1 - 1)];
-      current_statement__ = 145;
+      current_statement__ = 144;
       stan::math::validate_non_negative_index("varying_time_indx",
         "varying_N", varying_N);
-      current_statement__ = 146;
+      current_statement__ = 145;
       context__.validate_dims("data initialization", "varying_time_indx",
         "int", std::vector<size_t>{static_cast<size_t>(varying_N)});
       varying_time_indx = std::vector<int>(varying_N,
                             std::numeric_limits<int>::min());
-      current_statement__ = 146;
+      current_statement__ = 145;
       varying_time_indx = context__.vals_i("varying_time_indx");
-      current_statement__ = 147;
+      current_statement__ = 146;
       stan::math::validate_non_negative_index("varying_var_indx",
         "varying_N", varying_N);
-      current_statement__ = 148;
+      current_statement__ = 147;
       context__.validate_dims("data initialization", "varying_var_indx",
         "int", std::vector<size_t>{static_cast<size_t>(varying_N)});
       varying_var_indx = std::vector<int>(varying_N,
                            std::numeric_limits<int>::min());
-      current_statement__ = 148;
+      current_statement__ = 147;
       varying_var_indx = context__.vals_i("varying_var_indx");
-      current_statement__ = 149;
+      current_statement__ = 148;
       stan::math::validate_non_negative_index("varying_x_value", "varying_N",
         varying_N);
-      current_statement__ = 150;
+      current_statement__ = 149;
       context__.validate_dims("data initialization", "varying_x_value",
         "double", std::vector<size_t>{static_cast<size_t>(varying_N)});
       varying_x_value = std::vector<double>(varying_N,
                           std::numeric_limits<double>::quiet_NaN());
-      current_statement__ = 150;
+      current_statement__ = 149;
       varying_x_value = context__.vals_r("varying_x_value");
-      current_statement__ = 151;
+      current_statement__ = 150;
       context__.validate_dims("data initialization", "est_df", "int",
         std::vector<size_t>{});
       est_df = std::numeric_limits<int>::min();
-      current_statement__ = 151;
+      current_statement__ = 150;
       est_df = context__.vals_i("est_df")[(1 - 1)];
-      current_statement__ = 152;
+      current_statement__ = 151;
       context__.validate_dims("data initialization", "family", "int",
         std::vector<size_t>{});
       family = std::numeric_limits<int>::min();
-      current_statement__ = 152;
+      current_statement__ = 151;
       family = context__.vals_i("family")[(1 - 1)];
-      current_statement__ = 153;
+      current_statement__ = 152;
       context__.validate_dims("data initialization", "n_fixed_NAs", "int",
         std::vector<size_t>{});
       n_fixed_NAs = std::numeric_limits<int>::min();
-      current_statement__ = 153;
+      current_statement__ = 152;
       n_fixed_NAs = context__.vals_i("n_fixed_NAs")[(1 - 1)];
-      current_statement__ = 154;
+      current_statement__ = 153;
       stan::math::validate_non_negative_index("fixed_NAs", "n_fixed_NAs + 2",
         (n_fixed_NAs + 2));
-      current_statement__ = 155;
+      current_statement__ = 154;
       context__.validate_dims("data initialization", "fixed_NAs", "int",
         std::vector<size_t>{static_cast<size_t>((n_fixed_NAs + 2))});
       fixed_NAs = std::vector<int>((n_fixed_NAs + 2),
                     std::numeric_limits<int>::min());
-      current_statement__ = 155;
+      current_statement__ = 154;
       fixed_NAs = context__.vals_i("fixed_NAs");
-      current_statement__ = 156;
+      current_statement__ = 155;
       context__.validate_dims("data initialization", "n_varying_NAs", "int",
         std::vector<size_t>{});
       n_varying_NAs = std::numeric_limits<int>::min();
-      current_statement__ = 156;
+      current_statement__ = 155;
       n_varying_NAs = context__.vals_i("n_varying_NAs")[(1 - 1)];
-      current_statement__ = 157;
+      current_statement__ = 156;
       stan::math::validate_non_negative_index("varying_NAs",
         "n_varying_NAs + 2", (n_varying_NAs + 2));
-      current_statement__ = 158;
+      current_statement__ = 157;
       context__.validate_dims("data initialization", "varying_NAs", "int",
         std::vector<size_t>{static_cast<size_t>((n_varying_NAs + 2))});
       varying_NAs = std::vector<int>((n_varying_NAs + 2),
                       std::numeric_limits<int>::min());
-      current_statement__ = 158;
+      current_statement__ = 157;
       varying_NAs = context__.vals_i("varying_NAs");
-      current_statement__ = 159;
+      current_statement__ = 158;
       context__.validate_dims("data initialization", "correlated_rw", "int",
         std::vector<size_t>{});
       correlated_rw = std::numeric_limits<int>::min();
-      current_statement__ = 159;
+      current_statement__ = 158;
       correlated_rw = context__.vals_i("correlated_rw")[(1 - 1)];
-      current_statement__ = 160;
+      current_statement__ = 159;
       stan::math::validate_non_negative_index("zeros", "n_varying_covars",
         n_varying_covars);
-      current_statement__ = 161;
+      current_statement__ = 160;
       zeros_data__ = Eigen::Matrix<double,-1,1>::Constant(n_varying_covars,
                        std::numeric_limits<double>::quiet_NaN());
       new (&zeros)
         Eigen::Map<Eigen::Matrix<double,-1,1>>(zeros_data__.data(),
         n_varying_covars);
-      current_statement__ = 163;
+      current_statement__ = 162;
       for (int i = 1; i <= n_varying_covars; ++i) {
-        current_statement__ = 162;
+        current_statement__ = 161;
         stan::model::assign(zeros, 0, "assigning variable zeros",
           stan::model::index_uni(i));
       }
-      current_statement__ = 164;
+      current_statement__ = 163;
       stan::math::validate_non_negative_index("b_fixed", "n_fixed_covars",
         n_fixed_covars);
-      current_statement__ = 165;
+      current_statement__ = 164;
       stan::math::validate_non_negative_index("b_devs0", "n_varying_covars",
         n_varying_covars);
-      current_statement__ = 166;
+      current_statement__ = 165;
       b_devs_1dim__ = std::numeric_limits<int>::min();
-      current_statement__ = 166;
+      current_statement__ = 165;
       b_devs_1dim__ = (nT - 1);
-      current_statement__ = 166;
+      current_statement__ = 165;
       stan::math::validate_non_negative_index("b_devs", "nT - 1",
         b_devs_1dim__);
-      current_statement__ = 167;
+      current_statement__ = 166;
       stan::math::validate_non_negative_index("b_devs", "n_varying_covars",
         n_varying_covars);
-      current_statement__ = 168;
+      current_statement__ = 167;
       Lcorr_1dim__ = std::numeric_limits<int>::min();
-      current_statement__ = 168;
+      current_statement__ = 167;
       Lcorr_1dim__ = (n_varying_covars * correlated_rw);
-      current_statement__ = 168;
+      current_statement__ = 167;
       stan::math::validate_non_negative_index("Lcorr",
         "n_varying_covars * correlated_rw", Lcorr_1dim__);
-      current_statement__ = 168;
+      current_statement__ = 167;
       Lcorr_2dim__ = std::numeric_limits<int>::min();
-      current_statement__ = 168;
+      current_statement__ = 167;
       Lcorr_2dim__ = (n_varying_covars * correlated_rw);
-      current_statement__ = 168;
+      current_statement__ = 167;
       stan::math::validate_non_negative_index("Lcorr",
         "n_varying_covars * correlated_rw", Lcorr_2dim__);
-      current_statement__ = 169;
+      current_statement__ = 168;
       stan::math::validate_non_negative_index("sigma", "n_varying_covars",
         n_varying_covars);
-      current_statement__ = 170;
+      current_statement__ = 169;
       stan::math::validate_non_negative_index("phi", "1", 1);
-      current_statement__ = 171;
+      current_statement__ = 170;
       stan::math::validate_non_negative_index("nu", "est_df", est_df);
-      current_statement__ = 172;
+      current_statement__ = 171;
       stan::math::validate_non_negative_index("missing_fixed", "n_fixed_NAs",
         n_fixed_NAs);
-      current_statement__ = 173;
+      current_statement__ = 172;
       stan::math::validate_non_negative_index("missing_varying",
         "n_varying_NAs", n_varying_NAs);
-      current_statement__ = 174;
+      current_statement__ = 173;
       stan::math::validate_non_negative_index("b_varying", "nT", nT);
-      current_statement__ = 175;
+      current_statement__ = 174;
       stan::math::validate_non_negative_index("b_varying",
         "n_varying_covars", n_varying_covars);
-      current_statement__ = 176;
+      current_statement__ = 175;
       R_1dim__ = std::numeric_limits<int>::min();
-      current_statement__ = 176;
+      current_statement__ = 175;
       R_1dim__ = (n_varying_covars * correlated_rw);
-      current_statement__ = 176;
+      current_statement__ = 175;
       stan::math::validate_non_negative_index("R",
         "n_varying_covars * correlated_rw", R_1dim__);
-      current_statement__ = 177;
+      current_statement__ = 176;
       R_2dim__ = std::numeric_limits<int>::min();
-      current_statement__ = 177;
+      current_statement__ = 176;
       R_2dim__ = (n_varying_covars * correlated_rw);
-      current_statement__ = 177;
+      current_statement__ = 176;
       stan::math::validate_non_negative_index("R",
         "n_varying_covars * correlated_rw", R_2dim__);
-      current_statement__ = 178;
+      current_statement__ = 177;
       Sigma_1dim__ = std::numeric_limits<int>::min();
-      current_statement__ = 178;
+      current_statement__ = 177;
       Sigma_1dim__ = (n_varying_covars * correlated_rw);
-      current_statement__ = 178;
+      current_statement__ = 177;
       stan::math::validate_non_negative_index("Sigma",
         "n_varying_covars * correlated_rw", Sigma_1dim__);
-      current_statement__ = 179;
+      current_statement__ = 178;
       Sigma_2dim__ = std::numeric_limits<int>::min();
-      current_statement__ = 179;
+      current_statement__ = 178;
       Sigma_2dim__ = (n_varying_covars * correlated_rw);
-      current_statement__ = 179;
+      current_statement__ = 178;
       stan::math::validate_non_negative_index("Sigma",
         "n_varying_covars * correlated_rw", Sigma_2dim__);
-      current_statement__ = 180;
+      current_statement__ = 179;
       stan::math::validate_non_negative_index("eta", "nT", nT);
-      current_statement__ = 181;
+      current_statement__ = 180;
       stan::math::validate_non_negative_index("X_fixed", "nT", nT);
-      current_statement__ = 182;
+      current_statement__ = 181;
       stan::math::validate_non_negative_index("X_fixed", "n_fixed_covars",
         n_fixed_covars);
-      current_statement__ = 183;
+      current_statement__ = 182;
       stan::math::validate_non_negative_index("X_varying", "nT", nT);
-      current_statement__ = 184;
+      current_statement__ = 183;
       stan::math::validate_non_negative_index("X_varying",
         "n_varying_covars", n_varying_covars);
-      current_statement__ = 185;
+      current_statement__ = 184;
       stan::math::validate_non_negative_index("log_lik", "N", N);
     } catch (const std::exception& e) {
       stan::lang::rethrow_located(e, locations_array__[current_statement__]);
@@ -772,49 +771,47 @@ public:
       }
       {
         current_statement__ = 74;
-        lp_accum__.add(stan::math::cauchy_lpdf<propto__>(sigma, 0, 5));
+        lp_accum__.add(stan::math::student_t_lpdf<propto__>(sigma, 3, 0, 1));
         current_statement__ = 75;
         lp_accum__.add(stan::math::lkj_corr_cholesky_lpdf<propto__>(Lcorr,
                          2.0));
         current_statement__ = 76;
-        lp_accum__.add(stan::math::student_t_lpdf<propto__>(phi, 3, 0, 2));
+        lp_accum__.add(stan::math::student_t_lpdf<propto__>(phi, 3, 0, 1));
         current_statement__ = 77;
         lp_accum__.add(stan::math::normal_lpdf<propto__>(b_fixed, 0, 1));
         current_statement__ = 78;
-        lp_accum__.add(stan::math::student_t_lpdf<propto__>(nu, 3, 0, 2));
+        lp_accum__.add(stan::math::student_t_lpdf<propto__>(nu, 3, 0, 1));
         current_statement__ = 79;
         lp_accum__.add(stan::math::normal_lpdf<propto__>(missing_fixed, 0, 1));
         current_statement__ = 80;
         lp_accum__.add(stan::math::normal_lpdf<propto__>(missing_varying, 0,
                          1));
-        current_statement__ = 81;
-        lp_accum__.add(stan::math::normal_lpdf<propto__>(b_devs0, 0, 1));
-        current_statement__ = 102;
+        current_statement__ = 101;
         if (stan::math::logical_eq(est_df, 0)) {
-          current_statement__ = 100;
+          current_statement__ = 99;
           if (stan::math::logical_eq(correlated_rw, 1)) {
-            current_statement__ = 98;
+            current_statement__ = 97;
             for (int t = 1; t <= (nT - 1); ++t) {
-              current_statement__ = 96;
+              current_statement__ = 95;
               lp_accum__.add(stan::math::multi_normal_lpdf<propto__>(
                                stan::model::rvalue(b_devs, "b_devs",
                                  stan::model::index_uni(t)), zeros, Sigma));
             }
           } else {
-            current_statement__ = 94;
+            current_statement__ = 93;
             for (int t = 1; t <= (nT - 1); ++t) {
-              current_statement__ = 92;
+              current_statement__ = 91;
               lp_accum__.add(stan::math::normal_lpdf<propto__>(
                                stan::model::rvalue(b_devs, "b_devs",
                                  stan::model::index_uni(t)), zeros, sigma));
             }
           }
         } else {
-          current_statement__ = 90;
+          current_statement__ = 89;
           if (stan::math::logical_eq(correlated_rw, 1)) {
-            current_statement__ = 88;
+            current_statement__ = 87;
             for (int t = 1; t <= (nT - 1); ++t) {
-              current_statement__ = 86;
+              current_statement__ = 85;
               lp_accum__.add(stan::math::multi_student_t_lpdf<propto__>(
                                stan::model::rvalue(b_devs, "b_devs",
                                  stan::model::index_uni(t)),
@@ -822,9 +819,9 @@ public:
                                  stan::model::index_uni(1)), zeros, Sigma));
             }
           } else {
-            current_statement__ = 84;
+            current_statement__ = 83;
             for (int t = 1; t <= (nT - 1); ++t) {
-              current_statement__ = 82;
+              current_statement__ = 81;
               lp_accum__.add(stan::math::student_t_lpdf<propto__>(
                                stan::model::rvalue(b_devs, "b_devs",
                                  stan::model::index_uni(t)),
@@ -833,11 +830,11 @@ public:
             }
           }
         }
-        current_statement__ = 106;
+        current_statement__ = 105;
         if (stan::math::logical_eq(family, 1)) {
-          current_statement__ = 104;
+          current_statement__ = 103;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 103;
+            current_statement__ = 102;
             lp_accum__.add(stan::math::normal_lpdf<propto__>(
                              stan::model::rvalue(y, "y",
                                stan::model::index_uni(i)),
@@ -849,11 +846,11 @@ public:
                                stan::model::index_uni(1))));
           }
         }
-        current_statement__ = 110;
+        current_statement__ = 109;
         if (stan::math::logical_eq(family, 2)) {
-          current_statement__ = 108;
+          current_statement__ = 107;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 107;
+            current_statement__ = 106;
             lp_accum__.add(stan::math::bernoulli_logit_lpmf<propto__>(
                              stan::model::rvalue(y_int, "y_int",
                                stan::model::index_uni(i)),
@@ -863,11 +860,11 @@ public:
                                    stan::model::index_uni(i))))));
           }
         }
-        current_statement__ = 114;
+        current_statement__ = 113;
         if (stan::math::logical_eq(family, 3)) {
-          current_statement__ = 112;
+          current_statement__ = 111;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 111;
+            current_statement__ = 110;
             lp_accum__.add(stan::math::poisson_log_lpmf<propto__>(
                              stan::model::rvalue(y_int, "y_int",
                                stan::model::index_uni(i)),
@@ -877,11 +874,11 @@ public:
                                    stan::model::index_uni(i))))));
           }
         }
-        current_statement__ = 118;
+        current_statement__ = 117;
         if (stan::math::logical_eq(family, 4)) {
-          current_statement__ = 116;
+          current_statement__ = 115;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 115;
+            current_statement__ = 114;
             lp_accum__.add(stan::math::neg_binomial_2_log_lpmf<propto__>(
                              stan::model::rvalue(y_int, "y_int",
                                stan::model::index_uni(i)),
@@ -893,11 +890,11 @@ public:
                                stan::model::index_uni(1))));
           }
         }
-        current_statement__ = 122;
+        current_statement__ = 121;
         if (stan::math::logical_eq(family, 5)) {
-          current_statement__ = 120;
+          current_statement__ = 119;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 119;
+            current_statement__ = 118;
             lp_accum__.add(stan::math::gamma_lpdf<propto__>(
                              stan::model::rvalue(y, "y",
                                stan::model::index_uni(i)),
@@ -912,11 +909,11 @@ public:
                                      stan::model::index_uni(i))))))));
           }
         }
-        current_statement__ = 126;
+        current_statement__ = 125;
         if (stan::math::logical_eq(family, 6)) {
-          current_statement__ = 124;
+          current_statement__ = 123;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 123;
+            current_statement__ = 122;
             lp_accum__.add(stan::math::lognormal_lpdf<propto__>(
                              stan::model::rvalue(y, "y",
                                stan::model::index_uni(i)),

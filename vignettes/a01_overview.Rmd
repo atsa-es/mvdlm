@@ -54,12 +54,12 @@ Like the `MARSS` example, we also standardize the covariates,
 SalmonSurvCUI$CUI.apr = scale(SalmonSurvCUI$CUI.apr)
 
 fit <- fit_dlm(time_varying = logit.s ~ CUI.apr,
-        data = SalmonSurvCUI,
+        data = SalmonSurvCUI, 
         chains=1,
-        iter=1000)
+        iter=4000)
 
 fit <- fit_dlm(time_varying = logit.s ~ CUI.apr,
-        data = SalmonSurvCUI[-36,],
+        data = SalmonSurvCUI[-36,], 
         chains=1,
         iter=1000)
 ```
@@ -70,7 +70,7 @@ With only 1000 iterations and 1 chain, we might not expect the model to converge
 
 ```{r eval=FALSE}
 fit <- fit_dlm(time_varying = logit.s ~ CUI.apr,
-        data = SalmonSurvCUI,
+        data = SalmonSurvCUI, 
         chains=1,
         iter=1000,
         control = list(adapt_delta=0.99))

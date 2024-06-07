@@ -97,15 +97,15 @@ transformed parameters {
   }
 }
 model {
-  sigma ~ cauchy(0, 5); // prior for sigma
+  sigma ~ student_t(3,0,1); // prior for sigma
   Lcorr ~ lkj_corr_cholesky(2.0); // prior for cholesky factor of a correlation matrix
-  phi ~ student_t(3,0,2); // obseervation variance
+  phi ~ student_t(3,0,1); // obseervation variance
   b_fixed ~ normal(0,1);
-  nu ~ student_t(3,0,2);
+  nu ~ student_t(3,0,1);
 
   missing_fixed ~ normal(0,1); // estimates of missing Xs for fixed model
   missing_varying ~ normal(0,1); // estimates of missing Xs for time varying model
-  b_devs0 ~ normal(0,1); // initial values of B at time t
+  //b_devs0 ~ normal(0,1); // initial values of B at time t
   if(est_df == 0) {
     if(correlated_rw == 1) {
       for(t in 1:(nT-1)) {

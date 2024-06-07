@@ -8,7 +8,7 @@
 #' @param time String describing the name of the variable corresponding to time, defaults to "year"
 #' @param est_df Whether or not to estimate deviations of B as Student - t with estimated degrees of freedom, defaults to `FALSE`
 #' @param family, The name of the family used for the response; can be one of "normal","binomial","possion","nbinom2","gamma","lognormal"
-#' @param correlated_rw, Whether to estimate time-varying parameters as correlated random walk, defaults to TRUE
+#' @param correlated_rw, Whether to estimate time-varying parameters as correlated random walk, defaults to FALSE
 #' @param data The data frame including response and covariates for all model components
 #' @param chains Number of mcmc chains, defaults to 3
 #' @param iter Number of mcmc iterations, defaults to 2000
@@ -75,7 +75,7 @@ fit_dlm <- function(formula = NULL,
                     time = "year",
                     est_df = FALSE,
                     family = c("normal", "binomial", "poisson", "nbinom2", "gamma", "lognormal"),
-                    correlated_rw = TRUE,
+                    correlated_rw = FALSE,
                     data,
                     chains = 3,
                     iter = 2000,
