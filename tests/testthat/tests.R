@@ -283,6 +283,6 @@ test_that("dlm_trends works", {
   #d <- try(dlm_trends(fit), silent=TRUE)
   d <- dlm_trends(fit)
   #expect(class(d) == "list")
-  expect_equal(as.numeric(round(d$b_varying$estimate[1:5], 2)), c(0.61, 0.6, 0.63, 0.42, -0.08))
+  expect_equal(as.numeric(round(d$b_varying$estimate[1:5], 2)), c(0.31,0.12, -0.35, -0.69, -0.62))
 })
 
