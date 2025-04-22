@@ -97,9 +97,9 @@ transformed parameters {
   }
 }
 model {
-  sigma ~ student_t(3,0,1); // prior for sigma
+  sigma ~ normal(0, 0.5); // prior for sigma
   Lcorr ~ lkj_corr_cholesky(2.0); // prior for cholesky factor of a correlation matrix
-  phi ~ student_t(3,0,1); // obseervation variance
+  phi ~ normal(0, 0.5); // obseervation variance
   b_fixed ~ normal(0,1);
   nu ~ student_t(3,0,1);
 
