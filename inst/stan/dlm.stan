@@ -105,7 +105,7 @@ model {
 
   missing_fixed ~ normal(0,1); // estimates of missing Xs for fixed model
   missing_varying ~ normal(0,1); // estimates of missing Xs for time varying model
-  //b_devs0 ~ normal(0,1); // initial values of B at time t
+  b_devs0 ~ normal(0,0.1); // initial values of B at time t
   if(est_df == 0) {
     if(correlated_rw == 1) {
       for(t in 1:(nT-1)) {
