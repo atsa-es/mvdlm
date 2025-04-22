@@ -11,6 +11,7 @@ fit_dlm(
   est_df = FALSE,
   family = c("normal", "binomial", "poisson", "nbinom2", "gamma", "lognormal"),
   correlated_rw = FALSE,
+  phi_scale = 1,
   data,
   chains = 3,
   iter = 2000,
@@ -30,6 +31,8 @@ fit_dlm(
 \item{family, }{The name of the family used for the response; can be one of "normal","binomial","possion","nbinom2","gamma","lognormal"}
 
 \item{correlated_rw, }{Whether to estimate time-varying parameters as correlated random walk, defaults to FALSE}
+
+\item{phi_scale}{The scale parameter of the normal(0, scale) prior for the phi parameter (observation error variance for normal, Student-t)}
 
 \item{data}{The data frame including response and covariates for all model components}
 

@@ -9,6 +9,7 @@
 #' @param est_df Whether or not to estimate deviations of B as Student - t with estimated degrees of freedom, defaults to `FALSE`
 #' @param family, The name of the family used for the response; can be one of "normal","binomial","possion","nbinom2","gamma","lognormal"
 #' @param correlated_rw, Whether to estimate time-varying parameters as correlated random walk, defaults to FALSE
+#' @param phi_scale The scale parameter of the normal(0, scale) prior for the phi parameter (observation error variance for normal, Student-t)
 #' @param data The data frame including response and covariates for all model components
 #' @param chains Number of mcmc chains, defaults to 3
 #' @param iter Number of mcmc iterations, defaults to 2000
@@ -76,6 +77,7 @@ fit_dlm <- function(formula = NULL,
                     est_df = FALSE,
                     family = c("normal", "binomial", "poisson", "nbinom2", "gamma", "lognormal"),
                     correlated_rw = FALSE,
+                    phi_scale = 1,
                     data,
                     chains = 3,
                     iter = 2000,
@@ -199,7 +201,8 @@ fit_dlm <- function(formula = NULL,
     fixed_NAs = fixed_NAs,
     n_varying_NAs = n_varying_NAs,
     varying_NAs = varying_NAs,
-    correlated_rw = as.numeric(correlated_rw)
+    correlated_rw = as.numeric(correlated_rw),
+    phi_scale = phi_scale
   )
 
   pars <- c("eta", "sigma", "log_lik", "lp__")

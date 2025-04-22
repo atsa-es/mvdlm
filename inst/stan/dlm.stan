@@ -21,6 +21,7 @@ data {
   int n_varying_NAs;
   int varying_NAs[n_varying_NAs + 2];
   int correlated_rw;
+  real phi_scale; // scale for phi prior (e.g. SD for normal)
 }
 transformed data {
   vector[n_varying_covars] zeros;
@@ -29,8 +30,8 @@ transformed data {
 parameters {
   vector[n_fixed_covars] b_fixed;
   vector[n_varying_covars] b_devs0;
-  vector[n_varying_covars] b_devs[nT-1];
-  cholesky_factor_corr[n_varying_covars * correlated_rw] Lcorr; // cholesky factor (L_u matrix for R)
+  vector[n_varying_covars] z_devs[nT - 1];  // ← added
+  cholesky_factor_corr[n_varying_covars * correlated_rw] Lcorr;
   vector<lower=0>[n_varying_covars] sigma;
   vector<lower=0>[1] phi;
   vector<lower=0>[est_df] nu;
@@ -38,119 +39,106 @@ parameters {
   vector[n_varying_NAs] missing_varying;
 }
 transformed parameters {
+  vector[n_varying_covars] b_devs[nT - 1];
   vector[n_varying_covars] b_varying[nT];
-  //corr_matrix[n_varying_covars * correlated_rw] R; // correlation matrix
-  //cov_matrix[n_varying_covars * correlated_rw] Sigma; // VCV matrix derived
   matrix[n_varying_covars * correlated_rw, n_varying_covars * correlated_rw] R;
   matrix[n_varying_covars * correlated_rw, n_varying_covars * correlated_rw] Sigma;
-  vector[nT] eta; // linear predictor on link scale
+  vector[nT] eta;
   matrix[nT, n_fixed_covars] X_fixed;
   matrix[nT, n_varying_covars] X_varying;
 
-  // covariance matrix stuff
-  if(correlated_rw == 1) {
-    R = multiply_lower_tri_self_transpose(Lcorr); // R = Lcorr * Lcorr'
-    Sigma = quad_form_diag(R, sigma); // quad_form_diag: diag_matrix(sig) * R * diag_matrix(sig)
+  // Correlation structure
+  if (correlated_rw == 1) {
+    R = multiply_lower_tri_self_transpose(Lcorr);
+    Sigma = quad_form_diag(R, sigma);
   }
 
-  // re-assemble X matrices for fixed and time-varying effects
-  // for(i in 1:nT) {
-  //   for(j in 1:n_fixed_covars) {
-  //     X_fixed[i,j] = 0;
-  //   }
-  //   for(j in 1:n_varying_covars) {
-  //     X_varying[i,j] = 0;
-  //   }
-  // }
-  if(n_fixed_covars > 0) {
-    for(i in 1:fixed_N) {
+  // Reassemble design matrices
+  if (n_fixed_covars > 0) {
+    for (i in 1:fixed_N) {
       X_fixed[fixed_time_indx[i], fixed_var_indx[i]] = fixed_x_value[i];
     }
-    // add in missing vals
-    for(i in 1:n_fixed_NAs) {
+    for (i in 1:n_fixed_NAs) {
       X_fixed[fixed_time_indx[fixed_NAs[i]], fixed_var_indx[fixed_NAs[i]]] = missing_fixed[i];
     }
   }
-  if(n_varying_covars > 0) {
-    for(i in 1:varying_N) {
+
+  if (n_varying_covars > 0) {
+    for (i in 1:varying_N) {
       X_varying[varying_time_indx[i], varying_var_indx[i]] = varying_x_value[i];
     }
-    // add in missing vals
-    for(i in 1:n_varying_NAs) {
+    for (i in 1:n_varying_NAs) {
       X_varying[varying_time_indx[varying_NAs[i]], varying_var_indx[varying_NAs[i]]] = missing_varying[i];
     }
   }
 
-  // time - varying coefficients
-  b_varying[1] = b_devs0;
-  for(t in 2:nT) {
-    b_varying[t] = b_varying[t-1] + b_devs[t-1];
+  // Non-centered parameterization for b_devs
+  for (t in 1:(nT - 1)) {
+    if (correlated_rw == 1) {
+      // Correlated innovations
+      b_devs[t] = Lcorr * (sigma .* z_devs[t]);
+    } else {
+      // Independent innovations
+      b_devs[t] = sigma .* z_devs[t];
+    }
   }
 
-  // calculate predictions (eta)
-  for(t in 1:nT) eta[t] = 0;
-  if(n_fixed_covars > 0) eta = eta + X_fixed * b_fixed;
-  if(n_varying_covars > 0) {
-    for(t in 1:nT) {
-      eta[t] = eta[t] + X_varying[t] * b_varying[t];
+  // Time-varying coefficients from innovations
+  b_varying[1] = b_devs0;
+  for (t in 2:nT) {
+    b_varying[t] = b_varying[t - 1] + b_devs[t - 1];
+  }
+
+  // Linear predictor
+  for (t in 1:nT) eta[t] = 0;
+  if (n_fixed_covars > 0) eta += X_fixed * b_fixed;
+  if (n_varying_covars > 0) {
+    for (t in 1:nT) {
+      eta[t] += dot_product(X_varying[t], b_varying[t]);
     }
   }
 }
 model {
-  sigma ~ normal(0, 0.5); // prior for sigma
-  Lcorr ~ lkj_corr_cholesky(2.0); // prior for cholesky factor of a correlation matrix
-  phi ~ normal(0, 0.5); // obseervation variance
-  b_fixed ~ normal(0,1);
-  nu ~ student_t(3,0,1);
+  // Priors
+  sigma ~ normal(0, 1);
+  Lcorr ~ lkj_corr_cholesky(2.0);
+  phi ~ normal(0, phi_scale);  // tighter obs noise prior
+  b_fixed ~ normal(0, 1);
+  nu ~ student_t(3, 0, 1);
 
-  missing_fixed ~ normal(0,1); // estimates of missing Xs for fixed model
-  missing_varying ~ normal(0,1); // estimates of missing Xs for time varying model
-  b_devs0 ~ normal(0,0.1); // initial values of B at time t
-  if(est_df == 0) {
-    if(correlated_rw == 1) {
-      for(t in 1:(nT-1)) {
-        b_devs[t] ~ multi_normal(zeros, Sigma);
-      }
+  missing_fixed ~ normal(0, 1);
+  missing_varying ~ normal(0, 1);
+  b_devs0 ~ normal(0, 0.1);  // informative prior to anchor trajectory
+
+  // Non-centered process priors
+  for (t in 1:(nT - 1)) {
+    if (est_df == 0) {
+      to_vector(z_devs[t]) ~ normal(0, 1);
     } else {
-      for(t in 1:(nT-1)) {
-        b_devs[t] ~ normal(zeros, sigma);
-      }
-    }
-  } else {
-    if(correlated_rw == 1) {
-      for(t in 1:(nT-1)) {
-        b_devs[t] ~ multi_student_t(nu[1], zeros, Sigma);
-      }
-    } else {
-      for(t in 1:(nT-1)) {
-        b_devs[t] ~ student_t(nu[1], zeros, sigma);
+      for (k in 1:n_varying_covars) {
+        z_devs[t][k] ~ student_t(nu[1], 0, 1);
       }
     }
   }
 
-  if(family==1) {
+  // Likelihood
+  if (family == 1) {
     for (i in 1:N) y[i] ~ normal(eta[y_indx[i]], phi[1]);
-    //y ~ normal(0,1);//normal(eta, phi[1]); // Gaussian
   }
-  if(family==2) {
+  if (family == 2) {
     for (i in 1:N) y_int[i] ~ bernoulli_logit(eta[y_indx[i]]);
-    //y_int ~ bernoulli_logit(eta); // binomial
   }
-  if(family==3) {
+  if (family == 3) {
     for (i in 1:N) y_int[i] ~ poisson_log(eta[y_indx[i]]);
-    //y_int ~ poisson_log(eta); // Poisson
   }
-  if(family==4) {
+  if (family == 4) {
     for (i in 1:N) y_int[i] ~ neg_binomial_2_log(eta[y_indx[i]], phi[1]);
-    //y_int ~ neg_binomial_2_log(eta, phi[1]); // NegBin2
   }
-  if(family==5) {
+  if (family == 5) {
     for (i in 1:N) y[i] ~ gamma(phi[1], phi[1] ./ exp(eta[y_indx[i]]));
-    //y ~ gamma(phi[1], phi[1] ./ exp(eta)); // Gamma
   }
-  if(family==6) {
+  if (family == 6) {
     for (i in 1:N) y[i] ~ lognormal(eta[y_indx[i]], phi[1]);
-    //y ~ lognormal(eta, phi[1]); // Lognormal
   }
 }
 generated quantities {

@@ -29,131 +29,128 @@ using namespace stan::math;
 stan::math::profile_map profiles__;
 static constexpr std::array<const char*, 185> locations_array__ =
   {" (found before start of program)",
-  " (in 'dlm', line 30, column 2 to column 33)",
-  " (in 'dlm', line 31, column 2 to column 35)",
-  " (in 'dlm', line 32, column 2 to column 40)",
-  " (in 'dlm', line 33, column 2 to column 63)",
-  " (in 'dlm', line 34, column 2 to column 42)",
-  " (in 'dlm', line 35, column 2 to column 25)",
-  " (in 'dlm', line 36, column 2 to column 29)",
-  " (in 'dlm', line 37, column 2 to column 36)",
-  " (in 'dlm', line 38, column 2 to column 40)",
-  " (in 'dlm', line 41, column 2 to column 41)",
+  " (in 'dlm', line 31, column 2 to column 33)",
+  " (in 'dlm', line 32, column 2 to column 35)",
+  " (in 'dlm', line 33, column 2 to column 42)",
+  " (in 'dlm', line 34, column 2 to column 63)",
+  " (in 'dlm', line 35, column 2 to column 42)",
+  " (in 'dlm', line 36, column 2 to column 25)",
+  " (in 'dlm', line 37, column 2 to column 29)",
+  " (in 'dlm', line 38, column 2 to column 36)",
+  " (in 'dlm', line 39, column 2 to column 40)",
+  " (in 'dlm', line 42, column 2 to column 42)",
+  " (in 'dlm', line 43, column 2 to column 41)",
   " (in 'dlm', line 44, column 2 to column 79)",
   " (in 'dlm', line 45, column 2 to column 83)",
   " (in 'dlm', line 46, column 2 to column 17)",
   " (in 'dlm', line 47, column 2 to column 37)",
   " (in 'dlm', line 48, column 2 to column 41)",
-  " (in 'dlm', line 151, column 2 to column 20)",
+  " (in 'dlm', line 136, column 2 to column 20)",
   " (in 'dlm', line 51, column 4 to column 49)",
   " (in 'dlm', line 52, column 4 to column 37)",
-  " (in 'dlm', line 50, column 25 to line 53, column 3)",
+  " (in 'dlm', line 50, column 26 to line 53, column 3)",
   " (in 'dlm', line 50, column 2 to line 53, column 3)",
-  " (in 'dlm', line 65, column 6 to column 72)",
-  " (in 'dlm', line 64, column 24 to line 66, column 5)",
+  " (in 'dlm', line 57, column 6 to column 72)",
+  " (in 'dlm', line 56, column 25 to line 58, column 5)",
+  " (in 'dlm', line 56, column 4 to line 58, column 5)",
+  " (in 'dlm', line 60, column 6 to column 94)",
+  " (in 'dlm', line 59, column 29 to line 61, column 5)",
+  " (in 'dlm', line 59, column 4 to line 61, column 5)",
+  " (in 'dlm', line 55, column 26 to line 62, column 3)",
+  " (in 'dlm', line 55, column 2 to line 62, column 3)",
+  " (in 'dlm', line 65, column 6 to column 80)",
+  " (in 'dlm', line 64, column 27 to line 66, column 5)",
   " (in 'dlm', line 64, column 4 to line 66, column 5)",
-  " (in 'dlm', line 69, column 6 to column 94)",
-  " (in 'dlm', line 68, column 28 to line 70, column 5)",
-  " (in 'dlm', line 68, column 4 to line 70, column 5)",
-  " (in 'dlm', line 63, column 25 to line 71, column 3)",
-  " (in 'dlm', line 63, column 2 to line 71, column 3)",
-  " (in 'dlm', line 74, column 6 to column 80)",
-  " (in 'dlm', line 73, column 26 to line 75, column 5)",
-  " (in 'dlm', line 73, column 4 to line 75, column 5)",
-  " (in 'dlm', line 78, column 6 to column 106)",
-  " (in 'dlm', line 77, column 30 to line 79, column 5)",
-  " (in 'dlm', line 77, column 4 to line 79, column 5)",
-  " (in 'dlm', line 72, column 27 to line 80, column 3)",
+  " (in 'dlm', line 68, column 6 to column 106)",
+  " (in 'dlm', line 67, column 31 to line 69, column 5)",
+  " (in 'dlm', line 67, column 4 to line 69, column 5)",
+  " (in 'dlm', line 63, column 28 to line 70, column 3)",
+  " (in 'dlm', line 63, column 2 to line 70, column 3)",
+  " (in 'dlm', line 78, column 6 to column 37)",
+  " (in 'dlm', line 76, column 11 to line 79, column 5)",
+  " (in 'dlm', line 75, column 6 to column 47)",
+  " (in 'dlm', line 73, column 28 to line 76, column 5)",
+  " (in 'dlm', line 73, column 4 to line 79, column 5)",
+  " (in 'dlm', line 72, column 24 to line 80, column 3)",
   " (in 'dlm', line 72, column 2 to line 80, column 3)",
   " (in 'dlm', line 82, column 2 to column 25)",
-  " (in 'dlm', line 84, column 4 to column 48)",
-  " (in 'dlm', line 83, column 17 to line 85, column 3)",
+  " (in 'dlm', line 84, column 4 to column 52)",
+  " (in 'dlm', line 83, column 18 to line 85, column 3)",
   " (in 'dlm', line 83, column 2 to line 85, column 3)",
-  " (in 'dlm', line 87, column 17 to column 28)",
-  " (in 'dlm', line 87, column 2 to column 28)",
-  " (in 'dlm', line 88, column 25 to column 55)",
-  " (in 'dlm', line 88, column 2 to column 55)",
-  " (in 'dlm', line 91, column 6 to column 52)",
-  " (in 'dlm', line 90, column 19 to line 92, column 5)",
+  " (in 'dlm', line 87, column 18 to column 29)",
+  " (in 'dlm', line 87, column 2 to column 29)",
+  " (in 'dlm', line 88, column 26 to column 51)",
+  " (in 'dlm', line 88, column 2 to column 51)",
+  " (in 'dlm', line 91, column 6 to column 56)",
+  " (in 'dlm', line 90, column 20 to line 92, column 5)",
   " (in 'dlm', line 90, column 4 to line 92, column 5)",
-  " (in 'dlm', line 89, column 27 to line 93, column 3)",
+  " (in 'dlm', line 89, column 28 to line 93, column 3)",
   " (in 'dlm', line 89, column 2 to line 93, column 3)",
-  " (in 'dlm', line 153, column 19 to column 75)",
-  " (in 'dlm', line 153, column 4 to column 75)",
+  " (in 'dlm', line 138, column 19 to column 75)",
+  " (in 'dlm', line 138, column 4 to column 75)",
+  " (in 'dlm', line 137, column 16 to line 139, column 3)",
+  " (in 'dlm', line 137, column 2 to line 139, column 3)",
+  " (in 'dlm', line 141, column 19 to column 85)",
+  " (in 'dlm', line 141, column 4 to column 85)",
+  " (in 'dlm', line 140, column 16 to line 142, column 3)",
+  " (in 'dlm', line 140, column 2 to line 142, column 3)",
+  " (in 'dlm', line 144, column 19 to column 77)",
+  " (in 'dlm', line 144, column 4 to column 77)",
+  " (in 'dlm', line 143, column 16 to line 145, column 3)",
+  " (in 'dlm', line 143, column 2 to line 145, column 3)",
+  " (in 'dlm', line 147, column 19 to column 75)",
+  " (in 'dlm', line 147, column 4 to column 75)",
+  " (in 'dlm', line 146, column 16 to line 148, column 3)",
+  " (in 'dlm', line 146, column 2 to line 148, column 3)",
+  " (in 'dlm', line 150, column 19 to column 89)",
+  " (in 'dlm', line 150, column 4 to column 89)",
+  " (in 'dlm', line 149, column 16 to line 151, column 3)",
+  " (in 'dlm', line 149, column 2 to line 151, column 3)",
+  " (in 'dlm', line 153, column 19 to column 78)",
+  " (in 'dlm', line 153, column 4 to column 78)",
   " (in 'dlm', line 152, column 16 to line 154, column 3)",
   " (in 'dlm', line 152, column 2 to line 154, column 3)",
-  " (in 'dlm', line 156, column 19 to column 85)",
-  " (in 'dlm', line 156, column 4 to column 85)",
-  " (in 'dlm', line 155, column 16 to line 157, column 3)",
-  " (in 'dlm', line 155, column 2 to line 157, column 3)",
-  " (in 'dlm', line 159, column 19 to column 77)",
-  " (in 'dlm', line 159, column 4 to column 77)",
-  " (in 'dlm', line 158, column 16 to line 160, column 3)",
-  " (in 'dlm', line 158, column 2 to line 160, column 3)",
-  " (in 'dlm', line 162, column 19 to column 75)",
-  " (in 'dlm', line 162, column 4 to column 75)",
-  " (in 'dlm', line 161, column 16 to line 163, column 3)",
-  " (in 'dlm', line 161, column 2 to line 163, column 3)",
-  " (in 'dlm', line 165, column 19 to column 89)",
-  " (in 'dlm', line 165, column 4 to column 89)",
-  " (in 'dlm', line 164, column 16 to line 166, column 3)",
-  " (in 'dlm', line 164, column 2 to line 166, column 3)",
-  " (in 'dlm', line 168, column 19 to column 78)",
-  " (in 'dlm', line 168, column 4 to column 78)",
-  " (in 'dlm', line 167, column 16 to line 169, column 3)",
-  " (in 'dlm', line 167, column 2 to line 169, column 3)",
-  " (in 'dlm', line 96, column 2 to column 27)",
-  " (in 'dlm', line 97, column 2 to column 33)",
-  " (in 'dlm', line 98, column 2 to column 25)",
-  " (in 'dlm', line 99, column 2 to column 24)",
-  " (in 'dlm', line 100, column 2 to column 24)",
-  " (in 'dlm', line 101, column 2 to column 30)",
-  " (in 'dlm', line 102, column 2 to column 32)",
-  " (in 'dlm', line 121, column 8 to column 51)",
-  " (in 'dlm', line 120, column 25 to line 122, column 7)",
-  " (in 'dlm', line 120, column 6 to line 122, column 7)",
-  " (in 'dlm', line 119, column 11 to line 123, column 5)",
-  " (in 'dlm', line 117, column 8 to column 57)",
-  " (in 'dlm', line 116, column 25 to line 118, column 7)",
-  " (in 'dlm', line 116, column 6 to line 118, column 7)",
-  " (in 'dlm', line 115, column 27 to line 119, column 5)",
-  " (in 'dlm', line 115, column 4 to line 123, column 5)",
-  " (in 'dlm', line 114, column 9 to line 124, column 3)",
-  " (in 'dlm', line 111, column 8 to column 41)",
-  " (in 'dlm', line 110, column 25 to line 112, column 7)",
+  " (in 'dlm', line 97, column 2 to column 23)",
+  " (in 'dlm', line 98, column 2 to column 33)",
+  " (in 'dlm', line 99, column 2 to column 23)",
+  " (in 'dlm', line 100, column 2 to column 25)",
+  " (in 'dlm', line 101, column 2 to column 26)",
+  " (in 'dlm', line 102, column 2 to column 31)",
+  " (in 'dlm', line 103, column 2 to column 33)",
+  " (in 'dlm', line 104, column 2 to column 27)",
+  " (in 'dlm', line 111, column 8 to column 46)",
+  " (in 'dlm', line 110, column 36 to line 112, column 7)",
   " (in 'dlm', line 110, column 6 to line 112, column 7)",
   " (in 'dlm', line 109, column 11 to line 113, column 5)",
-  " (in 'dlm', line 107, column 8 to column 47)",
-  " (in 'dlm', line 106, column 25 to line 108, column 7)",
-  " (in 'dlm', line 106, column 6 to line 108, column 7)",
-  " (in 'dlm', line 105, column 27 to line 109, column 5)",
-  " (in 'dlm', line 105, column 4 to line 113, column 5)",
-  " (in 'dlm', line 104, column 18 to line 114, column 3)",
-  " (in 'dlm', line 104, column 2 to line 124, column 3)",
-  " (in 'dlm', line 126, column 19 to column 57)",
-  " (in 'dlm', line 126, column 4 to column 57)",
-  " (in 'dlm', line 125, column 16 to line 128, column 3)",
-  " (in 'dlm', line 125, column 2 to line 128, column 3)",
-  " (in 'dlm', line 130, column 19 to column 62)",
-  " (in 'dlm', line 130, column 4 to column 62)",
-  " (in 'dlm', line 129, column 16 to line 132, column 3)",
-  " (in 'dlm', line 129, column 2 to line 132, column 3)",
-  " (in 'dlm', line 134, column 19 to column 58)",
-  " (in 'dlm', line 134, column 4 to column 58)",
-  " (in 'dlm', line 133, column 16 to line 136, column 3)",
-  " (in 'dlm', line 133, column 2 to line 136, column 3)",
-  " (in 'dlm', line 138, column 19 to column 73)",
-  " (in 'dlm', line 138, column 4 to column 73)",
-  " (in 'dlm', line 137, column 16 to line 140, column 3)",
-  " (in 'dlm', line 137, column 2 to line 140, column 3)",
-  " (in 'dlm', line 142, column 19 to column 71)",
-  " (in 'dlm', line 142, column 4 to column 71)",
-  " (in 'dlm', line 141, column 16 to line 144, column 3)",
-  " (in 'dlm', line 141, column 2 to line 144, column 3)",
-  " (in 'dlm', line 146, column 19 to column 60)",
-  " (in 'dlm', line 146, column 4 to column 60)",
-  " (in 'dlm', line 145, column 16 to line 148, column 3)",
-  " (in 'dlm', line 145, column 2 to line 148, column 3)",
+  " (in 'dlm', line 108, column 6 to column 42)",
+  " (in 'dlm', line 107, column 21 to line 109, column 5)",
+  " (in 'dlm', line 107, column 4 to line 113, column 5)",
+  " (in 'dlm', line 106, column 24 to line 114, column 3)",
+  " (in 'dlm', line 106, column 2 to line 114, column 3)",
+  " (in 'dlm', line 117, column 19 to column 57)",
+  " (in 'dlm', line 117, column 4 to column 57)",
+  " (in 'dlm', line 116, column 19 to line 118, column 3)",
+  " (in 'dlm', line 116, column 2 to line 118, column 3)",
+  " (in 'dlm', line 120, column 19 to column 62)",
+  " (in 'dlm', line 120, column 4 to column 62)",
+  " (in 'dlm', line 119, column 19 to line 121, column 3)",
+  " (in 'dlm', line 119, column 2 to line 121, column 3)",
+  " (in 'dlm', line 123, column 19 to column 58)",
+  " (in 'dlm', line 123, column 4 to column 58)",
+  " (in 'dlm', line 122, column 19 to line 124, column 3)",
+  " (in 'dlm', line 122, column 2 to line 124, column 3)",
+  " (in 'dlm', line 126, column 19 to column 73)",
+  " (in 'dlm', line 126, column 4 to column 73)",
+  " (in 'dlm', line 125, column 19 to line 127, column 3)",
+  " (in 'dlm', line 125, column 2 to line 127, column 3)",
+  " (in 'dlm', line 129, column 19 to column 71)",
+  " (in 'dlm', line 129, column 4 to column 71)",
+  " (in 'dlm', line 128, column 19 to line 130, column 3)",
+  " (in 'dlm', line 128, column 2 to line 130, column 3)",
+  " (in 'dlm', line 132, column 19 to column 60)",
+  " (in 'dlm', line 132, column 4 to column 60)",
+  " (in 'dlm', line 131, column 19 to line 133, column 3)",
+  " (in 'dlm', line 131, column 2 to line 133, column 3)",
   " (in 'dlm', line 2, column 2 to column 8)",
   " (in 'dlm', line 3, column 13 to column 14)",
   " (in 'dlm', line 3, column 2 to column 16)",
@@ -187,22 +184,25 @@ static constexpr std::array<const char*, 185> locations_array__ =
   " (in 'dlm', line 22, column 18 to column 35)",
   " (in 'dlm', line 22, column 2 to column 37)",
   " (in 'dlm', line 23, column 2 to column 20)",
-  " (in 'dlm', line 26, column 9 to column 25)",
-  " (in 'dlm', line 26, column 2 to column 33)",
-  " (in 'dlm', line 27, column 31 to column 44)",
-  " (in 'dlm', line 27, column 2 to column 44)",
-  " (in 'dlm', line 30, column 9 to column 23)",
-  " (in 'dlm', line 31, column 9 to column 25)",
-  " (in 'dlm', line 32, column 34 to column 38)",
+  " (in 'dlm', line 24, column 2 to column 17)",
+  " (in 'dlm', line 27, column 9 to column 25)",
+  " (in 'dlm', line 27, column 2 to column 33)",
+  " (in 'dlm', line 28, column 31 to column 44)",
+  " (in 'dlm', line 28, column 2 to column 44)",
+  " (in 'dlm', line 31, column 9 to column 23)",
   " (in 'dlm', line 32, column 9 to column 25)",
-  " (in 'dlm', line 33, column 23 to column 55)",
-  " (in 'dlm', line 34, column 18 to column 34)",
-  " (in 'dlm', line 35, column 18 to column 19)",
-  " (in 'dlm', line 36, column 18 to column 24)",
-  " (in 'dlm', line 37, column 9 to column 20)",
-  " (in 'dlm', line 38, column 9 to column 22)",
-  " (in 'dlm', line 41, column 37 to column 39)",
-  " (in 'dlm', line 41, column 9 to column 25)",
+  " (in 'dlm', line 33, column 34 to column 40)",
+  " (in 'dlm', line 33, column 9 to column 25)",
+  " (in 'dlm', line 34, column 23 to column 55)",
+  " (in 'dlm', line 35, column 18 to column 34)",
+  " (in 'dlm', line 36, column 18 to column 19)",
+  " (in 'dlm', line 37, column 18 to column 24)",
+  " (in 'dlm', line 38, column 9 to column 20)",
+  " (in 'dlm', line 39, column 9 to column 22)",
+  " (in 'dlm', line 42, column 34 to column 40)",
+  " (in 'dlm', line 42, column 9 to column 25)",
+  " (in 'dlm', line 43, column 37 to column 39)",
+  " (in 'dlm', line 43, column 9 to column 25)",
   " (in 'dlm', line 44, column 9 to column 41)",
   " (in 'dlm', line 44, column 43 to column 75)",
   " (in 'dlm', line 45, column 9 to column 41)",
@@ -212,7 +212,7 @@ static constexpr std::array<const char*, 185> locations_array__ =
   " (in 'dlm', line 47, column 13 to column 27)",
   " (in 'dlm', line 48, column 9 to column 11)",
   " (in 'dlm', line 48, column 13 to column 29)",
-  " (in 'dlm', line 151, column 9 to column 10)"};
+  " (in 'dlm', line 136, column 9 to column 10)"};
 #include <stan_meta_header.hpp>
 class model_dlm final : public model_base_crtp<model_dlm> {
 private:
@@ -238,10 +238,12 @@ private:
   int n_varying_NAs;
   std::vector<int> varying_NAs;
   int correlated_rw;
+  double phi_scale;
   Eigen::Matrix<double,-1,1> zeros_data__;
-  int b_devs_1dim__;
+  int z_devs_1dim__;
   int Lcorr_1dim__;
   int Lcorr_2dim__;
+  int b_devs_1dim__;
   int R_1dim__;
   int R_2dim__;
   int Sigma_1dim__;
@@ -267,234 +269,250 @@ public:
     try {
       int pos__ = std::numeric_limits<int>::min();
       pos__ = 1;
-      current_statement__ = 126;
+      current_statement__ = 123;
       context__.validate_dims("data initialization", "N", "int",
         std::vector<size_t>{});
       N = std::numeric_limits<int>::min();
-      current_statement__ = 126;
+      current_statement__ = 123;
       N = context__.vals_i("N")[(1 - 1)];
-      current_statement__ = 127;
+      current_statement__ = 124;
       stan::math::validate_non_negative_index("y_indx", "N", N);
-      current_statement__ = 128;
+      current_statement__ = 125;
       context__.validate_dims("data initialization", "y_indx", "int",
         std::vector<size_t>{static_cast<size_t>(N)});
       y_indx = std::vector<int>(N, std::numeric_limits<int>::min());
-      current_statement__ = 128;
+      current_statement__ = 125;
       y_indx = context__.vals_i("y_indx");
-      current_statement__ = 129;
+      current_statement__ = 126;
       stan::math::validate_non_negative_index("y", "N", N);
-      current_statement__ = 130;
+      current_statement__ = 127;
       context__.validate_dims("data initialization", "y", "double",
         std::vector<size_t>{static_cast<size_t>(N)});
       y = std::vector<double>(N, std::numeric_limits<double>::quiet_NaN());
-      current_statement__ = 130;
+      current_statement__ = 127;
       y = context__.vals_r("y");
-      current_statement__ = 131;
+      current_statement__ = 128;
       stan::math::validate_non_negative_index("y_int", "N", N);
-      current_statement__ = 132;
+      current_statement__ = 129;
       context__.validate_dims("data initialization", "y_int", "int",
         std::vector<size_t>{static_cast<size_t>(N)});
       y_int = std::vector<int>(N, std::numeric_limits<int>::min());
-      current_statement__ = 132;
+      current_statement__ = 129;
       y_int = context__.vals_i("y_int");
-      current_statement__ = 133;
+      current_statement__ = 130;
       context__.validate_dims("data initialization", "nT", "int",
         std::vector<size_t>{});
       nT = std::numeric_limits<int>::min();
-      current_statement__ = 133;
+      current_statement__ = 130;
       nT = context__.vals_i("nT")[(1 - 1)];
-      current_statement__ = 134;
+      current_statement__ = 131;
       context__.validate_dims("data initialization", "fixed_N", "int",
         std::vector<size_t>{});
       fixed_N = std::numeric_limits<int>::min();
-      current_statement__ = 134;
+      current_statement__ = 131;
       fixed_N = context__.vals_i("fixed_N")[(1 - 1)];
-      current_statement__ = 135;
+      current_statement__ = 132;
       context__.validate_dims("data initialization", "n_fixed_covars", "int",
         std::vector<size_t>{});
       n_fixed_covars = std::numeric_limits<int>::min();
-      current_statement__ = 135;
+      current_statement__ = 132;
       n_fixed_covars = context__.vals_i("n_fixed_covars")[(1 - 1)];
-      current_statement__ = 136;
+      current_statement__ = 133;
       stan::math::validate_non_negative_index("fixed_time_indx", "fixed_N",
         fixed_N);
-      current_statement__ = 137;
+      current_statement__ = 134;
       context__.validate_dims("data initialization", "fixed_time_indx",
         "int", std::vector<size_t>{static_cast<size_t>(fixed_N)});
       fixed_time_indx = std::vector<int>(fixed_N,
                           std::numeric_limits<int>::min());
-      current_statement__ = 137;
+      current_statement__ = 134;
       fixed_time_indx = context__.vals_i("fixed_time_indx");
-      current_statement__ = 138;
+      current_statement__ = 135;
       stan::math::validate_non_negative_index("fixed_var_indx", "fixed_N",
         fixed_N);
-      current_statement__ = 139;
+      current_statement__ = 136;
       context__.validate_dims("data initialization", "fixed_var_indx", "int",
         std::vector<size_t>{static_cast<size_t>(fixed_N)});
       fixed_var_indx = std::vector<int>(fixed_N,
                          std::numeric_limits<int>::min());
-      current_statement__ = 139;
+      current_statement__ = 136;
       fixed_var_indx = context__.vals_i("fixed_var_indx");
-      current_statement__ = 140;
+      current_statement__ = 137;
       stan::math::validate_non_negative_index("fixed_x_value", "fixed_N",
         fixed_N);
-      current_statement__ = 141;
+      current_statement__ = 138;
       context__.validate_dims("data initialization", "fixed_x_value",
         "double", std::vector<size_t>{static_cast<size_t>(fixed_N)});
       fixed_x_value = std::vector<double>(fixed_N,
                         std::numeric_limits<double>::quiet_NaN());
-      current_statement__ = 141;
+      current_statement__ = 138;
       fixed_x_value = context__.vals_r("fixed_x_value");
-      current_statement__ = 142;
+      current_statement__ = 139;
       context__.validate_dims("data initialization", "varying_N", "int",
         std::vector<size_t>{});
       varying_N = std::numeric_limits<int>::min();
-      current_statement__ = 142;
+      current_statement__ = 139;
       varying_N = context__.vals_i("varying_N")[(1 - 1)];
-      current_statement__ = 143;
+      current_statement__ = 140;
       context__.validate_dims("data initialization", "n_varying_covars",
         "int", std::vector<size_t>{});
       n_varying_covars = std::numeric_limits<int>::min();
-      current_statement__ = 143;
+      current_statement__ = 140;
       n_varying_covars = context__.vals_i("n_varying_covars")[(1 - 1)];
-      current_statement__ = 144;
+      current_statement__ = 141;
       stan::math::validate_non_negative_index("varying_time_indx",
         "varying_N", varying_N);
-      current_statement__ = 145;
+      current_statement__ = 142;
       context__.validate_dims("data initialization", "varying_time_indx",
         "int", std::vector<size_t>{static_cast<size_t>(varying_N)});
       varying_time_indx = std::vector<int>(varying_N,
                             std::numeric_limits<int>::min());
-      current_statement__ = 145;
+      current_statement__ = 142;
       varying_time_indx = context__.vals_i("varying_time_indx");
-      current_statement__ = 146;
+      current_statement__ = 143;
       stan::math::validate_non_negative_index("varying_var_indx",
         "varying_N", varying_N);
-      current_statement__ = 147;
+      current_statement__ = 144;
       context__.validate_dims("data initialization", "varying_var_indx",
         "int", std::vector<size_t>{static_cast<size_t>(varying_N)});
       varying_var_indx = std::vector<int>(varying_N,
                            std::numeric_limits<int>::min());
-      current_statement__ = 147;
+      current_statement__ = 144;
       varying_var_indx = context__.vals_i("varying_var_indx");
-      current_statement__ = 148;
+      current_statement__ = 145;
       stan::math::validate_non_negative_index("varying_x_value", "varying_N",
         varying_N);
-      current_statement__ = 149;
+      current_statement__ = 146;
       context__.validate_dims("data initialization", "varying_x_value",
         "double", std::vector<size_t>{static_cast<size_t>(varying_N)});
       varying_x_value = std::vector<double>(varying_N,
                           std::numeric_limits<double>::quiet_NaN());
-      current_statement__ = 149;
+      current_statement__ = 146;
       varying_x_value = context__.vals_r("varying_x_value");
-      current_statement__ = 150;
+      current_statement__ = 147;
       context__.validate_dims("data initialization", "est_df", "int",
         std::vector<size_t>{});
       est_df = std::numeric_limits<int>::min();
-      current_statement__ = 150;
+      current_statement__ = 147;
       est_df = context__.vals_i("est_df")[(1 - 1)];
-      current_statement__ = 151;
+      current_statement__ = 148;
       context__.validate_dims("data initialization", "family", "int",
         std::vector<size_t>{});
       family = std::numeric_limits<int>::min();
-      current_statement__ = 151;
+      current_statement__ = 148;
       family = context__.vals_i("family")[(1 - 1)];
-      current_statement__ = 152;
+      current_statement__ = 149;
       context__.validate_dims("data initialization", "n_fixed_NAs", "int",
         std::vector<size_t>{});
       n_fixed_NAs = std::numeric_limits<int>::min();
-      current_statement__ = 152;
+      current_statement__ = 149;
       n_fixed_NAs = context__.vals_i("n_fixed_NAs")[(1 - 1)];
-      current_statement__ = 153;
+      current_statement__ = 150;
       stan::math::validate_non_negative_index("fixed_NAs", "n_fixed_NAs + 2",
         (n_fixed_NAs + 2));
-      current_statement__ = 154;
+      current_statement__ = 151;
       context__.validate_dims("data initialization", "fixed_NAs", "int",
         std::vector<size_t>{static_cast<size_t>((n_fixed_NAs + 2))});
       fixed_NAs = std::vector<int>((n_fixed_NAs + 2),
                     std::numeric_limits<int>::min());
-      current_statement__ = 154;
+      current_statement__ = 151;
       fixed_NAs = context__.vals_i("fixed_NAs");
-      current_statement__ = 155;
+      current_statement__ = 152;
       context__.validate_dims("data initialization", "n_varying_NAs", "int",
         std::vector<size_t>{});
       n_varying_NAs = std::numeric_limits<int>::min();
-      current_statement__ = 155;
+      current_statement__ = 152;
       n_varying_NAs = context__.vals_i("n_varying_NAs")[(1 - 1)];
-      current_statement__ = 156;
+      current_statement__ = 153;
       stan::math::validate_non_negative_index("varying_NAs",
         "n_varying_NAs + 2", (n_varying_NAs + 2));
-      current_statement__ = 157;
+      current_statement__ = 154;
       context__.validate_dims("data initialization", "varying_NAs", "int",
         std::vector<size_t>{static_cast<size_t>((n_varying_NAs + 2))});
       varying_NAs = std::vector<int>((n_varying_NAs + 2),
                       std::numeric_limits<int>::min());
-      current_statement__ = 157;
+      current_statement__ = 154;
       varying_NAs = context__.vals_i("varying_NAs");
-      current_statement__ = 158;
+      current_statement__ = 155;
       context__.validate_dims("data initialization", "correlated_rw", "int",
         std::vector<size_t>{});
       correlated_rw = std::numeric_limits<int>::min();
-      current_statement__ = 158;
+      current_statement__ = 155;
       correlated_rw = context__.vals_i("correlated_rw")[(1 - 1)];
-      current_statement__ = 159;
+      current_statement__ = 156;
+      context__.validate_dims("data initialization", "phi_scale", "double",
+        std::vector<size_t>{});
+      phi_scale = std::numeric_limits<double>::quiet_NaN();
+      current_statement__ = 156;
+      phi_scale = context__.vals_r("phi_scale")[(1 - 1)];
+      current_statement__ = 157;
       stan::math::validate_non_negative_index("zeros", "n_varying_covars",
         n_varying_covars);
-      current_statement__ = 160;
+      current_statement__ = 158;
       zeros_data__ = Eigen::Matrix<double,-1,1>::Constant(n_varying_covars,
                        std::numeric_limits<double>::quiet_NaN());
       new (&zeros)
         Eigen::Map<Eigen::Matrix<double,-1,1>>(zeros_data__.data(),
         n_varying_covars);
-      current_statement__ = 162;
+      current_statement__ = 160;
       for (int i = 1; i <= n_varying_covars; ++i) {
-        current_statement__ = 161;
+        current_statement__ = 159;
         stan::model::assign(zeros, 0, "assigning variable zeros",
           stan::model::index_uni(i));
       }
-      current_statement__ = 163;
+      current_statement__ = 161;
       stan::math::validate_non_negative_index("b_fixed", "n_fixed_covars",
         n_fixed_covars);
-      current_statement__ = 164;
+      current_statement__ = 162;
       stan::math::validate_non_negative_index("b_devs0", "n_varying_covars",
         n_varying_covars);
-      current_statement__ = 165;
-      b_devs_1dim__ = std::numeric_limits<int>::min();
-      current_statement__ = 165;
-      b_devs_1dim__ = (nT - 1);
-      current_statement__ = 165;
-      stan::math::validate_non_negative_index("b_devs", "nT - 1",
-        b_devs_1dim__);
-      current_statement__ = 166;
-      stan::math::validate_non_negative_index("b_devs", "n_varying_covars",
+      current_statement__ = 163;
+      z_devs_1dim__ = std::numeric_limits<int>::min();
+      current_statement__ = 163;
+      z_devs_1dim__ = (nT - 1);
+      current_statement__ = 163;
+      stan::math::validate_non_negative_index("z_devs", "nT - 1",
+        z_devs_1dim__);
+      current_statement__ = 164;
+      stan::math::validate_non_negative_index("z_devs", "n_varying_covars",
         n_varying_covars);
-      current_statement__ = 167;
+      current_statement__ = 165;
       Lcorr_1dim__ = std::numeric_limits<int>::min();
-      current_statement__ = 167;
+      current_statement__ = 165;
       Lcorr_1dim__ = (n_varying_covars * correlated_rw);
-      current_statement__ = 167;
+      current_statement__ = 165;
       stan::math::validate_non_negative_index("Lcorr",
         "n_varying_covars * correlated_rw", Lcorr_1dim__);
-      current_statement__ = 167;
+      current_statement__ = 165;
       Lcorr_2dim__ = std::numeric_limits<int>::min();
-      current_statement__ = 167;
+      current_statement__ = 165;
       Lcorr_2dim__ = (n_varying_covars * correlated_rw);
-      current_statement__ = 167;
+      current_statement__ = 165;
       stan::math::validate_non_negative_index("Lcorr",
         "n_varying_covars * correlated_rw", Lcorr_2dim__);
-      current_statement__ = 168;
+      current_statement__ = 166;
       stan::math::validate_non_negative_index("sigma", "n_varying_covars",
         n_varying_covars);
-      current_statement__ = 169;
+      current_statement__ = 167;
       stan::math::validate_non_negative_index("phi", "1", 1);
-      current_statement__ = 170;
+      current_statement__ = 168;
       stan::math::validate_non_negative_index("nu", "est_df", est_df);
-      current_statement__ = 171;
+      current_statement__ = 169;
       stan::math::validate_non_negative_index("missing_fixed", "n_fixed_NAs",
         n_fixed_NAs);
-      current_statement__ = 172;
+      current_statement__ = 170;
       stan::math::validate_non_negative_index("missing_varying",
         "n_varying_NAs", n_varying_NAs);
+      current_statement__ = 171;
+      b_devs_1dim__ = std::numeric_limits<int>::min();
+      current_statement__ = 171;
+      b_devs_1dim__ = (nT - 1);
+      current_statement__ = 171;
+      stan::math::validate_non_negative_index("b_devs", "nT - 1",
+        b_devs_1dim__);
+      current_statement__ = 172;
+      stan::math::validate_non_negative_index("b_devs", "n_varying_covars",
+        n_varying_covars);
       current_statement__ = 173;
       stan::math::validate_non_negative_index("b_varying", "nT", nT);
       current_statement__ = 174;
@@ -545,7 +563,7 @@ public:
     } catch (const std::exception& e) {
       stan::lang::rethrow_located(e, locations_array__[current_statement__]);
     }
-    num_params_r__ = n_fixed_covars + n_varying_covars + (b_devs_1dim__ *
+    num_params_r__ = n_fixed_covars + n_varying_covars + (z_devs_1dim__ *
       n_varying_covars) + ((Lcorr_1dim__ * (Lcorr_1dim__ - 1)) / 2) +
       n_varying_covars + 1 + est_df + n_fixed_NAs + n_varying_NAs;
   }
@@ -587,13 +605,13 @@ public:
       current_statement__ = 2;
       b_devs0 = in__.template read<
                   Eigen::Matrix<local_scalar_t__,-1,1>>(n_varying_covars);
-      std::vector<Eigen::Matrix<local_scalar_t__,-1,1>> b_devs =
-        std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>(b_devs_1dim__,
+      std::vector<Eigen::Matrix<local_scalar_t__,-1,1>> z_devs =
+        std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>(z_devs_1dim__,
           Eigen::Matrix<local_scalar_t__,-1,1>::Constant(n_varying_covars,
             DUMMY_VAR__));
       current_statement__ = 3;
-      b_devs = in__.template read<
-                 std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>>(b_devs_1dim__,
+      z_devs = in__.template read<
+                 std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>>(z_devs_1dim__,
                  n_varying_covars);
       Eigen::Matrix<local_scalar_t__,-1,-1> Lcorr =
         Eigen::Matrix<local_scalar_t__,-1,-1>::Constant(Lcorr_1dim__,
@@ -632,6 +650,10 @@ public:
       current_statement__ = 9;
       missing_varying = in__.template read<
                           Eigen::Matrix<local_scalar_t__,-1,1>>(n_varying_NAs);
+      std::vector<Eigen::Matrix<local_scalar_t__,-1,1>> b_devs =
+        std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>(b_devs_1dim__,
+          Eigen::Matrix<local_scalar_t__,-1,1>::Constant(n_varying_covars,
+            DUMMY_VAR__));
       std::vector<Eigen::Matrix<local_scalar_t__,-1,1>> b_varying =
         std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>(nT,
           Eigen::Matrix<local_scalar_t__,-1,1>::Constant(n_varying_covars,
@@ -650,21 +672,21 @@ public:
       Eigen::Matrix<local_scalar_t__,-1,-1> X_varying =
         Eigen::Matrix<local_scalar_t__,-1,-1>::Constant(nT, n_varying_covars,
           DUMMY_VAR__);
-      current_statement__ = 20;
+      current_statement__ = 21;
       if (stan::math::logical_eq(correlated_rw, 1)) {
-        current_statement__ = 17;
+        current_statement__ = 18;
         stan::model::assign(R,
           stan::math::multiply_lower_tri_self_transpose(Lcorr),
           "assigning variable R");
-        current_statement__ = 18;
+        current_statement__ = 19;
         stan::model::assign(Sigma, stan::math::quad_form_diag(R, sigma),
           "assigning variable Sigma");
       }
-      current_statement__ = 28;
+      current_statement__ = 29;
       if (stan::math::logical_gt(n_fixed_covars, 0)) {
-        current_statement__ = 23;
+        current_statement__ = 24;
         for (int i = 1; i <= fixed_N; ++i) {
-          current_statement__ = 21;
+          current_statement__ = 22;
           stan::model::assign(X_fixed,
             stan::model::rvalue(fixed_x_value, "fixed_x_value",
               stan::model::index_uni(i)), "assigning variable X_fixed",
@@ -675,9 +697,9 @@ public:
               stan::model::rvalue(fixed_var_indx, "fixed_var_indx",
                 stan::model::index_uni(i))));
         }
-        current_statement__ = 26;
+        current_statement__ = 27;
         for (int i = 1; i <= n_fixed_NAs; ++i) {
-          current_statement__ = 24;
+          current_statement__ = 25;
           stan::model::assign(X_fixed,
             stan::model::rvalue(missing_fixed, "missing_fixed",
               stan::model::index_uni(i)), "assigning variable X_fixed",
@@ -693,11 +715,11 @@ public:
                     stan::model::index_uni(i))))));
         }
       }
-      current_statement__ = 36;
+      current_statement__ = 37;
       if (stan::math::logical_gt(n_varying_covars, 0)) {
-        current_statement__ = 31;
+        current_statement__ = 32;
         for (int i = 1; i <= varying_N; ++i) {
-          current_statement__ = 29;
+          current_statement__ = 30;
           stan::model::assign(X_varying,
             stan::model::rvalue(varying_x_value, "varying_x_value",
               stan::model::index_uni(i)), "assigning variable X_varying",
@@ -708,9 +730,9 @@ public:
               stan::model::rvalue(varying_var_indx, "varying_var_indx",
                 stan::model::index_uni(i))));
         }
-        current_statement__ = 34;
+        current_statement__ = 35;
         for (int i = 1; i <= n_varying_NAs; ++i) {
-          current_statement__ = 32;
+          current_statement__ = 33;
           stan::model::assign(X_varying,
             stan::model::rvalue(missing_varying, "missing_varying",
               stan::model::index_uni(i)), "assigning variable X_varying",
@@ -726,12 +748,31 @@ public:
                     stan::model::index_uni(i))))));
         }
       }
-      current_statement__ = 37;
+      current_statement__ = 44;
+      for (int t = 1; t <= (nT - 1); ++t) {
+        current_statement__ = 42;
+        if (stan::math::logical_eq(correlated_rw, 1)) {
+          current_statement__ = 40;
+          stan::model::assign(b_devs,
+            stan::math::multiply(Lcorr,
+              stan::math::elt_multiply(sigma,
+                stan::model::rvalue(z_devs, "z_devs",
+                  stan::model::index_uni(t)))), "assigning variable b_devs",
+            stan::model::index_uni(t));
+        } else {
+          current_statement__ = 38;
+          stan::model::assign(b_devs,
+            stan::math::elt_multiply(sigma,
+              stan::model::rvalue(z_devs, "z_devs", stan::model::index_uni(t))),
+            "assigning variable b_devs", stan::model::index_uni(t));
+        }
+      }
+      current_statement__ = 45;
       stan::model::assign(b_varying, b_devs0, "assigning variable b_varying",
         stan::model::index_uni(1));
-      current_statement__ = 40;
+      current_statement__ = 48;
       for (int t = 2; t <= nT; ++t) {
-        current_statement__ = 38;
+        current_statement__ = 46;
         stan::model::assign(b_varying,
           stan::math::add(
             stan::model::deep_copy(
@@ -741,27 +782,27 @@ public:
               stan::model::index_uni((t - 1)))),
           "assigning variable b_varying", stan::model::index_uni(t));
       }
-      current_statement__ = 42;
+      current_statement__ = 50;
       for (int t = 1; t <= nT; ++t) {
-        current_statement__ = 41;
+        current_statement__ = 49;
         stan::model::assign(eta, 0, "assigning variable eta",
           stan::model::index_uni(t));
       }
-      current_statement__ = 44;
+      current_statement__ = 52;
       if (stan::math::logical_gt(n_fixed_covars, 0)) {
-        current_statement__ = 43;
+        current_statement__ = 51;
         stan::model::assign(eta,
           stan::math::add(stan::model::deep_copy(eta),
             stan::math::multiply(X_fixed, b_fixed)), "assigning variable eta");
       }
-      current_statement__ = 49;
+      current_statement__ = 57;
       if (stan::math::logical_gt(n_varying_covars, 0)) {
-        current_statement__ = 47;
+        current_statement__ = 55;
         for (int t = 1; t <= nT; ++t) {
-          current_statement__ = 45;
+          current_statement__ = 53;
           stan::model::assign(eta,
             (stan::model::rvalue(eta, "eta", stan::model::index_uni(t)) +
-            stan::math::multiply(
+            stan::math::dot_product(
               stan::model::rvalue(X_varying, "X_varying",
                 stan::model::index_uni(t)),
               stan::model::rvalue(b_varying, "b_varying",
@@ -770,71 +811,52 @@ public:
         }
       }
       {
-        current_statement__ = 74;
-        lp_accum__.add(stan::math::student_t_lpdf<propto__>(sigma, 3, 0, 1));
-        current_statement__ = 75;
+        current_statement__ = 82;
+        lp_accum__.add(stan::math::normal_lpdf<propto__>(sigma, 0, 1));
+        current_statement__ = 83;
         lp_accum__.add(stan::math::lkj_corr_cholesky_lpdf<propto__>(Lcorr,
                          2.0));
-        current_statement__ = 76;
-        lp_accum__.add(stan::math::student_t_lpdf<propto__>(phi, 3, 0, 1));
-        current_statement__ = 77;
+        current_statement__ = 84;
+        lp_accum__.add(stan::math::normal_lpdf<propto__>(phi, 0, 0.1));
+        current_statement__ = 85;
         lp_accum__.add(stan::math::normal_lpdf<propto__>(b_fixed, 0, 1));
-        current_statement__ = 78;
+        current_statement__ = 86;
         lp_accum__.add(stan::math::student_t_lpdf<propto__>(nu, 3, 0, 1));
-        current_statement__ = 79;
+        current_statement__ = 87;
         lp_accum__.add(stan::math::normal_lpdf<propto__>(missing_fixed, 0, 1));
-        current_statement__ = 80;
+        current_statement__ = 88;
         lp_accum__.add(stan::math::normal_lpdf<propto__>(missing_varying, 0,
                          1));
-        current_statement__ = 101;
-        if (stan::math::logical_eq(est_df, 0)) {
-          current_statement__ = 99;
-          if (stan::math::logical_eq(correlated_rw, 1)) {
-            current_statement__ = 97;
-            for (int t = 1; t <= (nT - 1); ++t) {
-              current_statement__ = 95;
-              lp_accum__.add(stan::math::multi_normal_lpdf<propto__>(
-                               stan::model::rvalue(b_devs, "b_devs",
-                                 stan::model::index_uni(t)), zeros, Sigma));
-            }
+        current_statement__ = 89;
+        lp_accum__.add(stan::math::normal_lpdf<propto__>(b_devs0, 0, 0.1));
+        current_statement__ = 98;
+        for (int t = 1; t <= (nT - 1); ++t) {
+          current_statement__ = 96;
+          if (stan::math::logical_eq(est_df, 0)) {
+            current_statement__ = 94;
+            lp_accum__.add(stan::math::normal_lpdf<propto__>(
+                             stan::math::to_vector(
+                               stan::model::rvalue(z_devs, "z_devs",
+                                 stan::model::index_uni(t))), 0, 1));
           } else {
-            current_statement__ = 93;
-            for (int t = 1; t <= (nT - 1); ++t) {
-              current_statement__ = 91;
-              lp_accum__.add(stan::math::normal_lpdf<propto__>(
-                               stan::model::rvalue(b_devs, "b_devs",
-                                 stan::model::index_uni(t)), zeros, sigma));
-            }
-          }
-        } else {
-          current_statement__ = 89;
-          if (stan::math::logical_eq(correlated_rw, 1)) {
-            current_statement__ = 87;
-            for (int t = 1; t <= (nT - 1); ++t) {
-              current_statement__ = 85;
-              lp_accum__.add(stan::math::multi_student_t_lpdf<propto__>(
-                               stan::model::rvalue(b_devs, "b_devs",
-                                 stan::model::index_uni(t)),
-                               stan::model::rvalue(nu, "nu",
-                                 stan::model::index_uni(1)), zeros, Sigma));
-            }
-          } else {
-            current_statement__ = 83;
-            for (int t = 1; t <= (nT - 1); ++t) {
-              current_statement__ = 81;
+            current_statement__ = 92;
+            for (int k = 1; k <= n_varying_covars; ++k) {
+              current_statement__ = 90;
               lp_accum__.add(stan::math::student_t_lpdf<propto__>(
-                               stan::model::rvalue(b_devs, "b_devs",
-                                 stan::model::index_uni(t)),
+                               stan::model::rvalue(
+                                 stan::model::rvalue(z_devs, "z_devs",
+                                   stan::model::index_uni(t)), "z_devs[t]",
+                                 stan::model::index_uni(k)),
                                stan::model::rvalue(nu, "nu",
-                                 stan::model::index_uni(1)), zeros, sigma));
+                                 stan::model::index_uni(1)), 0, 1));
             }
           }
         }
-        current_statement__ = 105;
+        current_statement__ = 102;
         if (stan::math::logical_eq(family, 1)) {
-          current_statement__ = 103;
+          current_statement__ = 100;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 102;
+            current_statement__ = 99;
             lp_accum__.add(stan::math::normal_lpdf<propto__>(
                              stan::model::rvalue(y, "y",
                                stan::model::index_uni(i)),
@@ -846,11 +868,11 @@ public:
                                stan::model::index_uni(1))));
           }
         }
-        current_statement__ = 109;
+        current_statement__ = 106;
         if (stan::math::logical_eq(family, 2)) {
-          current_statement__ = 107;
+          current_statement__ = 104;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 106;
+            current_statement__ = 103;
             lp_accum__.add(stan::math::bernoulli_logit_lpmf<propto__>(
                              stan::model::rvalue(y_int, "y_int",
                                stan::model::index_uni(i)),
@@ -860,11 +882,11 @@ public:
                                    stan::model::index_uni(i))))));
           }
         }
-        current_statement__ = 113;
+        current_statement__ = 110;
         if (stan::math::logical_eq(family, 3)) {
-          current_statement__ = 111;
+          current_statement__ = 108;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 110;
+            current_statement__ = 107;
             lp_accum__.add(stan::math::poisson_log_lpmf<propto__>(
                              stan::model::rvalue(y_int, "y_int",
                                stan::model::index_uni(i)),
@@ -874,11 +896,11 @@ public:
                                    stan::model::index_uni(i))))));
           }
         }
-        current_statement__ = 117;
+        current_statement__ = 114;
         if (stan::math::logical_eq(family, 4)) {
-          current_statement__ = 115;
+          current_statement__ = 112;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 114;
+            current_statement__ = 111;
             lp_accum__.add(stan::math::neg_binomial_2_log_lpmf<propto__>(
                              stan::model::rvalue(y_int, "y_int",
                                stan::model::index_uni(i)),
@@ -890,11 +912,11 @@ public:
                                stan::model::index_uni(1))));
           }
         }
-        current_statement__ = 121;
+        current_statement__ = 118;
         if (stan::math::logical_eq(family, 5)) {
-          current_statement__ = 119;
+          current_statement__ = 116;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 118;
+            current_statement__ = 115;
             lp_accum__.add(stan::math::gamma_lpdf<propto__>(
                              stan::model::rvalue(y, "y",
                                stan::model::index_uni(i)),
@@ -909,11 +931,11 @@ public:
                                      stan::model::index_uni(i))))))));
           }
         }
-        current_statement__ = 125;
+        current_statement__ = 122;
         if (stan::math::logical_eq(family, 6)) {
-          current_statement__ = 123;
+          current_statement__ = 120;
           for (int i = 1; i <= N; ++i) {
-            current_statement__ = 122;
+            current_statement__ = 119;
             lp_accum__.add(stan::math::lognormal_lpdf<propto__>(
                              stan::model::rvalue(y, "y",
                                stan::model::index_uni(i)),
@@ -975,13 +997,13 @@ public:
       current_statement__ = 2;
       b_devs0 = in__.template read<
                   Eigen::Matrix<local_scalar_t__,-1,1>>(n_varying_covars);
-      std::vector<Eigen::Matrix<double,-1,1>> b_devs =
-        std::vector<Eigen::Matrix<double,-1,1>>(b_devs_1dim__,
+      std::vector<Eigen::Matrix<double,-1,1>> z_devs =
+        std::vector<Eigen::Matrix<double,-1,1>>(z_devs_1dim__,
           Eigen::Matrix<double,-1,1>::Constant(n_varying_covars,
             std::numeric_limits<double>::quiet_NaN()));
       current_statement__ = 3;
-      b_devs = in__.template read<
-                 std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>>(b_devs_1dim__,
+      z_devs = in__.template read<
+                 std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>>(z_devs_1dim__,
                  n_varying_covars);
       Eigen::Matrix<double,-1,-1> Lcorr =
         Eigen::Matrix<double,-1,-1>::Constant(Lcorr_1dim__, Lcorr_2dim__,
@@ -1022,6 +1044,10 @@ public:
       current_statement__ = 9;
       missing_varying = in__.template read<
                           Eigen::Matrix<local_scalar_t__,-1,1>>(n_varying_NAs);
+      std::vector<Eigen::Matrix<double,-1,1>> b_devs =
+        std::vector<Eigen::Matrix<double,-1,1>>(b_devs_1dim__,
+          Eigen::Matrix<double,-1,1>::Constant(n_varying_covars,
+            std::numeric_limits<double>::quiet_NaN()));
       std::vector<Eigen::Matrix<double,-1,1>> b_varying =
         std::vector<Eigen::Matrix<double,-1,1>>(nT,
           Eigen::Matrix<double,-1,1>::Constant(n_varying_covars,
@@ -1044,8 +1070,8 @@ public:
       out__.write(b_fixed);
       out__.write(b_devs0);
       for (int sym1__ = 1; sym1__ <= n_varying_covars; ++sym1__) {
-        for (int sym2__ = 1; sym2__ <= b_devs_1dim__; ++sym2__) {
-          out__.write(b_devs[(sym2__ - 1)][(sym1__ - 1)]);
+        for (int sym2__ = 1; sym2__ <= z_devs_1dim__; ++sym2__) {
+          out__.write(z_devs[(sym2__ - 1)][(sym1__ - 1)]);
         }
       }
       out__.write(Lcorr);
@@ -1059,21 +1085,21 @@ public:
             stan::math::primitive_value(emit_generated_quantities__)))) {
         return ;
       }
-      current_statement__ = 20;
+      current_statement__ = 21;
       if (stan::math::logical_eq(correlated_rw, 1)) {
-        current_statement__ = 17;
+        current_statement__ = 18;
         stan::model::assign(R,
           stan::math::multiply_lower_tri_self_transpose(Lcorr),
           "assigning variable R");
-        current_statement__ = 18;
+        current_statement__ = 19;
         stan::model::assign(Sigma, stan::math::quad_form_diag(R, sigma),
           "assigning variable Sigma");
       }
-      current_statement__ = 28;
+      current_statement__ = 29;
       if (stan::math::logical_gt(n_fixed_covars, 0)) {
-        current_statement__ = 23;
+        current_statement__ = 24;
         for (int i = 1; i <= fixed_N; ++i) {
-          current_statement__ = 21;
+          current_statement__ = 22;
           stan::model::assign(X_fixed,
             stan::model::rvalue(fixed_x_value, "fixed_x_value",
               stan::model::index_uni(i)), "assigning variable X_fixed",
@@ -1084,9 +1110,9 @@ public:
               stan::model::rvalue(fixed_var_indx, "fixed_var_indx",
                 stan::model::index_uni(i))));
         }
-        current_statement__ = 26;
+        current_statement__ = 27;
         for (int i = 1; i <= n_fixed_NAs; ++i) {
-          current_statement__ = 24;
+          current_statement__ = 25;
           stan::model::assign(X_fixed,
             stan::model::rvalue(missing_fixed, "missing_fixed",
               stan::model::index_uni(i)), "assigning variable X_fixed",
@@ -1102,11 +1128,11 @@ public:
                     stan::model::index_uni(i))))));
         }
       }
-      current_statement__ = 36;
+      current_statement__ = 37;
       if (stan::math::logical_gt(n_varying_covars, 0)) {
-        current_statement__ = 31;
+        current_statement__ = 32;
         for (int i = 1; i <= varying_N; ++i) {
-          current_statement__ = 29;
+          current_statement__ = 30;
           stan::model::assign(X_varying,
             stan::model::rvalue(varying_x_value, "varying_x_value",
               stan::model::index_uni(i)), "assigning variable X_varying",
@@ -1117,9 +1143,9 @@ public:
               stan::model::rvalue(varying_var_indx, "varying_var_indx",
                 stan::model::index_uni(i))));
         }
-        current_statement__ = 34;
+        current_statement__ = 35;
         for (int i = 1; i <= n_varying_NAs; ++i) {
-          current_statement__ = 32;
+          current_statement__ = 33;
           stan::model::assign(X_varying,
             stan::model::rvalue(missing_varying, "missing_varying",
               stan::model::index_uni(i)), "assigning variable X_varying",
@@ -1135,12 +1161,31 @@ public:
                     stan::model::index_uni(i))))));
         }
       }
-      current_statement__ = 37;
+      current_statement__ = 44;
+      for (int t = 1; t <= (nT - 1); ++t) {
+        current_statement__ = 42;
+        if (stan::math::logical_eq(correlated_rw, 1)) {
+          current_statement__ = 40;
+          stan::model::assign(b_devs,
+            stan::math::multiply(Lcorr,
+              stan::math::elt_multiply(sigma,
+                stan::model::rvalue(z_devs, "z_devs",
+                  stan::model::index_uni(t)))), "assigning variable b_devs",
+            stan::model::index_uni(t));
+        } else {
+          current_statement__ = 38;
+          stan::model::assign(b_devs,
+            stan::math::elt_multiply(sigma,
+              stan::model::rvalue(z_devs, "z_devs", stan::model::index_uni(t))),
+            "assigning variable b_devs", stan::model::index_uni(t));
+        }
+      }
+      current_statement__ = 45;
       stan::model::assign(b_varying, b_devs0, "assigning variable b_varying",
         stan::model::index_uni(1));
-      current_statement__ = 40;
+      current_statement__ = 48;
       for (int t = 2; t <= nT; ++t) {
-        current_statement__ = 38;
+        current_statement__ = 46;
         stan::model::assign(b_varying,
           stan::math::add(
             stan::model::deep_copy(
@@ -1150,27 +1195,27 @@ public:
               stan::model::index_uni((t - 1)))),
           "assigning variable b_varying", stan::model::index_uni(t));
       }
-      current_statement__ = 42;
+      current_statement__ = 50;
       for (int t = 1; t <= nT; ++t) {
-        current_statement__ = 41;
+        current_statement__ = 49;
         stan::model::assign(eta, 0, "assigning variable eta",
           stan::model::index_uni(t));
       }
-      current_statement__ = 44;
+      current_statement__ = 52;
       if (stan::math::logical_gt(n_fixed_covars, 0)) {
-        current_statement__ = 43;
+        current_statement__ = 51;
         stan::model::assign(eta,
           stan::math::add(stan::model::deep_copy(eta),
             stan::math::multiply(X_fixed, b_fixed)), "assigning variable eta");
       }
-      current_statement__ = 49;
+      current_statement__ = 57;
       if (stan::math::logical_gt(n_varying_covars, 0)) {
-        current_statement__ = 47;
+        current_statement__ = 55;
         for (int t = 1; t <= nT; ++t) {
-          current_statement__ = 45;
+          current_statement__ = 53;
           stan::model::assign(eta,
             (stan::model::rvalue(eta, "eta", stan::model::index_uni(t)) +
-            stan::math::multiply(
+            stan::math::dot_product(
               stan::model::rvalue(X_varying, "X_varying",
                 stan::model::index_uni(t)),
               stan::model::rvalue(b_varying, "b_varying",
@@ -1179,6 +1224,11 @@ public:
         }
       }
       if (emit_transformed_parameters__) {
+        for (int sym1__ = 1; sym1__ <= n_varying_covars; ++sym1__) {
+          for (int sym2__ = 1; sym2__ <= b_devs_1dim__; ++sym2__) {
+            out__.write(b_devs[(sym2__ - 1)][(sym1__ - 1)]);
+          }
+        }
         for (int sym1__ = 1; sym1__ <= n_varying_covars; ++sym1__) {
           for (int sym2__ = 1; sym2__ <= nT; ++sym2__) {
             out__.write(b_varying[(sym2__ - 1)][(sym1__ - 1)]);
@@ -1196,11 +1246,11 @@ public:
       Eigen::Matrix<double,-1,1> log_lik =
         Eigen::Matrix<double,-1,1>::Constant(N,
           std::numeric_limits<double>::quiet_NaN());
-      current_statement__ = 53;
+      current_statement__ = 61;
       if (stan::math::logical_eq(family, 1)) {
-        current_statement__ = 51;
+        current_statement__ = 59;
         for (int n = 1; n <= N; ++n) {
-          current_statement__ = 50;
+          current_statement__ = 58;
           stan::model::assign(log_lik,
             stan::math::normal_lpdf<false>(
               stan::model::rvalue(y, "y", stan::model::index_uni(n)),
@@ -1212,11 +1262,11 @@ public:
             "assigning variable log_lik", stan::model::index_uni(n));
         }
       }
-      current_statement__ = 57;
+      current_statement__ = 65;
       if (stan::math::logical_eq(family, 2)) {
-        current_statement__ = 55;
+        current_statement__ = 63;
         for (int n = 1; n <= N; ++n) {
-          current_statement__ = 54;
+          current_statement__ = 62;
           stan::model::assign(log_lik,
             stan::math::bernoulli_lpmf<false>(
               stan::model::rvalue(y_int, "y_int", stan::model::index_uni(n)),
@@ -1228,11 +1278,11 @@ public:
             "assigning variable log_lik", stan::model::index_uni(n));
         }
       }
-      current_statement__ = 61;
+      current_statement__ = 69;
       if (stan::math::logical_eq(family, 3)) {
-        current_statement__ = 59;
+        current_statement__ = 67;
         for (int n = 1; n <= N; ++n) {
-          current_statement__ = 58;
+          current_statement__ = 66;
           stan::model::assign(log_lik,
             stan::math::poisson_lpmf<false>(
               stan::model::rvalue(y_int, "y_int", stan::model::index_uni(n)),
@@ -1244,11 +1294,11 @@ public:
             "assigning variable log_lik", stan::model::index_uni(n));
         }
       }
-      current_statement__ = 65;
+      current_statement__ = 73;
       if (stan::math::logical_eq(family, 4)) {
-        current_statement__ = 63;
+        current_statement__ = 71;
         for (int n = 1; n <= N; ++n) {
-          current_statement__ = 62;
+          current_statement__ = 70;
           stan::model::assign(log_lik,
             stan::math::normal_lpdf<false>(
               stan::model::rvalue(y, "y", stan::model::index_uni(n)),
@@ -1260,11 +1310,11 @@ public:
             "assigning variable log_lik", stan::model::index_uni(n));
         }
       }
-      current_statement__ = 69;
+      current_statement__ = 77;
       if (stan::math::logical_eq(family, 5)) {
-        current_statement__ = 67;
+        current_statement__ = 75;
         for (int n = 1; n <= N; ++n) {
-          current_statement__ = 66;
+          current_statement__ = 74;
           stan::model::assign(log_lik,
             stan::math::gamma_lpdf<false>(
               stan::model::rvalue(y, "y", stan::model::index_uni(n)),
@@ -1278,11 +1328,11 @@ public:
             "assigning variable log_lik", stan::model::index_uni(n));
         }
       }
-      current_statement__ = 73;
+      current_statement__ = 81;
       if (stan::math::logical_eq(family, 6)) {
-        current_statement__ = 71;
+        current_statement__ = 79;
         for (int n = 1; n <= N; ++n) {
-          current_statement__ = 70;
+          current_statement__ = 78;
           stan::model::assign(log_lik,
             stan::math::lognormal_lpdf<false>(
               stan::model::rvalue(y, "y", stan::model::index_uni(n)),
@@ -1331,21 +1381,21 @@ public:
         in__.read<Eigen::Matrix<local_scalar_t__,-1,1>>(n_varying_covars),
         "assigning variable b_devs0");
       out__.write(b_devs0);
-      std::vector<Eigen::Matrix<local_scalar_t__,-1,1>> b_devs =
-        std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>(b_devs_1dim__,
+      std::vector<Eigen::Matrix<local_scalar_t__,-1,1>> z_devs =
+        std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>(z_devs_1dim__,
           Eigen::Matrix<local_scalar_t__,-1,1>::Constant(n_varying_covars,
             DUMMY_VAR__));
       current_statement__ = 3;
       for (int sym1__ = 1; sym1__ <= n_varying_covars; ++sym1__) {
         current_statement__ = 3;
-        for (int sym2__ = 1; sym2__ <= b_devs_1dim__; ++sym2__) {
+        for (int sym2__ = 1; sym2__ <= z_devs_1dim__; ++sym2__) {
           current_statement__ = 3;
-          stan::model::assign(b_devs, in__.read<local_scalar_t__>(),
-            "assigning variable b_devs", stan::model::index_uni(sym2__),
+          stan::model::assign(z_devs, in__.read<local_scalar_t__>(),
+            "assigning variable z_devs", stan::model::index_uni(sym2__),
             stan::model::index_uni(sym1__));
         }
       }
-      out__.write(b_devs);
+      out__.write(z_devs);
       Eigen::Matrix<local_scalar_t__,-1,-1> Lcorr =
         Eigen::Matrix<local_scalar_t__,-1,-1>::Constant(Lcorr_1dim__,
           Lcorr_2dim__, DUMMY_VAR__);
@@ -1414,8 +1464,8 @@ public:
       context__.validate_dims("parameter initialization", "b_devs0",
         "double", std::vector<size_t>{static_cast<size_t>(n_varying_covars)});
       current_statement__ = 3;
-      context__.validate_dims("parameter initialization", "b_devs", "double",
-        std::vector<size_t>{static_cast<size_t>(b_devs_1dim__),
+      context__.validate_dims("parameter initialization", "z_devs", "double",
+        std::vector<size_t>{static_cast<size_t>(z_devs_1dim__),
           static_cast<size_t>(n_varying_covars)});
       current_statement__ = 4;
       context__.validate_dims("parameter initialization", "Lcorr", "double",
@@ -1476,30 +1526,30 @@ public:
         }
       }
       out__.write(b_devs0);
-      std::vector<Eigen::Matrix<local_scalar_t__,-1,1>> b_devs =
-        std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>(b_devs_1dim__,
+      std::vector<Eigen::Matrix<local_scalar_t__,-1,1>> z_devs =
+        std::vector<Eigen::Matrix<local_scalar_t__,-1,1>>(z_devs_1dim__,
           Eigen::Matrix<local_scalar_t__,-1,1>::Constant(n_varying_covars,
             DUMMY_VAR__));
       {
-        std::vector<local_scalar_t__> b_devs_flat__;
+        std::vector<local_scalar_t__> z_devs_flat__;
         current_statement__ = 3;
-        b_devs_flat__ = context__.vals_r("b_devs");
+        z_devs_flat__ = context__.vals_r("z_devs");
         current_statement__ = 3;
         pos__ = 1;
         current_statement__ = 3;
         for (int sym1__ = 1; sym1__ <= n_varying_covars; ++sym1__) {
           current_statement__ = 3;
-          for (int sym2__ = 1; sym2__ <= b_devs_1dim__; ++sym2__) {
+          for (int sym2__ = 1; sym2__ <= z_devs_1dim__; ++sym2__) {
             current_statement__ = 3;
-            stan::model::assign(b_devs, b_devs_flat__[(pos__ - 1)],
-              "assigning variable b_devs", stan::model::index_uni(sym2__),
+            stan::model::assign(z_devs, z_devs_flat__[(pos__ - 1)],
+              "assigning variable z_devs", stan::model::index_uni(sym2__),
               stan::model::index_uni(sym1__));
             current_statement__ = 3;
             pos__ = (pos__ + 1);
           }
         }
       }
-      out__.write(b_devs);
+      out__.write(z_devs);
       Eigen::Matrix<local_scalar_t__,-1,-1> Lcorr =
         Eigen::Matrix<local_scalar_t__,-1,-1>::Constant(Lcorr_1dim__,
           Lcorr_2dim__, DUMMY_VAR__);
@@ -1626,12 +1676,13 @@ public:
   get_param_names(std::vector<std::string>& names__, const bool
                   emit_transformed_parameters__ = true, const bool
                   emit_generated_quantities__ = true) const {
-    names__ = std::vector<std::string>{"b_fixed", "b_devs0", "b_devs",
+    names__ = std::vector<std::string>{"b_fixed", "b_devs0", "z_devs",
                 "Lcorr", "sigma", "phi", "nu", "missing_fixed",
                 "missing_varying"};
     if (emit_transformed_parameters__) {
       std::vector<std::string>
-        temp{"b_varying", "R", "Sigma", "eta", "X_fixed", "X_varying"};
+        temp{"b_devs", "b_varying", "R", "Sigma", "eta", "X_fixed",
+             "X_varying"};
       names__.reserve(names__.size() + temp.size());
       names__.insert(names__.end(), temp.begin(), temp.end());
     }
@@ -1649,7 +1700,7 @@ public:
                                                                     size_t>(
                                                                     n_fixed_covars)},
                 std::vector<size_t>{static_cast<size_t>(n_varying_covars)},
-                std::vector<size_t>{static_cast<size_t>(b_devs_1dim__),
+                std::vector<size_t>{static_cast<size_t>(z_devs_1dim__),
                   static_cast<size_t>(n_varying_covars)},
                 std::vector<size_t>{static_cast<size_t>(Lcorr_1dim__),
                   static_cast<size_t>(Lcorr_2dim__)},
@@ -1660,7 +1711,9 @@ public:
                 std::vector<size_t>{static_cast<size_t>(n_varying_NAs)}};
     if (emit_transformed_parameters__) {
       std::vector<std::vector<size_t>>
-        temp{std::vector<size_t>{static_cast<size_t>(nT),
+        temp{std::vector<size_t>{static_cast<size_t>(b_devs_1dim__),
+               static_cast<size_t>(n_varying_covars)},
+             std::vector<size_t>{static_cast<size_t>(nT),
                static_cast<size_t>(n_varying_covars)},
              std::vector<size_t>{static_cast<size_t>(R_1dim__),
                static_cast<size_t>(R_2dim__)},
@@ -1694,8 +1747,8 @@ public:
         std::to_string(sym1__));
     }
     for (int sym1__ = 1; sym1__ <= n_varying_covars; ++sym1__) {
-      for (int sym2__ = 1; sym2__ <= b_devs_1dim__; ++sym2__) {
-        param_names__.emplace_back(std::string() + "b_devs" + '.' +
+      for (int sym2__ = 1; sym2__ <= z_devs_1dim__; ++sym2__) {
+        param_names__.emplace_back(std::string() + "z_devs" + '.' +
           std::to_string(sym2__) + '.' + std::to_string(sym1__));
       }
     }
@@ -1726,6 +1779,12 @@ public:
         std::to_string(sym1__));
     }
     if (emit_transformed_parameters__) {
+      for (int sym1__ = 1; sym1__ <= n_varying_covars; ++sym1__) {
+        for (int sym2__ = 1; sym2__ <= b_devs_1dim__; ++sym2__) {
+          param_names__.emplace_back(std::string() + "b_devs" + '.' +
+            std::to_string(sym2__) + '.' + std::to_string(sym1__));
+        }
+      }
       for (int sym1__ = 1; sym1__ <= n_varying_covars; ++sym1__) {
         for (int sym2__ = 1; sym2__ <= nT; ++sym2__) {
           param_names__.emplace_back(std::string() + "b_varying" + '.' +
@@ -1781,8 +1840,8 @@ public:
         std::to_string(sym1__));
     }
     for (int sym1__ = 1; sym1__ <= n_varying_covars; ++sym1__) {
-      for (int sym2__ = 1; sym2__ <= b_devs_1dim__; ++sym2__) {
-        param_names__.emplace_back(std::string() + "b_devs" + '.' +
+      for (int sym2__ = 1; sym2__ <= z_devs_1dim__; ++sym2__) {
+        param_names__.emplace_back(std::string() + "z_devs" + '.' +
           std::to_string(sym2__) + '.' + std::to_string(sym1__));
       }
     }
@@ -1812,6 +1871,12 @@ public:
         std::to_string(sym1__));
     }
     if (emit_transformed_parameters__) {
+      for (int sym1__ = 1; sym1__ <= n_varying_covars; ++sym1__) {
+        for (int sym2__ = 1; sym2__ <= b_devs_1dim__; ++sym2__) {
+          param_names__.emplace_back(std::string() + "b_devs" + '.' +
+            std::to_string(sym2__) + '.' + std::to_string(sym1__));
+        }
+      }
       for (int sym1__ = 1; sym1__ <= n_varying_covars; ++sym1__) {
         for (int sym2__ = 1; sym2__ <= nT; ++sym2__) {
           param_names__.emplace_back(std::string() + "b_varying" + '.' +
@@ -1855,10 +1920,10 @@ public:
     }
   }
   inline std::string get_constrained_sizedtypes() const {
-    return std::string("[{\"name\":\"b_fixed\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_fixed_covars) + "},\"block\":\"parameters\"},{\"name\":\"b_devs0\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "},\"block\":\"parameters\"},{\"name\":\"b_devs\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(b_devs_1dim__) + ",\"element_type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "}},\"block\":\"parameters\"},{\"name\":\"Lcorr\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(Lcorr_1dim__) + ",\"cols\":" + std::to_string(Lcorr_2dim__) + "},\"block\":\"parameters\"},{\"name\":\"sigma\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "},\"block\":\"parameters\"},{\"name\":\"phi\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(1) + "},\"block\":\"parameters\"},{\"name\":\"nu\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(est_df) + "},\"block\":\"parameters\"},{\"name\":\"missing_fixed\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_fixed_NAs) + "},\"block\":\"parameters\"},{\"name\":\"missing_varying\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_NAs) + "},\"block\":\"parameters\"},{\"name\":\"b_varying\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(nT) + ",\"element_type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "}},\"block\":\"transformed_parameters\"},{\"name\":\"R\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(R_1dim__) + ",\"cols\":" + std::to_string(R_2dim__) + "},\"block\":\"transformed_parameters\"},{\"name\":\"Sigma\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(Sigma_1dim__) + ",\"cols\":" + std::to_string(Sigma_2dim__) + "},\"block\":\"transformed_parameters\"},{\"name\":\"eta\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(nT) + "},\"block\":\"transformed_parameters\"},{\"name\":\"X_fixed\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(nT) + ",\"cols\":" + std::to_string(n_fixed_covars) + "},\"block\":\"transformed_parameters\"},{\"name\":\"X_varying\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(nT) + ",\"cols\":" + std::to_string(n_varying_covars) + "},\"block\":\"transformed_parameters\"},{\"name\":\"log_lik\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"}]");
+    return std::string("[{\"name\":\"b_fixed\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_fixed_covars) + "},\"block\":\"parameters\"},{\"name\":\"b_devs0\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "},\"block\":\"parameters\"},{\"name\":\"z_devs\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(z_devs_1dim__) + ",\"element_type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "}},\"block\":\"parameters\"},{\"name\":\"Lcorr\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(Lcorr_1dim__) + ",\"cols\":" + std::to_string(Lcorr_2dim__) + "},\"block\":\"parameters\"},{\"name\":\"sigma\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "},\"block\":\"parameters\"},{\"name\":\"phi\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(1) + "},\"block\":\"parameters\"},{\"name\":\"nu\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(est_df) + "},\"block\":\"parameters\"},{\"name\":\"missing_fixed\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_fixed_NAs) + "},\"block\":\"parameters\"},{\"name\":\"missing_varying\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_NAs) + "},\"block\":\"parameters\"},{\"name\":\"b_devs\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(b_devs_1dim__) + ",\"element_type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "}},\"block\":\"transformed_parameters\"},{\"name\":\"b_varying\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(nT) + ",\"element_type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "}},\"block\":\"transformed_parameters\"},{\"name\":\"R\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(R_1dim__) + ",\"cols\":" + std::to_string(R_2dim__) + "},\"block\":\"transformed_parameters\"},{\"name\":\"Sigma\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(Sigma_1dim__) + ",\"cols\":" + std::to_string(Sigma_2dim__) + "},\"block\":\"transformed_parameters\"},{\"name\":\"eta\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(nT) + "},\"block\":\"transformed_parameters\"},{\"name\":\"X_fixed\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(nT) + ",\"cols\":" + std::to_string(n_fixed_covars) + "},\"block\":\"transformed_parameters\"},{\"name\":\"X_varying\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(nT) + ",\"cols\":" + std::to_string(n_varying_covars) + "},\"block\":\"transformed_parameters\"},{\"name\":\"log_lik\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"}]");
   }
   inline std::string get_unconstrained_sizedtypes() const {
-    return std::string("[{\"name\":\"b_fixed\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_fixed_covars) + "},\"block\":\"parameters\"},{\"name\":\"b_devs0\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "},\"block\":\"parameters\"},{\"name\":\"b_devs\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(b_devs_1dim__) + ",\"element_type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "}},\"block\":\"parameters\"},{\"name\":\"Lcorr\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(((Lcorr_1dim__ * (Lcorr_1dim__ - 1)) /2)) + "},\"block\":\"parameters\"},{\"name\":\"sigma\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "},\"block\":\"parameters\"},{\"name\":\"phi\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(1) + "},\"block\":\"parameters\"},{\"name\":\"nu\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(est_df) + "},\"block\":\"parameters\"},{\"name\":\"missing_fixed\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_fixed_NAs) + "},\"block\":\"parameters\"},{\"name\":\"missing_varying\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_NAs) + "},\"block\":\"parameters\"},{\"name\":\"b_varying\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(nT) + ",\"element_type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "}},\"block\":\"transformed_parameters\"},{\"name\":\"R\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(R_1dim__) + ",\"cols\":" + std::to_string(R_2dim__) + "},\"block\":\"transformed_parameters\"},{\"name\":\"Sigma\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(Sigma_1dim__) + ",\"cols\":" + std::to_string(Sigma_2dim__) + "},\"block\":\"transformed_parameters\"},{\"name\":\"eta\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(nT) + "},\"block\":\"transformed_parameters\"},{\"name\":\"X_fixed\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(nT) + ",\"cols\":" + std::to_string(n_fixed_covars) + "},\"block\":\"transformed_parameters\"},{\"name\":\"X_varying\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(nT) + ",\"cols\":" + std::to_string(n_varying_covars) + "},\"block\":\"transformed_parameters\"},{\"name\":\"log_lik\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"}]");
+    return std::string("[{\"name\":\"b_fixed\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_fixed_covars) + "},\"block\":\"parameters\"},{\"name\":\"b_devs0\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "},\"block\":\"parameters\"},{\"name\":\"z_devs\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(z_devs_1dim__) + ",\"element_type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "}},\"block\":\"parameters\"},{\"name\":\"Lcorr\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(((Lcorr_1dim__ * (Lcorr_1dim__ - 1)) /2)) + "},\"block\":\"parameters\"},{\"name\":\"sigma\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "},\"block\":\"parameters\"},{\"name\":\"phi\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(1) + "},\"block\":\"parameters\"},{\"name\":\"nu\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(est_df) + "},\"block\":\"parameters\"},{\"name\":\"missing_fixed\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_fixed_NAs) + "},\"block\":\"parameters\"},{\"name\":\"missing_varying\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_NAs) + "},\"block\":\"parameters\"},{\"name\":\"b_devs\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(b_devs_1dim__) + ",\"element_type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "}},\"block\":\"transformed_parameters\"},{\"name\":\"b_varying\",\"type\":{\"name\":\"array\",\"length\":" + std::to_string(nT) + ",\"element_type\":{\"name\":\"vector\",\"length\":" + std::to_string(n_varying_covars) + "}},\"block\":\"transformed_parameters\"},{\"name\":\"R\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(R_1dim__) + ",\"cols\":" + std::to_string(R_2dim__) + "},\"block\":\"transformed_parameters\"},{\"name\":\"Sigma\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(Sigma_1dim__) + ",\"cols\":" + std::to_string(Sigma_2dim__) + "},\"block\":\"transformed_parameters\"},{\"name\":\"eta\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(nT) + "},\"block\":\"transformed_parameters\"},{\"name\":\"X_fixed\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(nT) + ",\"cols\":" + std::to_string(n_fixed_covars) + "},\"block\":\"transformed_parameters\"},{\"name\":\"X_varying\",\"type\":{\"name\":\"matrix\",\"rows\":" + std::to_string(nT) + ",\"cols\":" + std::to_string(n_varying_covars) + "},\"block\":\"transformed_parameters\"},{\"name\":\"log_lik\",\"type\":{\"name\":\"vector\",\"length\":" + std::to_string(N) + "},\"block\":\"generated_quantities\"}]");
   }
   // Begin method overload boilerplate
   template <typename RNG> inline void
@@ -1868,12 +1933,12 @@ public:
               emit_generated_quantities = true, std::ostream*
               pstream = nullptr) const {
     const size_t num_params__ = ((((((((n_fixed_covars + n_varying_covars) +
-      (b_devs_1dim__ * n_varying_covars)) + (Lcorr_1dim__ * Lcorr_2dim__)) +
+      (z_devs_1dim__ * n_varying_covars)) + (Lcorr_1dim__ * Lcorr_2dim__)) +
       n_varying_covars) + 1) + est_df) + n_fixed_NAs) + n_varying_NAs);
-    const size_t num_transformed = emit_transformed_parameters * (((((((nT *
-      n_varying_covars) + (R_1dim__ * R_2dim__)) + (Sigma_1dim__ *
-      Sigma_2dim__)) + nT) + (nT * n_fixed_covars)) + (nT *
-      n_varying_covars)));
+    const size_t num_transformed = emit_transformed_parameters *
+      ((((((((b_devs_1dim__ * n_varying_covars) + (nT * n_varying_covars)) +
+      (R_1dim__ * R_2dim__)) + (Sigma_1dim__ * Sigma_2dim__)) + nT) + (nT *
+      n_fixed_covars)) + (nT * n_varying_covars)));
     const size_t num_gen_quantities = emit_generated_quantities * (N);
     const size_t num_to_write = num_params__ + num_transformed +
       num_gen_quantities;
@@ -1890,12 +1955,12 @@ public:
               emit_generated_quantities = true, std::ostream*
               pstream = nullptr) const {
     const size_t num_params__ = ((((((((n_fixed_covars + n_varying_covars) +
-      (b_devs_1dim__ * n_varying_covars)) + (Lcorr_1dim__ * Lcorr_2dim__)) +
+      (z_devs_1dim__ * n_varying_covars)) + (Lcorr_1dim__ * Lcorr_2dim__)) +
       n_varying_covars) + 1) + est_df) + n_fixed_NAs) + n_varying_NAs);
-    const size_t num_transformed = emit_transformed_parameters * (((((((nT *
-      n_varying_covars) + (R_1dim__ * R_2dim__)) + (Sigma_1dim__ *
-      Sigma_2dim__)) + nT) + (nT * n_fixed_covars)) + (nT *
-      n_varying_covars)));
+    const size_t num_transformed = emit_transformed_parameters *
+      ((((((((b_devs_1dim__ * n_varying_covars) + (nT * n_varying_covars)) +
+      (R_1dim__ * R_2dim__)) + (Sigma_1dim__ * Sigma_2dim__)) + nT) + (nT *
+      n_fixed_covars)) + (nT * n_varying_covars)));
     const size_t num_gen_quantities = emit_generated_quantities * (N);
     const size_t num_to_write = num_params__ + num_transformed +
       num_gen_quantities;
